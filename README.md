@@ -9,7 +9,9 @@ Bu depo, 2025 Yaz döneminde gerçekleştirilecek yazılım eğitimi için hazı
 - [📝 Eğitim Planı](egitim.plani.md) - 9 günlük detaylı eğitim programı ve içerikleri
 - [🐳 Docker Kurulum ve Kullanım](docker-kurulum-ve-kullanim.md) - Temel Docker kurulumu ve yapılandırması
 - [🔧 Docker Pratik Rehber](docker-pratik-rehber.md) - Gelişmiş Docker komutları ve ipuçları
-- [👨‍🏫 Eğitmen Dizini ve Açıklamalar](egitmen-dizin-yapisi-ve-aciklama.md) - Eğitmenler için rehber
+- [👨‍🏫 Eğitmen Dizini ve Açıklamalar](egitmen-dizin-yapisi-ve-aciklama.md)
+- [💚 Vue.js Temelleri Özeti](vuejs-temelleri-ozet.md) - Vue.js'in temel ve ileri düzey kavramları
+- [🍍 Pinia Özeti](pinia-ozet.md) - Vue için durum yönetimi kütüphanesi - Eğitmenler için rehber
 
 ### 📊 Örnek Projeler ve Şablonlar
 
