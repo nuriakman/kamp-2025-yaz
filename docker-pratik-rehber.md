@@ -4,7 +4,22 @@ Bu rehber, Docker ile yeni tanışanlar için temel kullanım, sık ihtiyaçlar 
 
 ---
 
-## 1. Docker Container İçine Terminal ile Girmek
+## 1. Sık Kullanılan Docker Komutları
+
+| Komut                             | Açıklama                                   |
+| --------------------------------- | ------------------------------------------ |
+| docker compose up -d              | Tüm servisleri arka planda başlatır        |
+| docker compose down               | Tüm containerları durdurur ve siler        |
+| docker compose restart            | Servisleri yeniden başlatır                |
+| docker compose logs               | Logları gösterir                           |
+| docker compose exec <servis> bash | Servis container'ına terminal ile bağlanır |
+| docker ps                         | Çalışan containerları listeler             |
+| docker volume ls                  | Volume'ları listeler                       |
+| docker volume rm <volume_adı>     | Volume'u siler (veri kaybı!)               |
+
+---
+
+## 2. Docker Container İçine Terminal ile Girmek
 
 Bir servisin (ör: PHP/Laravel) container'ına terminalden bağlanmak için:
 
@@ -17,7 +32,7 @@ docker compose exec app bash
 
 ---
 
-## 2. PHP'ye Yeni Eklenti (Extension) Kurmak (Ör: Fileinfo, PDO, FSP, vb.)
+## 3. PHP'ye Yeni Eklenti (Extension) Kurmak (Ör: Fileinfo, PDO, FSP, vb.)
 
 Varsayılan PHP Docker imajında bazı eklentiler yüklü gelmez. Yeni bir eklenti kurmak için önce terminalden app container'ına girin:
 
@@ -47,7 +62,7 @@ apache2-ctl restart
 
 ---
 
-## 3. Node/Frontend Container'ında Komut Çalıştırmak
+## 4. Node/Frontend Container'ında Komut Çalıştırmak
 
 ```bash
 docker compose exec node bash
@@ -62,7 +77,7 @@ npm run dev
 
 ---
 
-## 4. MySQL Container'ında SQL Çalıştırmak
+## 5. MySQL Container'ında SQL Çalıştırmak
 
 MySQL veritabanı container'ında SQL sorguları çalıştırmak için şu adımları izleyin:
 
@@ -94,21 +109,6 @@ SELECT * FROM urunler;
 ```sql
 exit
 ```
-
----
-
-## 5. Sık Kullanılan Docker Komutları
-
-| Komut                             | Açıklama                                   |
-| --------------------------------- | ------------------------------------------ |
-| docker compose up -d              | Tüm servisleri arka planda başlatır        |
-| docker compose down               | Tüm containerları durdurur ve siler        |
-| docker compose restart            | Servisleri yeniden başlatır                |
-| docker compose logs               | Logları gösterir                           |
-| docker compose exec <servis> bash | Servis container'ına terminal ile bağlanır |
-| docker ps                         | Çalışan containerları listeler             |
-| docker volume ls                  | Volume'ları listeler                       |
-| docker volume rm <volume_adı>     | Volume'u siler (veri kaybı!)               |
 
 ---
 
@@ -167,7 +167,7 @@ apt install -y ffmpeg
 
 ---
 
-## 8. Log Dosyaları ve İzleme
+## 7. Log Dosyaları ve İzleme
 
 ### Laravel Logları
 
@@ -189,17 +189,15 @@ apt install -y ffmpeg
 ```bash
 # Laravel loglarını izleme
 docker compose exec app tail -f /var/www/html/storage/logs/laravel.log
-
 # Apache hata loglarını izleme
 docker compose exec app tail -f /var/log/apache2/error.log
-
 # MySQL hata loglarını izleme
 docker compose exec db tail -f /var/log/mysql/error.log
 ```
 
 ---
 
-## 9. Sunucu Başlangıç Scriptleri
+## 8. Sunucu Başlangıç Scriptleri
 
 ### 1. entrypoint.sh Kullanımı
 
@@ -207,23 +205,18 @@ docker compose exec db tail -f /var/log/mysql/error.log
 
 ```bash
 #!/bin/bash
-
 # Gerekli paketleri kur
 apt-get update
 apt-get install -y ffmpeg
-
 # Laravel migration ve seed işlemleri
 php /var/www/html/artisan migrate --force
 php /var/www/html/artisan db:seed --force
-
 # Önbellek temizleme
 php /var/www/html/artisan cache:clear
 php /var/www/html/artisan view:clear
 php /var/www/html/artisan config:clear
-
 # Storage link oluştur
 php /var/www/html/artisan storage:link
-
 # Apache'yi başlat
 apache2-foreground
 ```
@@ -234,7 +227,6 @@ apache2-foreground
 # Mevcut Dockerfile içine ekleyin
 COPY docker/entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
-
 # ENTRYPOINT tanımı
 ENTRYPOINT ["entrypoint.sh"]
 ```
@@ -263,7 +255,7 @@ docker compose exec -T app bash -c "cd /var/www/html && php artisan migrate"
 
 ---
 
-## 11. Docker Başlangıç Süreci
+## 9. Docker Başlangıç Süreci
 
 Aşağıdaki diyagram, `docker compose up` komutunun çalışması sırasında gerçekleşen işlemleri göstermektedir:
 
@@ -282,7 +274,6 @@ flowchart TD
     K --> L[Storage link oluşturma]
     L --> M[Apache servisi başlatılır]
     M --> N[Uygulama hazır!]
-
     style A fill:#4CAF50,stroke:#388E3C,color:white,font-weight:bold
     style N fill:#4CAF50,stroke:#388E3C,color:white,font-weight:bold
 ```
@@ -297,14 +288,16 @@ flowchart TD
 
 ---
 
-## 12. Pratik Notlar
+## 10. Pratik Notlar
 
 - Kod değişiklikleri host makinede anında container'a yansır.
 - Container silinirse kodlar ve db volume'u silinmez.
 - Herhangi bir sorun olursa container loglarını inceleyin.
 - Gerektiğinde container'ı veya tüm servisleri yeniden başlatabilirsiniz.
 
-## 13. Docker Servis Yönetimi ve İleri Konular
+---
+
+## 11. Docker Servis Yönetimi ve İleri Konular
 
 ### 1. Servisleri Yönetme
 
@@ -312,11 +305,9 @@ flowchart TD
 
 ```bash
 docker compose restart <servis_adi>  # Örnekler:
-# docker compose restart app      # PHP/Apache
-# docker compose restart db       # MySQL
-# docker compose restart node     # Node.js
-# docker compose restart redis    # Redis
-# docker compose restart mailhog  # MailHog
+docker compose restart egitim_app      # PHP/Apache
+docker compose restart egitim_db       # MySQL
+docker compose restart egitim_node     # Node.js
 ```
 
 #### Tüm Servisleri Durdurma
@@ -398,18 +389,14 @@ docker compose up -d
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
-
     RewriteEngine On
-
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
-
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
@@ -424,7 +411,6 @@ Eğer Dockerfile kullanıyorsanız:
 ```dockerfile
 # Apache modüllerini etkinleştir
 RUN a2enmod rewrite
-
 # Apache ayarlarını güncelle
 RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 ```
@@ -437,7 +423,7 @@ docker compose exec app apache2ctl restart
 
 ---
 
-## 15. Yapılandırma Dosyaları ve Konumları
+## 12. Yapılandırma Dosyaları ve Konumları
 
 ### Apache Yapılandırması
 
@@ -503,7 +489,7 @@ docker compose exec app apache2ctl restart
 
 ---
 
-## 17. Yerel Makineden Yapılandırma Dosyalarını Yönetme
+## 13. Yerel Makineden Yapılandırma Dosyalarını Yönetme
 
 Docker container'larındaki yapılandırma dosyalarını yerel makinenizde düzenlemek için volume bağlama (volume mounting) kullanabilirsiniz. Bu sayede:
 
@@ -574,12 +560,10 @@ services:
    # PHP ayarları için
    mkdir -p config/php/conf.d
    docker compose cp app:/usr/local/etc/php/php.ini config/php/
-
    # Apache ayarları için
    mkdir -p config/apache
    docker compose cp app:/etc/apache2/sites-available/ config/apache/
    docker compose cp app:/etc/apache2/mods-available/ config/apache/
-
    # MySQL ayarları için
    mkdir -p config/mysql
    docker compose cp db:/etc/mysql/conf.d/ config/mysql/
@@ -600,7 +584,6 @@ services:
    ```bash
    # Yerel makinede düzenleme yapın
    code config/php/php.ini
-
    # Değişiklikler otomatik olarak yansıyacaktır
    # Gerekirse Apache'yi yeniden başlatın
    docker compose exec app apache2ctl restart
@@ -614,7 +597,7 @@ services:
 
 ---
 
-## 17. Volume ve Konfigürasyon Dosyaları Hakkında Önemli Bilgiler
+## 14. Volume ve Konfigürasyon Dosyaları Hakkında Önemli Bilgiler
 
 ### Volume'ların Çalışma Mantığı
 
@@ -638,13 +621,10 @@ Docker volume'ları konfigürasyon dosyalarıyla çalışırken dikkat edilmesi 
    ```bash
    # Dizin yapısını oluştur
    mkdir -p config/php config/apache/sites-available config/mysql
-
    # PHP ayarlarını kopyala
    docker cp <container_adi>:/usr/local/etc/php/php.ini ./config/php/
-
    # Apache site konfigürasyonlarını kopyala
    docker cp <container_adi>:/etc/apache2/sites-available/000-default.conf ./config/apache/sites-available/
-
    # MySQL yapılandırmasını kopyala (eğer gerekliyse)
    docker cp <container_adi>:/etc/mysql/conf.d/ ./config/mysql/
    ```
@@ -654,14 +634,12 @@ Docker volume'ları konfigürasyon dosyalarıyla çalışırken dikkat edilmesi 
    ```bash
    # Container'ı durdur
    docker compose down
-
    # docker-compose.yml'de volume tanımlarını ekleyin
    # Örnek:
    # volumes:
    #   - ./config/php/php.ini:/usr/local/etc/php/php.ini
    #   - ./config/apache/sites-available/:/etc/apache2/sites-available/
    #   - ./config/mysql/conf.d/:/etc/mysql/conf.d/
-
    # Container'ı tekrar başlat
    docker compose up -d
    ```
@@ -669,11 +647,8 @@ Docker volume'ları konfigürasyon dosyalarıyla çalışırken dikkat edilmesi 
 ### Önemli Uyarılar
 
 1. **Veri Kaybı Riski:** Container'ı volume'lar etkin şekilde başlattıktan sonra, container'daki orijinal dosyalara erişemezsiniz. Tüm değişiklikler yerel dosyalar üzerinden yapılmalıdır.
-
 2. **İlk Kurulumda Dikkat:** Yeni bir projeye başlarken, önce container'ın kendi default dosyalarıyla çalışmasına izin verin. Daha sonra ihtiyaç duydukça dosyaları dışarı çıkarıp özelleştirin.
-
 3. **Güncellemeler:** Container imajı güncellendiğinde, yeni default ayarları almak için bu işlemi tekrarlamanız gerekebilir.
-
 4. **Veritabanı Dosyaları:** Veritabanı dosyalarını (örneğin MySQL'in `/var/lib/mysql` dizini) asla doğrudan volume ile eşlemeyin. Bunun yerine sadece konfigürasyon dosyalarını eşleyin.
 
 ### Proje Dizin Yapısı

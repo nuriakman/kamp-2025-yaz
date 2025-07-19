@@ -1,19 +1,20 @@
-# Eğitim İçin Docker Konfigürasyonu ve Kullanım Notları
+# Docker Kurulum ve Temel Kullanım Rehberi
 
-Bu dosya, farklı işletim sistemlerinden katılan katılımcıların bilgisayar ayarlarını bozmadan, eğitim ortamını hızlıca kurup kullanabilmeleri için Docker tabanlı bir çözüm sunar. Ana geliştirme ortamı Ubuntu tabanlıdır ve PHP, MySQL, Composer, Node.js, NPM, Laravel, Vue.js, Quasar gibi araçları içerir.
+Bu belge, eğitim ortamı için Docker ile hızlı, güvenli ve pratik bir geliştirme ortamı kurmanızı sağlar. Tüm işlemler, yerel makinenizi bozmadan, PHP, MySQL, Node.js, Laravel ve Vue/Quasar gibi araçlarla modern bir yazılım geliştirme süreci sunar.
 
 ---
 
-## 1. Docker Gereksinimleri
+## 1. Gereksinimler ve Hazırlık
 
-- Katılımcıların bilgisayarında Docker Desktop (Windows/macOS) veya Docker Engine (Linux) kurulu olmalıdır.
+- Bilgisayarınızda Docker Desktop (Windows/macOS) veya Docker Engine (Linux) kurulu olmalı.
 - [Docker Kurulum Rehberi](https://docs.docker.com/get-docker/)
+- Geliştirme için bir kod editörü (VS Code önerilir).
 
 ---
 
-## Docker Volume ve Dizin Eşleştirmeleri
+## 2. Proje Dizin Yapısı ve Volume Eşleştirmeleri
 
-Aşağıdaki tablo, host (yerel) makinedeki klasör/dosya ile Docker container içindeki karşılıklarını gösterir:
+Aşağıdaki tablo ve yapı, dosyalarınızın Docker container'ları ile nasıl eşleştiğini gösterir:
 
 | Yerel Dizin/Kaynak      | Container İçinde           | Açıklama                       |
 | ----------------------- | -------------------------- | ------------------------------ |
@@ -25,7 +26,21 @@ Aşağıdaki tablo, host (yerel) makinedeki klasör/dosya ile Docker container i
 - `src` ve `frontend` klasörleri doğrudan host makinede tutulur, değişiklikler anında container'a yansır.
 - `db_data` volume'u, veritabanı kayıtlarının silinmeden korunmasını sağlar.
 
+Dizin örneği:
+
+```
+Kamp-2025-Yaz/
+├── docker-compose.yml
+├── php.ini
+├── src/         # Laravel backend kodları
+└── frontend/    # Vue/Quasar frontend kodları
+```
+
 ---
+
+## 3. docker-compose.yml ile Ortamı Kurma
+
+Aşağıda örnek bir `docker-compose.yml` dosyası bulabilirsiniz. Kendi projenize göre servis isimlerini ve portları değiştirebilirsiniz.
 
 ```yaml
 version: '3.8'
@@ -61,6 +76,15 @@ services:
     networks:
       - egitim_net
 
+  adminer:
+    image: adminer
+    container_name: egitim_adminer
+    restart: always
+    ports:
+      - '8081:8080'
+    networks:
+      - egitim_net
+
   node:
     image: node:20
     container_name: egitim_node
@@ -77,6 +101,106 @@ volumes:
 networks:
   egitim_net:
 ```
+
+---
+
+## 4. Başlatma ve İlk Kurulum
+
+### 4.1 Ortamı Başlatma
+
+Proje klasöründe terminal açıp:
+
+```bash
+docker compose up -d
+```
+
+- `http://localhost:8080` adresinden Laravel uygulamasına erişebilirsiniz.
+- MySQL 3306 portu dışarıya açılmıştır (gerekirse değiştirebilirsiniz).
+
+### 4.2 Laravel Kurulumu (İlk Çalıştırmada)
+
+```bash
+docker compose exec app bash
+cd /var/www/html
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+```
+
+### 4.3 Frontend (Vue/Quasar) Kurulumu
+
+```bash
+docker compose exec node bash
+cd /app
+npm install
+npm run dev
+```
+
+- Frontend geliştirme için ayrı terminalde `npm run dev` komutunu çalıştırabilirsiniz.
+
+---
+
+## 5. Loglar, Hata Ayıklama ve Temizlik
+
+### 5.1 Logları İzleme
+
+```bash
+# Laravel loglarını izleme
+docker compose exec app tail -f /var/www/html/storage/logs/laravel.log
+# Apache hata loglarını izleme
+docker compose exec app tail -f /var/log/apache2/error.log
+# MySQL hata loglarını izleme
+docker compose exec db tail -f /var/log/mysql/error.log
+```
+
+### 5.2 Servisleri Yönetme
+
+- Tek bir servisi yeniden başlat:
+  ```bash
+  docker compose restart app  # veya db, node
+  ```
+- Tüm servisleri durdur:
+  ```bash
+  docker compose down
+  ```
+- Tüm container ve volume'ları silmek için (veri kaybı!):
+  ```bash
+  docker compose down -v
+  ```
+
+---
+
+## 6. Önemli Notlar ve Güvenlik
+
+- **Kodlarınız (src/ ve frontend/ klasörleri)** doğrudan kendi bilgisayarınızda tutulur. Docker containerları silseniz bile bu klasörlerdeki dosyalarınız kaybolmaz.
+- **Veritabanı kayıtlarınız (MySQL)** ise `db_data` adlı Docker volume'unda saklanır. Container silinirse bile volume silinmediği sürece verileriniz korunur.
+- Veritabanını tamamen silmek istemediğiniz sürece şu komutları kullanmayın:
+  - `docker volume rm db_data`
+  - `docker compose down -v` (bu komut volume'ları da siler)
+- Yalnızca `docker compose down` veya `docker compose rm` ile containerları silerseniz, volume ve kodlarınız korunur.
+- Hassas bilgileri (şifreler, API anahtarları) `.env` dosyasında tutun.
+- Yedek almak için volume ve kod klasörlerinizi ayrıca kopyalayabilirsiniz.
+
+---
+
+Herhangi bir sorun yaşarsanız logları inceleyin veya containerları yeniden başlatın:
+
+```bash
+docker compose logs
+```
+
+```bash
+docker compose restart
+```
+
+---
+
+Bu rehber, Docker ile eğitim ortamınızı hızlıca kurup güvenle kullanmanız için hazırlanmıştır. Daha gelişmiş komutlar ve ileri seviye yapılandırmalar için `docker-pratik-rehber.md` dosyasına başvurabilirsiniz.
+
+---
+
+> **docker-compose.yml** örneği için yukarıdaki ilgili bölüme bakınız.
 
 ---
 
