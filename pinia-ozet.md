@@ -163,7 +163,7 @@ router.beforeEach((to) => {
 });
 ```
 
-## Axios ile CRUD İşlemleri Örneği
+## Axios ile CRUD İşlemleri Örneği (Option Stores İle)
 
 Pinia store'unda axios kullanarak temel CRUD (Create, Read, Update, Delete) işlemlerini nasıl yapabileceğinize dair bir örnek:
 
@@ -255,6 +255,106 @@ export const usePostsStore = defineStore('posts', {
 });
 ```
 
+## Axios ile CRUD İşlemleri Örneği (Setup Stores İle)
+
+Pinia store'unda axios kullanarak temel CRUD (Create, Read, Update, Delete) işlemlerini nasıl yapabileceğinize dair bir örnek:
+
+```javascript
+// stores/posts.js
+import { defineStore } from 'pinia';
+import { ref, computed } from 'vue';
+import axios from 'axios';
+
+export const usePostsStore = defineStore('posts', () => {
+  // State
+  const posts = ref([]);
+  const loading = ref(false);
+  const error = ref(null);
+
+  // Getters
+  const allPosts = computed(() => posts.value);
+  const getPostById = computed(
+    () => (id) => posts.value.find((post) => post.id === id),
+  );
+
+  // Actions
+  const fetchPosts = async () => {
+    loading.value = true;
+    try {
+      const response = await axios.get(
+        'https://jsonplaceholder.typicode.com/posts',
+      );
+      posts.value = response.data;
+      error.value = null;
+    } catch (err) {
+      error.value = 'Gönderiler yüklenirken bir hata oluştu.';
+      console.error('Hata:', err);
+    } finally {
+      loading.value = false;
+    }
+  };
+
+  const addPost = async (postData) => {
+    try {
+      const response = await axios.post(
+        'https://jsonplaceholder.typicode.com/posts',
+        postData,
+      );
+      posts.value.unshift(response.data);
+      return response.data;
+    } catch (err) {
+      console.error('Hata:', err);
+      throw err;
+    }
+  };
+
+  const updatePost = async (id, updatedData) => {
+    try {
+      const response = await axios.put(
+        `https://jsonplaceholder.typicode.com/posts/${id}`,
+        updatedData,
+      );
+      const index = posts.value.findIndex((post) => post.id === id);
+      if (index !== -1) {
+        posts.value[index] = response.data;
+      }
+      return response.data;
+    } catch (err) {
+      console.error('Hata:', err);
+      throw err;
+    }
+  };
+
+  const deletePost = async (id) => {
+    try {
+      await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
+      posts.value = posts.value.filter((post) => post.id !== id);
+      return true;
+    } catch (err) {
+      console.error('Hata:', err);
+      throw err;
+    }
+  };
+
+  return {
+    // State
+    posts,
+    loading,
+    error,
+
+    // Getters
+    allPosts,
+    getPostById,
+
+    // Actions
+    fetchPosts,
+    addPost,
+    updatePost,
+    deletePost,
+  };
+});
+```
+
 ### Bileşen İçinde Kullanımı
 
 ```html
@@ -279,6 +379,7 @@ export const usePostsStore = defineStore('posts', {
     <div v-for="post in allPosts" :key="post.id" class="post">
       <h3>{{ post.title }}</h3>
       <p>{{ post.body }}</p>
+      <button @click="editPost(post)">Düzenle</button>
       <button @click="deletePost(post.id)">Sil</button>
     </div>
   </div>
@@ -292,7 +393,7 @@ export const usePostsStore = defineStore('posts', {
   const newPost = ref({ title: '', body: '' });
 
   // Store'dan state'leri al
-  const { allPosts, loading, error } = storeToRefs(postsStore);
+  const { posts: allPosts, loading, error } = storeToRefs(postsStore);
 
   // Bileşen yüklendiğinde gönderileri getir
   onMounted(() => {
@@ -305,12 +406,18 @@ export const usePostsStore = defineStore('posts', {
       await postsStore.addPost({
         title: newPost.value.title,
         body: newPost.value.body,
-        userId: 1, // Örnek kullanıcı ID'si
+        userId: 1,
       });
-      newPost.value = { title: '', body: '' }; // Formu temizle
+      newPost.value = { title: '', body: '' };
     } catch (error) {
       console.error('Gönderi eklenirken hata oluştu:', error);
     }
+  };
+
+  // Gönderi düzenle
+  const editPost = (post) => {
+    // Düzenleme işlemleri burada yapılabilir
+    console.log('Düzenlenecek gönderi:', post);
   };
 
   // Gönderi sil
