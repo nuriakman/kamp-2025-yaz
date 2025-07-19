@@ -5,11 +5,13 @@ Bu doküman, [Vue.js resmi dokümantasyonunun](https://vuejs.org/guide/introduct
 ## İçindekiler
 
 ### Bölüm 1: Giriş (Introduction)
+
 - [Vue.js Nedir?](#vuejs-nedir)
 - [Progressive Framework (Aşamalı Çerçeve)](#progressive-framework-aşamalı-çerçeve)
 - [API Stilleri: Options API vs. Composition API](#api-stilleri-options-api-vs-composition-api)
 
 ### Bölüm 2: Temeller (Essentials)
+
 - [Bir Vue Uygulaması Oluşturma](#bir-vue-uygulaması-oluşturma)
 - [Template Syntax (Şablon Sözdizimi)](#template-syntax-şablon-sözdizimi)
 - [Reactivity Fundamentals (Reaktivitenin Temelleri)](#reactivity-fundamentals-reaktivitenin-temelleri)
@@ -24,6 +26,7 @@ Bu doküman, [Vue.js resmi dokümantasyonunun](https://vuejs.org/guide/introduct
 - [Component Basics (Bileşen Temelleri)](#component-basics-bileşen-temelleri)
 
 ### Bölüm 3: Derinlemesine Bileşenler (Components In-Depth)
+
 - [Registration (Kayıt)](#registration-kayıt)
 - [Props](#props)
 - [Events](#events)
@@ -34,7 +37,6 @@ Bu doküman, [Vue.js resmi dokümantasyonunun](https://vuejs.org/guide/introduct
 - [Async Components](#async-components-asenkron-bileşenler)
 
 ---
-
 
 ## Bölüm 1: Giriş (Introduction)
 
@@ -260,6 +262,9 @@ Vue, projenizin ihtiyacına göre aşamalı olarak benimsenebilir. Basit bir HTM
 ### API Stilleri: Options API vs. Composition API
 
 Vue 3'te iki farklı API stili mevcuttur:
+
+- **Options API:** `data`, `methods` gibi seçeneklerle bileşen mantığını düzenler. `this` anahtar kelimesi merkezlidir ve yeni başlayanlar için daha sezgiseldir.
+- **Composition API:** `import` edilen fonksiyonlarla (`ref`, `reactive`) mantık oluşturulur. `<script setup>` ile kullanılır, daha esnek ve büyük projelerde mantığı organize etmek için güçlüdür.
 
 #### 1. Options API
 
@@ -603,6 +608,12 @@ Bu örnekler, Vue uygulaması oluşturmanın temellerini ve yaygın kullanım se
 
 ### Template Syntax (Şablon Sözdizimi)
 
+- **Text Interpolation:** `{{ }}` (Mustache syntax) ile veriyi metin olarak render eder.
+- **Raw HTML:** `v-html` direktifi ile gerçek HTML render eder (XSS riskine dikkat!).
+- **Attribute Bindings:** `v-bind:` veya kısaca `:` ile HTML elementlerinin özelliklerini (attribute) dinamik olarak bağlar. Örn: `<img :src="imageUrl">`
+- **JavaScript Expressions:** Bağlamalar (bindings) içinde tek satırlık JavaScript ifadeleri kullanılabilir.
+- **Direktifler:** `v-` önekine sahip özel attribute'lardır (`v-if`, `v-for`, `v-on`, `v-bind`, `v-model`).
+
 Vue.js şablon sözdizimi, HTML tabanlıdır ve verileri DOM'a bağlamak için özel sözdizimlerini kullanır. İşte temel özellikleri ve örnekler:
 
 #### 1. Metin İçeriği (Text Interpolation)
@@ -858,6 +869,9 @@ function handleEvent() {
 Bu örnekler, Vue.js'in şablon sözdiziminin temel özelliklerini kapsar. Bu yapıları kullanarak etkileşimli ve dinamik kullanıcı arayüzleri oluşturabilirsiniz.
 
 ### Reactivity Fundamentals (Reaktivitenin Temelleri)
+
+- **`ref()`:** Tek bir değeri (primitive type) reaktif hale getirmek için kullanılır. Değerine `.value` ile erişilir.
+- **`reactive()`:** Sadece nesneleri, dizileri ve diğer koleksiyon türlerini reaktif hale getirir.
 
 Vue'un reaktivite sistemi, verilerdeki değişiklikleri otomatik olarak takip eder ve bu değişikliklere göre kullanıcı arayüzünü günceller. İki temel reaktif fonksiyon vardır: `ref` ve `reactive`.
 
@@ -1224,9 +1238,7 @@ Vue'da class ve style binding'leri, HTML öğelerinin görünümünü dinamik ol
     </div>
 
     <!-- Dizi sözdizimi -->
-    <div :class="[isActive ? 'active' : '', errorClass]">
-      Dizi Sözdizimi
-    </div>
+    <div :class="[isActive ? 'active' : '', errorClass]">Dizi Sözdizimi</div>
 
     <!-- Bileşenlerle kullanım -->
     <my-component :class="{ active: isActive }"></my-component>
@@ -1263,9 +1275,7 @@ const errorClass = 'text-danger';
     </div>
 
     <!-- Çoklu stil nesnesi -->
-    <div :style="[baseStyles, overridingStyles]">
-      Çoklu Stil
-    </div>
+    <div :style="[baseStyles, overridingStyles]">Çoklu Stil</div>
 
     <!-- Otomatik ön ek ekleme -->
     <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }">
@@ -1283,12 +1293,12 @@ const fontSize = ref(16);
 const baseStyles = reactive({
   padding: '10px',
   margin: '5px',
-  border: '1px solid #ddd'
+  border: '1px solid #ddd',
 });
 
 const overridingStyles = reactive({
   color: 'blue',
-  fontSize: '18px'
+  fontSize: '18px',
 });
 </script>
 ```
@@ -1305,9 +1315,9 @@ const overridingStyles = reactive({
         {
           'btn-primary': type === 'primary',
           'btn-danger': type === 'danger',
-          'btn-disabled': isDisabled
+          'btn-disabled': isDisabled,
         },
-        isLarge ? 'btn-lg' : ''
+        isLarge ? 'btn-lg' : '',
       ]"
       :disabled="isDisabled"
     >
@@ -1315,11 +1325,11 @@ const overridingStyles = reactive({
     </button>
 
     <!-- Dinamik stil hesaplamaları -->
-    <div 
+    <div
       :style="{
         transform: `scale(${scale}) rotate(${rotation}deg)`,
         opacity: isVisible ? 1 : 0,
-        transition: 'all 0.3s ease'
+        transition: 'all 0.3s ease',
       }"
       class="box"
     >
@@ -1409,12 +1419,8 @@ Vue'da koşullu render etme, belirli koşullara göre DOM öğelerini göstermek
 <template>
   <div>
     <!-- v-if temel kullanımı -->
-    <div v-if="isLoggedIn">
-      Hoş geldiniz, {{ user.name }}!
-    </div>
-    <div v-else>
-      Lütfen giriş yapın.
-    </div>
+    <div v-if="isLoggedIn">Hoş geldiniz, {{ user.name }}!</div>
+    <div v-else>Lütfen giriş yapın.</div>
 
     <!-- v-else-if ile çoklu koşul -->
     <div v-if="score >= 90">Mükemmel!</div>
@@ -1466,7 +1472,10 @@ const isActive = ref(true);
 
     <div class="performance-note">
       <h4>Performans Notu:</h4>
-      <p><strong>v-if</strong> gerçek DOM manipülasyonu yapar ve daha maliyetlidir.</p>
+      <p>
+        <strong>v-if</strong> gerçek DOM manipülasyonu yapar ve daha
+        maliyetlidir.
+      </p>
       <p><strong>v-show</strong> sadece CSS ile çalışır ve daha hafiftir.</p>
       <p>✅ Sık değişen durumlar için <strong>v-show</strong> kullanın.</p>
       <p>✅ Nadiren değişen durumlar için <strong>v-if</strong> kullanın.</p>
@@ -1526,23 +1535,21 @@ button:hover {
   <div>
     <!-- Dinamik bileşen yükleme -->
     <component :is="currentComponent"></component>
-    
+
     <!-- v-if ile template etiketi kullanımı -->
     <template v-if="user.role === 'admin'">
       <h3>Yönetici Paneli</h3>
       <admin-dashboard />
       <user-list />
     </template>
-    
+
     <!-- v-if ile birlikte v-for kullanımı (önerilmez, dikkatli kullanın) -->
     <ul>
       <template v-for="item in items" :key="item.id">
-        <li v-if="!item.hidden">
-          {{ item.name }} - {{ item.price }} TL
-        </li>
+        <li v-if="!item.hidden">{{ item.name }} - {{ item.price }} TL</li>
       </template>
     </ul>
-    
+
     <!-- Dinamik bileşenler ve keep-alive -->
     <keep-alive>
       <component :is="activeTab"></component>
@@ -1563,19 +1570,19 @@ const activeTab = ref('profile');
 const user = ref({
   name: 'Ahmet Yılmaz',
   role: 'admin',
-  isActive: true
+  isActive: true,
 });
 
 const items = ref([
   { id: 1, name: 'Ürün 1', price: 100, hidden: false },
   { id: 2, name: 'Ürün 2', price: 150, hidden: true },
-  { id: 3, name: 'Ürün 3', price: 200, hidden: false }
+  { id: 3, name: 'Ürün 3', price: 200, hidden: false },
 ]);
 
 // Dinamik bileşenler
 const tabs = {
   profile: shallowRef(UserProfile),
-  settings: shallowRef(Settings)
+  settings: shallowRef(Settings),
 };
 </script>
 ```
@@ -1583,6 +1590,7 @@ const tabs = {
 #### 4. Performans İpuçları
 
 1. **`v-if` ve `v-for'u birlikte kullanmaktan kaçının**:
+
    ```vue
    <!-- Kötü Kullanım -->
    <ul>
@@ -1590,7 +1598,7 @@ const tabs = {
        {{ item.name }}
      </li>
    </ul>
-   
+
    <!-- İyi Kullanım -->
    <ul>
      <template v-for="item in items" :key="item.id">
@@ -1602,34 +1610,36 @@ const tabs = {
    ```
 
 2. **Ağır hesaplamaları `v-if` içinde yapmayın**:
+
    ```vue
    <!-- Kötü Kullanım -->
    <div v-if="filteredItems().length > 0">
      <!-- ... -->
    </div>
-   
+
    <!-- İyi Kullanım -->
    <div v-if="hasFilteredItems">
      <!-- ... -->
    </div>
-   
+
    <script setup>
    const filteredItems = computed(() => {
      // Ağır hesaplama
      return items.value.filter(/* ... */);
    });
-   
+
    const hasFilteredItems = computed(() => filteredItems.value.length > 0);
    </script>
    ```
 
 3. **`v-show` ile birlikte `v-if` kullanmayın**:
+
    ```vue
    <!-- Gereksiz Kullanım -->
    <div v-show="isVisible" v-if="isActive">
      <!-- ... -->
    </div>
-   
+
    <!-- Daha İyi -->
    <div v-show="isVisible && isActive">
      <!-- ... -->
@@ -1972,16 +1982,16 @@ Bir bileşenin oluşturulması, DOM'a eklenmesi, güncellenmesi ve yok edilmesi 
 const props = defineProps({
   modelValue: {
     type: [String, Number],
-    default: ''
+    default: '',
   },
   label: {
     type: String,
-    default: ''
+    default: '',
   },
   error: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 });
 
 defineEmits(['update:modelValue']);
@@ -2017,7 +2027,7 @@ input {
 <template>
   <div>
     <h2>Kullanıcı Kaydı</h2>
-    
+
     <custom-input
       v-model="user.name"
       label="Ad Soyad"
@@ -2025,7 +2035,7 @@ input {
       :error="errors.name"
       @blur="validateField('name')"
     />
-    
+
     <custom-input
       v-model="user.email"
       type="email"
@@ -2034,7 +2044,7 @@ input {
       :error="errors.email"
       @blur="validateField('email')"
     />
-    
+
     <custom-input
       v-model="user.password"
       type="password"
@@ -2043,7 +2053,7 @@ input {
       :error="errors.password"
       @blur="validateField('password')"
     />
-    
+
     <button @click="submitForm">Kaydet</button>
   </div>
 </template>
@@ -2055,13 +2065,13 @@ import CustomInput from './CustomInput.vue';
 const user = reactive({
   name: '',
   email: '',
-  password: ''
+  password: '',
 });
 
 const errors = reactive({
   name: '',
   email: '',
-  password: ''
+  password: '',
 });
 
 function validateField(field) {
@@ -2084,11 +2094,11 @@ function isValidEmail(email) {
 
 function submitForm() {
   // Tüm alanları doğrula
-  Object.keys(user).forEach(field => validateField(field));
-  
+  Object.keys(user).forEach((field) => validateField(field));
+
   // Hata kontrolü
-  const hasErrors = Object.values(errors).some(error => error !== '');
-  
+  const hasErrors = Object.values(errors).some((error) => error !== '');
+
   if (!hasErrors) {
     console.log('Form gönderildi:', user);
     // API çağrısı yapılabilir
@@ -2107,25 +2117,25 @@ function submitForm() {
   <div class="user-form">
     <div class="form-group">
       <label>Ad:</label>
-      <input 
-        :value="firstName" 
+      <input
+        :value="firstName"
         @input="$emit('update:firstName', $event.target.value)"
       />
     </div>
-    
+
     <div class="form-group">
       <label>Soyad:</label>
-      <input 
-        :value="lastName" 
+      <input
+        :value="lastName"
         @input="$emit('update:lastName', $event.target.value)"
       />
     </div>
-    
+
     <div class="form-group">
       <label>Yaş:</label>
-      <input 
-        type="number" 
-        :value="age" 
+      <input
+        type="number"
+        :value="age"
         @input="$emit('update:age', parseInt($event.target.value) || 0)"
       />
     </div>
@@ -2136,7 +2146,7 @@ function submitForm() {
 const props = defineProps({
   firstName: String,
   lastName: String,
-  age: Number
+  age: Number,
 });
 
 defineEmits(['update:firstName', 'update:lastName', 'update:age']);
@@ -2174,13 +2184,13 @@ input {
 <template>
   <div>
     <h2>Kullanıcı Bilgileri</h2>
-    
+
     <user-form
       v-model:firstName="user.firstName"
       v-model:lastName="user.lastName"
       v-model:age="user.age"
     />
-    
+
     <div class="preview">
       <h3>Önizleme:</h3>
       <p>Ad: {{ user.firstName }}</p>
@@ -2188,7 +2198,7 @@ input {
       <p>Yaş: {{ user.age }}</p>
       <p>Tam İsim: {{ fullName }}</p>
     </div>
-    
+
     <button @click="saveUser">Kullanıcıyı Kaydet</button>
   </div>
 </template>
@@ -2200,7 +2210,7 @@ import UserForm from './UserForm.vue';
 const user = reactive({
   firstName: 'Ahmet',
   lastName: 'Yılmaz',
-  age: 30
+  age: 30,
 });
 
 const fullName = computed(() => {
@@ -2210,9 +2220,9 @@ const fullName = computed(() => {
 function saveUser() {
   console.log('Kullanıcı kaydedildi:', {
     ...user,
-    fullName: fullName.value
+    fullName: fullName.value,
   });
-  
+
   // API çağrısı yapılabilir
   // await api.saveUser(user);
 }
@@ -2244,7 +2254,7 @@ button:hover {
 
 #### 3. Özel v-model Modelleri
 
-```vue
+````vue
 <!-- CustomCheckbox.vue -->
 <template>
   <label class="custom-checkbox">
@@ -2263,8 +2273,8 @@ button:hover {
 const props = defineProps({
   modelValue: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 defineEmits(['update:modelValue']);
@@ -2314,7 +2324,7 @@ defineEmits(['update:modelValue']);
 
 /* Checkmark (gizli) */
 .checkmark:after {
-  content: "";
+  content: '';
   position: absolute;
   display: none;
 }
@@ -2344,30 +2354,28 @@ defineEmits(['update:modelValue']);
 <template>
   <div class="settings">
     <h2>Ayarlar</h2>
-    
+
     <div class="setting-item">
       <custom-checkbox v-model="settings.darkMode">
         Karanlık Tema
       </custom-checkbox>
     </div>
-    
+
     <div class="setting-item">
       <custom-checkbox v-model="settings.notifications">
         Bildirimleri Etkinleştir
       </custom-checkbox>
     </div>
-    
+
     <div class="setting-item">
       <custom-checkbox v-model="settings.analytics">
         Analiz Topla
       </custom-checkbox>
     </div>
-    
+
     <button @click="saveSettings">Ayarları Kaydet</button>
-    
-    <div v-if="showSaved" class="saved-message">
-      Ayarlar kaydedildi!
-    </div>
+
+    <div v-if="showSaved" class="saved-message">Ayarlar kaydedildi!</div>
   </div>
 </template>
 
@@ -2378,20 +2386,20 @@ import CustomCheckbox from './CustomCheckbox.vue';
 const settings = reactive({
   darkMode: false,
   notifications: true,
-  analytics: false
+  analytics: false,
 });
 
 const showSaved = ref(false);
 
 function saveSettings() {
   console.log('Ayarlar kaydedildi:', settings);
-  
+
   // Ayarları localStorage'a kaydet
   localStorage.setItem('appSettings', JSON.stringify(settings));
-  
+
   // Kaydedildi mesajını göster
   showSaved.value = true;
-  
+
   // 3 saniye sonra mesajı gizle
   setTimeout(() => {
     showSaved.value = false;
@@ -2463,18 +2471,20 @@ button:hover {
 }
 
 @keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 </style>
 
-### Fallthrough Attributes
-
-Varsayılan olarak, bir bileşene iletilen ancak `props` veya `emits` olarak tanımlanmamış özellikler (attributes), bileşenin kök elementine otomatik olarak uygulanır. Bu davranışı kontrol etmek için `inheritAttrs: false` kullanılabilir ve `$attrs` kullanılarak özellikler manuel olarak başka bir öğeye uygulanabilir.
-
-#### 1. Temel Kullanım
-
-```vue
+### Fallthrough Attributes Varsayılan olarak, bir bileşene iletilen ancak
+`props` veya `emits` olarak tanımlanmamış özellikler (attributes), bileşenin kök
+elementine otomatik olarak uygulanır. Bu davranışı kontrol etmek için
+`inheritAttrs: false` kullanılabilir ve `$attrs` kullanılarak özellikler manuel
+olarak başka bir öğeye uygulanabilir. #### 1. Temel Kullanım ```vue
 <!-- BaseButton.vue -->
 <template>
   <button class="btn" v-bind="$attrs">
@@ -2506,18 +2516,18 @@ Varsayılan olarak, bir bileşene iletilen ancak `props` veya `emits` olarak tan
 <template>
   <div>
     <h2>Düğmeler</h2>
-    
-    <base-button 
-      class="primary" 
+
+    <base-button
+      class="primary"
       @click="sayHello"
       title="Merhaba Düğmesi"
       data-testid="hello-button"
     >
       Tıkla Bana
     </base-button>
-    
-    <base-button 
-      type="submit" 
+
+    <base-button
+      type="submit"
       :disabled="isLoading"
       @mouseover="showTooltip = true"
       @mouseleave="showTooltip = false"
@@ -2525,7 +2535,7 @@ Varsayılan olarak, bir bileşene iletilen ancak `props` veya `emits` olarak tan
       <span v-if="isLoading">Yükleniyor...</span>
       <span v-else>Gönder</span>
     </base-button>
-    
+
     <div v-if="showTooltip" class="tooltip">
       Bu düğmeye tıklayarak formu gönderebilirsiniz
     </div>
@@ -2565,11 +2575,11 @@ function sayHello() {
   background-color: #3aa876;
 }
 </style>
-```
+````
 
 #### 2. `inheritAttrs: false` ile Özelleştirilmiş Davranış
 
-```vue
+````vue
 <!-- CustomInput.vue -->
 <template>
   <div class="form-group">
@@ -2580,7 +2590,7 @@ function sayHello() {
       v-bind="{
         ...$attrs,
         class: `form-control ${$attrs.class || ''}`,
-        onInput: $event => $emit('update:modelValue', $event.target.value)
+        onInput: ($event) => $emit('update:modelValue', $event.target.value),
       }"
     />
     <div v-if="error" class="error-message">{{ error }}</div>
@@ -2593,28 +2603,28 @@ export default {
   props: {
     modelValue: {
       type: [String, Number],
-      default: ''
+      default: '',
     },
     label: {
       type: String,
-      default: ''
+      default: '',
     },
     error: {
       type: String,
-      default: ''
+      default: '',
     },
     id: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   emits: ['update:modelValue'],
   setup(props, { attrs }) {
     // $attrs içeriğini inceleyebiliriz
     console.log('CustomInput attrs:', attrs);
-    
+
     return {};
-  }
+  },
 };
 </script>
 
@@ -2655,7 +2665,7 @@ label {
 <template>
   <div class="form-container">
     <h2>Kullanıcı Bilgileri</h2>
-    
+
     <form @submit.prevent="handleSubmit">
       <custom-input
         v-model="formData.username"
@@ -2667,7 +2677,7 @@ label {
         required
         @focus="clearError('username')"
       />
-      
+
       <custom-input
         v-model="formData.email"
         id="email"
@@ -2680,7 +2690,7 @@ label {
         @focus="clearError('email')"
         class="email-input"
       />
-      
+
       <custom-input
         v-model="formData.phone"
         id="phone"
@@ -2691,12 +2701,10 @@ label {
         pattern="[0-9]{10}"
         @focus="clearError('phone')"
       />
-      
-      <button type="submit" class="submit-btn">
-        Kaydet
-      </button>
+
+      <button type="submit" class="submit-btn">Kaydet</button>
     </form>
-    
+
     <div v-if="isSubmitted" class="success-message">
       Form başarıyla gönderildi!
     </div>
@@ -2710,20 +2718,20 @@ import CustomInput from './CustomInput.vue';
 const formData = reactive({
   username: '',
   email: '',
-  phone: ''
+  phone: '',
 });
 
 const errors = reactive({
   username: '',
   email: '',
-  phone: ''
+  phone: '',
 });
 
 const isSubmitted = ref(false);
 
 function validateForm() {
   let isValid = true;
-  
+
   // Kullanıcı adı doğrulama
   if (!formData.username.trim()) {
     errors.username = 'Kullanıcı adı zorunludur';
@@ -2732,7 +2740,7 @@ function validateForm() {
     errors.username = 'Kullanıcı adı en az 3 karakter olmalıdır';
     isValid = false;
   }
-  
+
   // E-posta doğrulama
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!formData.email) {
@@ -2742,13 +2750,13 @@ function validateForm() {
     errors.email = 'Geçerli bir e-posta adresi giriniz';
     isValid = false;
   }
-  
+
   // Telefon doğrulama (opsiyonel)
   if (formData.phone && !/^\d{10}$/.test(formData.phone)) {
     errors.phone = 'Geçerli bir telefon numarası giriniz (10 hane)';
     isValid = false;
   }
-  
+
   return isValid;
 }
 
@@ -2763,15 +2771,15 @@ function handleSubmit() {
     console.log('Form verileri:', formData);
     // API çağrısı yapılabilir
     // await api.saveUser(formData);
-    
+
     // Başarılı gösterimi
     isSubmitted.value = true;
-    
+
     // Formu sıfırla
-    Object.keys(formData).forEach(key => {
+    Object.keys(formData).forEach((key) => {
       formData[key] = '';
     });
-    
+
     // 3 saniye sonra başarı mesajını gizle
     setTimeout(() => {
       isSubmitted.value = false;
@@ -2837,8 +2845,14 @@ form {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Özel stil örneği - v-bind ile iletilen class ile birleşecek */
@@ -2848,25 +2862,23 @@ form {
 }
 </style>
 
-### Slots
-
-- **Named Slots:** Birden fazla içerik yerleştirme noktası sağlamak için isimlendirilmiş slotlar kullanılır. `<slot name="header"></slot>`
-- **Scoped Slots:** Slot içeriğinin, alt bileşenden veri almasını sağlar. Bu, slot içeriğini daha yetenekli hale getirir.
-
-#### 1. Temel Slot Kullanımı
-
-```vue
+### Slots - **Named Slots:** Birden fazla içerik yerleştirme noktası sağlamak
+için isimlendirilmiş slotlar kullanılır. `
+<slot name="header"></slot>
+` - **Scoped Slots:** Slot içeriğinin, alt bileşenden veri almasını sağlar. Bu,
+slot içeriğini daha yetenekli hale getirir. #### 1. Temel Slot Kullanımı ```vue
 <!-- Card.vue -->
 <template>
   <div class="card">
     <div v-if="$slots.header" class="card-header">
       <slot name="header"></slot>
     </div>
-    
+
     <div class="card-body">
-      <slot></slot> <!-- Varsayılan slot -->
+      <slot></slot>
+      <!-- Varsayılan slot -->
     </div>
-    
+
     <div v-if="$slots.footer" class="card-footer">
       <slot name="footer"></slot>
     </div>
@@ -2913,30 +2925,40 @@ form {
 <template>
   <div class="page">
     <h1>Blog Yazıları</h1>
-    
+
     <card>
       <template #header>
         <h2>Vue.js ile Modern Web Geliştirme</h2>
         <div class="meta">Yayın Tarihi: 15 Haziran 2023</div>
       </template>
-      
-      <p>Vue.js, kullanıcı arayüzleri oluşturmak için popüler bir JavaScript framework'üdür. Bu yazıda Vue 3'ün en son özelliklerini inceleyeceğiz.</p>
-      <p>Composition API, Teleport, Fragments ve diğer yenilikler hakkında bilgi edineceksiniz.</p>
-      
+
+      <p>
+        Vue.js, kullanıcı arayüzleri oluşturmak için popüler bir JavaScript
+        framework'üdür. Bu yazıda Vue 3'ün en son özelliklerini inceleyeceğiz.
+      </p>
+      <p>
+        Composition API, Teleport, Fragments ve diğer yenilikler hakkında bilgi
+        edineceksiniz.
+      </p>
+
       <template #footer>
         <button class="btn btn-outline">Devamını Oku</button>
         <button class="btn btn-primary">Beğen</button>
       </template>
     </card>
-    
+
     <card>
       <template #header>
         <h2>Vue 3 ve TypeScript</h2>
         <div class="meta">Yayın Tarihi: 10 Haziran 2023</div>
       </template>
-      
-      <p>TypeScript, büyük ölçekli uygulamalar geliştirirken kod kalitesini artırmak için harika bir araçtır. Vue 3, TypeScript desteği ile birlikte gelir.</p>
-      
+
+      <p>
+        TypeScript, büyük ölçekli uygulamalar geliştirirken kod kalitesini
+        artırmak için harika bir araçtır. Vue 3, TypeScript desteği ile birlikte
+        gelir.
+      </p>
+
       <template #footer>
         <button class="btn btn-outline">Devamını Oku</button>
         <button class="btn btn-primary">Beğen</button>
@@ -3002,9 +3024,7 @@ h2 {
 }
 </style>
 
-#### 2. Scoped Slots ile Veri İletimi
-
-```vue
+#### 2. Scoped Slots ile Veri İletimi ```vue
 <!-- DataTable.vue -->
 <template>
   <div class="data-table">
@@ -3021,8 +3041,8 @@ h2 {
         <tr v-for="(item, index) in items" :key="item.id || index">
           <td v-for="column in columns" :key="column.key">
             <!-- Varsayılan slot, veriyi doğrudan gösterir -->
-            <slot 
-              :name="`cell-${column.key}`" 
+            <slot
+              :name="`cell-${column.key}`"
               :value="item[column.key]"
               :item="item"
               :column="column"
@@ -3030,7 +3050,7 @@ h2 {
               {{ item[column.key] }}
             </slot>
           </td>
-          
+
           <!-- İşlemler sütunu için slot -->
           <td v-if="$slots.actions" class="actions">
             <slot name="actions" :item="item" :index="index"></slot>
@@ -3038,14 +3058,14 @@ h2 {
         </tr>
       </tbody>
     </table>
-    
+
     <!-- Boş durum için slot -->
     <div v-if="items.length === 0" class="empty-state">
       <slot name="empty">
         <p>Gösterilecek veri bulunamadı.</p>
       </slot>
     </div>
-    
+
     <!-- Sayfalama için slot -->
     <div v-if="$slots.pagination" class="pagination">
       <slot name="pagination"></slot>
@@ -3058,15 +3078,15 @@ const props = defineProps({
   items: {
     type: Array,
     required: true,
-    default: () => []
+    default: () => [],
   },
   columns: {
     type: Array,
     required: true,
     validator: (columns) => {
-      return columns.every(col => col.key && col.label);
-    }
-  }
+      return columns.every((col) => col.key && col.label);
+    },
+  },
 });
 </script>
 
@@ -3085,7 +3105,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 0.75rem 1rem;
   text-align: left;
   border-bottom: 1px solid #e0e0e0;
@@ -3128,65 +3149,61 @@ tr:hover {
 <template>
   <div class="user-management">
     <h1>Kullanıcı Yönetimi</h1>
-    
-    <data-table
-      :items="users"
-      :columns="columns"
-    >
+
+    <data-table :items="users" :columns="columns">
       <!-- Özel hücre formatlama -->
       <template #cell-avatar="{ value }">
-        <img 
-          :src="value || 'https://via.placeholder.com/40'" 
-          alt="Profil Resmi" 
+        <img
+          :src="value || 'https://via.placeholder.com/40'"
+          alt="Profil Resmi"
           class="avatar"
         />
       </template>
-      
+
       <template #cell-status="{ value }">
         <span :class="['status', value.toLowerCase()]">
           {{ statusLabels[value] || value }}
         </span>
       </template>
-      
+
       <template #cell-createdAt="{ value }">
         {{ formatDate(value) }}
       </template>
-      
+
       <!-- İşlemler sütunu -->
       <template #actions="{ item }">
-        <button 
-          class="btn-icon" 
-          @click="editUser(item)"
-          title="Düzenle"
-        >
+        <button class="btn-icon" @click="editUser(item)" title="Düzenle">
           <span class="material-icons">edit</span>
         </button>
-        <button 
-          class="btn-icon danger" 
+        <button
+          class="btn-icon danger"
           @click="confirmDelete(item)"
           title="Sil"
         >
           <span class="material-icons">delete</span>
         </button>
       </template>
-      
+
       <!-- Boş durum için özel içerik -->
       <template #empty>
         <div class="empty-content">
           <div class="empty-icon">📊</div>
           <h3>Kullanıcı bulunamadı</h3>
-          <p>Henüz hiç kullanıcı eklenmemiş. Yeni bir kullanıcı eklemek için aşağıdaki butona tıklayın.</p>
+          <p>
+            Henüz hiç kullanıcı eklenmemiş. Yeni bir kullanıcı eklemek için
+            aşağıdaki butona tıklayın.
+          </p>
           <button class="btn btn-primary" @click="addNewUser">
             Yeni Kullanıcı Ekle
           </button>
         </div>
       </template>
-      
+
       <!-- Sayfalama -->
       <template #pagination>
         <div class="pagination-controls">
-          <button 
-            class="btn btn-outline" 
+          <button
+            class="btn btn-outline"
             :disabled="currentPage === 1"
             @click="currentPage--"
           >
@@ -3195,7 +3212,7 @@ tr:hover {
           <span class="page-info">
             Sayfa {{ currentPage }} / {{ totalPages }}
           </span>
-          <button 
+          <button
             class="btn btn-outline"
             :disabled="currentPage >= totalPages"
             @click="currentPage++"
@@ -3221,7 +3238,7 @@ const users = ref([
     role: 'admin',
     status: 'active',
     createdAt: '2023-01-15T10:30:00Z',
-    avatar: 'https://i.pravatar.cc/150?img=1'
+    avatar: 'https://i.pravatar.cc/150?img=1',
   },
   {
     id: 2,
@@ -3230,7 +3247,7 @@ const users = ref([
     role: 'editor',
     status: 'pending',
     createdAt: '2023-02-20T14:45:00Z',
-    avatar: 'https://i.pravatar.cc/150?img=2'
+    avatar: 'https://i.pravatar.cc/150?img=2',
   },
   {
     id: 3,
@@ -3239,7 +3256,7 @@ const users = ref([
     role: 'user',
     status: 'inactive',
     createdAt: '2023-03-10T09:15:00Z',
-    avatar: 'https://i.pravatar.cc/150?img=3'
+    avatar: 'https://i.pravatar.cc/150?img=3',
   },
   {
     id: 4,
@@ -3248,8 +3265,8 @@ const users = ref([
     role: 'user',
     status: 'active',
     createdAt: '2023-04-05T16:20:00Z',
-    avatar: 'https://i.pravatar.cc/150?img=4'
-  }
+    avatar: 'https://i.pravatar.cc/150?img=4',
+  },
 ]);
 
 const columns = [
@@ -3258,14 +3275,14 @@ const columns = [
   { key: 'email', label: 'E-posta' },
   { key: 'role', label: 'Rol' },
   { key: 'status', label: 'Durum' },
-  { key: 'createdAt', label: 'Kayıt Tarihi' }
+  { key: 'createdAt', label: 'Kayıt Tarihi' },
 ];
 
 const statusLabels = {
   active: 'Aktif',
   inactive: 'Pasif',
   pending: 'Onay Bekliyor',
-  suspended: 'Askıya Alındı'
+  suspended: 'Askıya Alındı',
 };
 
 const currentPage = ref(1);
@@ -3273,12 +3290,12 @@ const itemsPerPage = 10;
 const totalPages = computed(() => Math.ceil(users.value.length / itemsPerPage));
 
 function formatDate(dateString) {
-  const options = { 
-    year: 'numeric', 
-    month: 'long', 
+  const options = {
+    year: 'numeric',
+    month: 'long',
     day: 'numeric',
     hour: '2-digit',
-    minute: '2-digit'
+    minute: '2-digit',
   };
   return new Date(dateString).toLocaleDateString('tr-TR', options);
 }
@@ -3289,13 +3306,15 @@ function editUser(user) {
 }
 
 function confirmDelete(user) {
-  if (confirm(`${user.name} adlı kullanıcıyı silmek istediğinize emin misiniz?`)) {
+  if (
+    confirm(`${user.name} adlı kullanıcıyı silmek istediğinize emin misiniz?`)
+  ) {
     deleteUser(user.id);
   }
 }
 
 function deleteUser(userId) {
-  users.value = users.value.filter(user => user.id !== userId);
+  users.value = users.value.filter((user) => user.id !== userId);
   console.log('Kullanıcı silindi:', userId);
 }
 
@@ -3418,11 +3437,7 @@ h1 {
 }
 </style>
 
-### Provide / Inject
-
-#### 1. Temel Kullanım
-
-```vue
+### Provide / Inject #### 1. Temel Kullanım ```vue
 <!-- App.vue (Üst Bileşen) -->
 <template>
   <div class="app">
@@ -3444,9 +3459,9 @@ const currentUser = ref({
   preferences: {
     theme: 'dark',
     language: 'tr',
-    notifications: true
+    notifications: true,
   },
-  permissions: ['dashboard:view', 'users:manage', 'settings:edit']
+  permissions: ['dashboard:view', 'users:manage', 'settings:edit'],
 });
 
 // Kullanıcı giriş durumu
@@ -3460,25 +3475,29 @@ function updateUser(updates) {
 
 // Tema değiştirme fonksiyonu
 function toggleTheme() {
-  const newTheme = currentUser.value.preferences.theme === 'dark' ? 'light' : 'dark';
+  const newTheme =
+    currentUser.value.preferences.theme === 'dark' ? 'light' : 'dark';
   updateUser({
     preferences: {
       ...currentUser.value.preferences,
-      theme: newTheme
-    }
+      theme: newTheme,
+    },
   });
   document.documentElement.setAttribute('data-theme', newTheme);
 }
 
 // Uygulama başlatıldığında temayı ayarla
-document.documentElement.setAttribute('data-theme', currentUser.value.preferences.theme);
+document.documentElement.setAttribute(
+  'data-theme',
+  currentUser.value.preferences.theme,
+);
 
 // Alt bileşenlere sağlanacak değerler
 provide('currentUser', {
   user: currentUser,
   isAuthenticated,
   updateUser,
-  toggleTheme
+  toggleTheme,
 });
 
 // İzin kontrolü için bir fonksiyon
@@ -3497,7 +3516,7 @@ provide('hasPermission', hasPermission);
   --border-color: #e0e0e0;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --bg-color: #1a1a1a;
   --text-color: #f5f5f5;
   --primary-color: #4fc08d;
@@ -3581,7 +3600,7 @@ h1 {
   margin-bottom: 1rem;
 }
 </style>
-```
+````
 
 ```vue
 <!-- components/UserDashboard.vue -->
@@ -3616,7 +3635,7 @@ const hasPermission = inject('hasPermission');
       <p>{{ user.email }}</p>
       <p>Rol: {{ user.role }}</p>
     </div>
-    
+
     <nav class="nav-menu">
       <ul>
         <li><a href="#" class="nav-link">Profilim</a></li>
@@ -3708,7 +3727,9 @@ const { user, toggleTheme, hasPermission } = inject('currentUser');
       </div>
       <div class="info-row">
         <span class="label">Tema Tercihi:</span>
-        <span class="value">{{ user.preferences.theme === 'dark' ? 'Koyu Tema' : 'Açık Tema' }}</span>
+        <span class="value">{{
+          user.preferences.theme === 'dark' ? 'Koyu Tema' : 'Açık Tema'
+        }}</span>
       </div>
     </div>
   </div>
@@ -3763,9 +3784,9 @@ Bu örnek, tema yönetimi için özelleştirilmiş bir sağlayıcı bileşeni g�
 <template>
   <div class="theme-provider">
     <slot></slot>
-    
+
     <!-- Tema değişim butonu (opsiyonel) -->
-    <button 
+    <button
       class="theme-toggle"
       @click="toggleTheme"
       :title="`${theme === 'dark' ? 'Açık' : 'Koyu'} temaya geç`"
@@ -3789,7 +3810,7 @@ const theme = ref(DEFAULT_THEME);
 watch(theme, (newTheme) => {
   // HTML etiketine data-theme özelliği ekle
   document.documentElement.setAttribute('data-theme', newTheme);
-  
+
   // LocalStorage'a kaydet
   localStorage.setItem(THEME_KEY, newTheme);
 });
@@ -3801,15 +3822,16 @@ function toggleTheme() {
 
 // Sistem temasını algıla
 function detectSystemTheme() {
-  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches 
-    ? 'dark' 
+  return window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
     : 'light';
 }
 
 // Sistem teması değiştiğinde güncelle
 function setupSystemThemeListener() {
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  
+
   const handleChange = (e) => {
     // Sadece kullanıcı özel bir tema seçmediyse sistemi takip et
     const savedTheme = localStorage.getItem(THEME_KEY);
@@ -3817,9 +3839,9 @@ function setupSystemThemeListener() {
       theme.value = e.matches ? 'dark' : 'light';
     }
   };
-  
+
   mediaQuery.addEventListener('change', handleChange);
-  
+
   // Temizleme fonksiyonu
   return () => {
     mediaQuery.removeEventListener('change', handleChange);
@@ -3830,17 +3852,17 @@ function setupSystemThemeListener() {
 onMounted(() => {
   // Kayıtlı temayı yükle
   const savedTheme = localStorage.getItem(THEME_KEY);
-  
+
   if (savedTheme) {
     theme.value = savedTheme;
   } else {
     // Sistem temasını kullan
     theme.value = detectSystemTheme();
   }
-  
+
   // Sistem teması değişikliklerini dinle
   const cleanup = setupSystemThemeListener();
-  
+
   // Temizleme fonksiyonunu döndür
   return cleanup;
 });
@@ -3848,7 +3870,7 @@ onMounted(() => {
 // Alt bileşenlere tema bilgisini ve değiştirme fonksiyonunu sağla
 provide('theme', {
   theme,
-  toggleTheme
+  toggleTheme,
 });
 </script>
 
@@ -3894,14 +3916,14 @@ provide('theme', {
   <div class="theme-consumer">
     <h2>Mevcut Tema: {{ themeName }}</h2>
     <p>
-      Bu bileşen, üst bileşenden sağlanan tema bilgisini kullanıyor.
-      Aşağıdaki butonla temayı değiştirebilirsiniz.
+      Bu bileşen, üst bileşenden sağlanan tema bilgisini kullanıyor. Aşağıdaki
+      butonla temayı değiştirebilirsiniz.
     </p>
-    
+
     <button @click="toggleTheme" class="theme-button">
       {{ theme === 'dark' ? '☀️ Açık Tema' : '🌙 Koyu Tema' }}
     </button>
-    
+
     <div class="theme-preview">
       <div class="preview-box primary">
         <h3>Primary</h3>
@@ -4053,8 +4075,8 @@ export function createApp() {
       // API çağrıları için varsayılan başlıklar
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
+        Accept: 'application/json',
+      },
     },
     features: {
       darkMode: true,
@@ -4073,8 +4095,8 @@ export function createApp() {
         method: 'GET',
         headers: {
           ...config.api.headers,
-          ...options.headers
-        }
+          ...options.headers,
+        },
       });
       return this._handleResponse(response);
     },
@@ -4085,9 +4107,9 @@ export function createApp() {
         method: 'POST',
         headers: {
           ...config.api.headers,
-          ...options.headers
+          ...options.headers,
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       });
       return this._handleResponse(response);
     },
@@ -4100,7 +4122,7 @@ export function createApp() {
         throw new Error(error.message || 'Bir hata oluştu');
       }
       return response.json();
-    }
+    },
   };
 
   // 3. Kimlik Doğrulama Servisi
@@ -4109,7 +4131,7 @@ export function createApp() {
     user: null,
     isAuthenticated: false,
     token: localStorage.getItem('auth_token'),
-    
+
     // Giriş işlemi
     async login(credentials) {
       try {
@@ -4121,7 +4143,7 @@ export function createApp() {
         return { success: false, error: error.message };
       }
     },
-    
+
     // Kayıt işlemi
     async register(userData) {
       try {
@@ -4133,7 +4155,7 @@ export function createApp() {
         return { success: false, error: error.message };
       }
     },
-    
+
     // Çıkış işlemi
     logout() {
       localStorage.removeItem('auth_token');
@@ -4141,14 +4163,14 @@ export function createApp() {
       this.isAuthenticated = false;
       this.token = null;
     },
-    
+
     // Kullanıcı bilgilerini yükle
     async loadUser() {
       if (!this.token) return null;
-      
+
       try {
         const user = await http.get('/auth/me', {
-          headers: { 'Authorization': `Bearer ${this.token}` }
+          headers: { Authorization: `Bearer ${this.token}` },
         });
         this.user = user;
         this.isAuthenticated = true;
@@ -4158,19 +4180,19 @@ export function createApp() {
         return null;
       }
     },
-    
+
     // Yetki kontrolü
     hasRole(role) {
       return this.user?.roles?.includes(role) || false;
     },
-    
+
     // Özel metodlar
     _setAuthData(data) {
       this.token = data.token;
       this.user = data.user;
       this.isAuthenticated = true;
       localStorage.setItem('auth_token', this.token);
-    }
+    },
   };
 
   // 4. Bildirim Servisi
@@ -4181,24 +4203,24 @@ export function createApp() {
         // Gerçek bir bildirim kütüphanesi entegrasyonu yapılabilir
         alert(`Başarılı: ${message}`);
       },
-      
+
       error(message) {
         console.error(`❌ ${message}`);
         alert(`Hata: ${message}`);
       },
-      
+
       info(message) {
         console.info(`ℹ️ ${message}`);
         alert(`Bilgi: ${message}`);
       },
-      
+
       // Diğer bildirim türleri...
     },
-    
+
     // Vue eklentisi olarak kurulum
     install(app) {
       app.config.globalProperties.$notify = this.methods;
-    }
+    },
   };
 
   // 5. Özel Direktifler
@@ -4210,9 +4232,9 @@ export function createApp() {
       },
       updated(el) {
         el.focus();
-      }
+      },
     },
-    
+
     // Dışarı tıklama direktifi
     clickOutside: {
       beforeMount(el, binding) {
@@ -4225,9 +4247,9 @@ export function createApp() {
       },
       unmounted(el) {
         document.removeEventListener('click', el.clickOutsideEvent);
-      }
+      },
     },
-    
+
     // Daha fazla özel direktif...
   };
 
@@ -4237,29 +4259,29 @@ export function createApp() {
     app.provide('config', config);
     app.provide('http', http);
     app.provide('auth', auth);
-    
+
     // Direktifleri kaydet
     Object.entries(directives).forEach(([name, directive]) => {
       app.directive(name, directive);
     });
-    
+
     // Eklentileri yükle
     app.use(notify);
-    
+
     // Uygulama başlatma işlemleri
     const initialize = async () => {
       // Kullanıcı oturumunu kontrol et
       if (auth.token) {
         await auth.loadUser();
       }
-      
+
       // Uygulama genelinde kullanılacak global özellikler
       app.config.globalProperties.$appName = config.appName;
       app.config.globalProperties.$formatDate = (date) => {
         return new Date(date).toLocaleDateString('tr-TR');
       };
     };
-    
+
     // Uygulamayı döndür
     return {
       app,
@@ -4267,7 +4289,7 @@ export function createApp() {
       config,
       http,
       auth,
-      notify: notify.methods
+      notify: notify.methods,
     };
   }
 
@@ -4277,7 +4299,7 @@ export function createApp() {
     auth,
     notify: notify.methods,
     directives,
-    bootstrapApp
+    bootstrapApp,
   };
 }
 ```
@@ -4320,16 +4342,14 @@ initialize().then(() => {
       <h2>Profil Bilgileri</h2>
       <p>Hoş geldiniz, {{ user.name }}!</p>
       <p>Üyelik Tarihi: {{ $formatDate(user.createdAt) }}</p>
-      
+
       <button @click="updateProfile" :disabled="isSaving">
         {{ isSaving ? 'Kaydediliyor...' : 'Profili Güncelle' }}
       </button>
-      
-      <button @click="auth.logout" class="logout-btn">
-        Çıkış Yap
-      </button>
+
+      <button @click="auth.logout" class="logout-btn">Çıkış Yap</button>
     </div>
-    
+
     <div v-else>
       <p>Lütfen giriş yapın</p>
       <router-link to="/login">Giriş Yap</router-link>
@@ -4437,14 +4457,14 @@ import { defineAsyncComponent } from 'vue';
 
 // Basit kullanım
 const AsyncComponent = defineAsyncComponent(() =>
-  import('./components/HeavyComponent.vue')
+  import('./components/HeavyComponent.vue'),
 );
 
 export default {
   components: {
-    'heavy-component': AsyncComponent
-  }
-}
+    'heavy-component': AsyncComponent,
+  },
+};
 ```
 
 #### 2. Yükleme ve Hata Durumları
@@ -4457,19 +4477,19 @@ import ErrorComponent from './components/ErrorComponent.vue';
 const AsyncComponent = defineAsyncComponent({
   // Yüklenecek bileşen
   loader: () => import('./components/HeavyComponent.vue'),
-  
+
   // Yüklenirken gösterilecek bileşen
   loadingComponent: LoadingSpinner,
-  
+
   // Hata durumunda gösterilecek bileşen
   errorComponent: ErrorComponent,
-  
+
   // Yükleme gecikmesi (ms)
   delay: 200,
-  
+
   // Zaman aşımı süresi (ms)
   timeout: 3000,
-  
+
   // Hata işleme fonksiyonu
   onError(error, retry, fail, attempts) {
     if (error.message.match(/fetch/) && attempts <= 3) {
@@ -4478,7 +4498,7 @@ const AsyncComponent = defineAsyncComponent({
     } else {
       fail();
     }
-  }
+  },
 });
 ```
 
@@ -4492,43 +4512,46 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
   },
   {
     path: '/about',
     name: 'About',
     // Route seviyesinde kod bölme
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
     // Daha büyük bir bileşen için özel yükleme stratejisi
     component: () => ({
-      component: import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue'),
+      component: import(
+        /* webpackChunkName: "dashboard" */ '../views/Dashboard.vue'
+      ),
       // Yükleme sırasında gösterilecek bileşen
       loading: {
         render(h) {
           return h('div', { class: 'loading-screen' }, 'Yükleniyor...');
-        }
+        },
       },
       // Hata durumunda gösterilecek bileşen
       error: {
         render(h) {
           return h('div', { class: 'error-screen' }, 'Bir hata oluştu!');
-        }
+        },
       },
       // Yükleme gecikmesi (ms)
       delay: 200,
       // Zaman aşımı süresi (ms)
-      timeout: 5000
-    })
-  }
+      timeout: 5000,
+    }),
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 });
 
 export default router;
@@ -4541,7 +4564,7 @@ export default router;
   <div>
     <h1>Dinamik Bileşen Yükleme</h1>
     <button @click="loadComponent">Bileşeni Yükle</button>
-    
+
     <div v-if="loading">Yükleniyor...</div>
     <div v-else-if="error">Hata: {{ error.message }}</div>
     <component v-else-if="dynamicComponent" :is="dynamicComponent" />
@@ -4559,7 +4582,7 @@ async function loadComponent() {
   try {
     loading.value = true;
     error.value = null;
-    
+
     // Dinamik olarak bileşen yükleme
     const module = await import('./components/DynamicComponent.vue');
     dynamicComponent.value = module.default || module;
@@ -4586,7 +4609,7 @@ Vue 3'te Suspense bileşeni, asenkron bileşenlerin yüklenmesini daha iyi yöne
       <template #default>
         <AsyncComponent />
       </template>
-      
+
       <!-- Yüklenirken gösterilecek içerik -->
       <template #fallback>
         <div class="loading">Yükleniyor...</div>
@@ -4598,8 +4621,8 @@ Vue 3'te Suspense bileşeni, asenkron bileşenlerin yüklenmesini daha iyi yöne
 <script setup>
 import { defineAsyncComponent } from 'vue';
 
-const AsyncComponent = defineAsyncComponent(() => 
-  import('./components/HeavyComponent.vue')
+const AsyncComponent = defineAsyncComponent(() =>
+  import('./components/HeavyComponent.vue'),
 );
 </script>
 
@@ -4620,14 +4643,15 @@ const AsyncComponent = defineAsyncComponent(() =>
 ```javascript
 // webpackChunkMagicComments kullanarak prefetch ve preload
 const HeavyComponent = defineAsyncComponent({
-  loader: () => import(
-    /* webpackPrefetch: true */
-    /* webpackPreload: true */
-    /* webpackChunkName: "heavy-component" */
-    './components/HeavyComponent.vue'
-  ),
+  loader: () =>
+    import(
+      /* webpackPrefetch: true */
+      /* webpackPreload: true */
+      /* webpackChunkName: "heavy-component" */
+      './components/HeavyComponent.vue'
+    ),
   loadingComponent: LoadingSpinner,
-  delay: 200
+  delay: 200,
 });
 ```
 
@@ -4643,7 +4667,7 @@ function asyncComponentWithCache(loader, componentName) {
   if (componentCache.has(componentName)) {
     return componentCache.get(componentName);
   }
-  
+
   const component = defineAsyncComponent({
     loader: async () => {
       try {
@@ -4651,25 +4675,28 @@ function asyncComponentWithCache(loader, componentName) {
         componentCache.set(componentName, module.default || module);
         return module;
       } catch (error) {
-        console.error(`Bileşen yüklenirken hata oluştu (${componentName}):`, error);
+        console.error(
+          `Bileşen yüklenirken hata oluştu (${componentName}):`,
+          error,
+        );
         throw error;
       }
     },
     loadingComponent: {
-      render: () => h('div', 'Yükleniyor...')
+      render: () => h('div', 'Yükleniyor...'),
     },
     errorComponent: {
-      render: () => h('div', 'Bileşen yüklenirken bir hata oluştu')
-    }
+      render: () => h('div', 'Bileşen yüklenirken bir hata oluştu'),
+    },
   });
-  
+
   return component;
 }
 
 // Kullanımı
 const CachedComponent = asyncComponentWithCache(
   () => import('./components/HeavyComponent.vue'),
-  'HeavyComponent'
+  'HeavyComponent',
 );
 ```
 
@@ -4683,12 +4710,12 @@ export function useAsyncComponent(loader) {
   const component = ref(null);
   const isLoading = ref(false);
   const error = ref(null);
-  
+
   const loadComponent = async () => {
     try {
       isLoading.value = true;
       error.value = null;
-      
+
       const module = await loader();
       component.value = module.default || module;
     } catch (err) {
@@ -4698,17 +4725,17 @@ export function useAsyncComponent(loader) {
       isLoading.value = false;
     }
   };
-  
+
   // Bileşen oluşturulduğunda otomatik yükle
   onMounted(() => {
     loadComponent();
   });
-  
+
   return {
     component,
     isLoading,
     error,
-    retry: loadComponent
+    retry: loadComponent,
   };
 }
 
