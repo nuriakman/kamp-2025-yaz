@@ -32,8 +32,18 @@ Dizin örneği:
 Kamp-2025-Yaz/
 ├── docker-compose.yml
 ├── php.ini
-├── src/         # Laravel backend kodları
-└── frontend/    # Vue/Quasar frontend kodları
+├── src/             # Laravel backend kodları
+└── frontend/        # Vue/Quasar frontend kodları
+└── wordpress_data/  # WordPress veritabanı verileri
+```
+
+**Hazırlık:**
+
+```bash
+mkdir src
+mkdir frontend
+mkdir wordpress_data
+touch php.ini
 ```
 
 ---
@@ -69,7 +79,7 @@ services:
       MYSQL_USER: egitim
       MYSQL_PASSWORD: egitim123
     ports:
-      - '3306:3306'
+      - '3307:3306'
     volumes:
       - db_data:/var/lib/mysql
     networks:
