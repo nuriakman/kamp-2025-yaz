@@ -388,6 +388,7 @@ export const usePostsStore = defineStore('posts', () => {
 <script setup>
   import { ref, onMounted } from 'vue';
   import { usePostsStore } from '@/stores/posts';
+  import { storeToRefs } from 'pinia';
 
   const postsStore = usePostsStore();
   const newPost = ref({ title: '', body: '' });
@@ -416,8 +417,18 @@ export const usePostsStore = defineStore('posts', () => {
 
   // Gönderi düzenle
   const editPost = (post) => {
-    // Düzenleme işlemleri burada yapılabilir
-    console.log('Düzenlenecek gönderi:', post);
+    const newTitle = prompt('Başlığı düzenleyin:', post.title);
+    if (newTitle === null) return; // Kullanıcı iptal ettiyse
+
+    const newBody = prompt('İçeriği düzenleyin:', post.body);
+    if (newBody === null) return; // Kullanıcı iptal ettiyse
+
+    // Store'daki updatePost metodunu çağır
+    postsStore.updatePost(post.id, {
+      ...post,
+      title: newTitle,
+      body: newBody,
+    });
   };
 
   // Gönderi sil
