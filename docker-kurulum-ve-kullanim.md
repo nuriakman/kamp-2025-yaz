@@ -43,7 +43,6 @@ Kamp-2025-Yaz/
 Aşağıda örnek bir `docker-compose.yml` dosyası bulabilirsiniz. Kendi projenize göre servis isimlerini ve portları değiştirebilirsiniz.
 
 ```yaml
-version: '3.8'
 services:
   app:
     image: php:8.2-apache
@@ -85,6 +84,23 @@ services:
     networks:
       - egitim_net
 
+  wordpress:
+    image: wordpress:latest
+    container_name: egitim_wordpress
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: egitim
+      WORDPRESS_DB_PASSWORD: egitim123
+      WORDPRESS_DB_NAME: egitim
+    volumes:
+      - wordpress_data:/var/www/html
+    ports:
+      - '8082:80'
+    networks:
+      - egitim_net
+
   node:
     image: node:20
     container_name: egitim_node
@@ -97,6 +113,7 @@ services:
 
 volumes:
   db_data:
+  wordpress_data:
 
 networks:
   egitim_net:
