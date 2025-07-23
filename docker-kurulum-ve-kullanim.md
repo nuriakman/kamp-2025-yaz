@@ -18,12 +18,12 @@ Aşağıdaki tablo ve yapı, dosyalarınızın Docker container'ları ile nasıl
 
 | Yerel Dizin/Kaynak      | Container İçinde           | Açıklama                       |
 | ----------------------- | -------------------------- | ------------------------------ |
-| ./src                   | /var/www/html              | Laravel backend kodları        |
+| ./backend               | /var/www/html              | Laravel backend kodları        |
 | ./frontend              | /app                       | Vue.js/Quasar frontend kodları |
 | ./php.ini               | /usr/local/etc/php/php.ini | PHP ayar dosyası               |
 | db_data (Docker volume) | /var/lib/mysql             | MySQL veritabanı kalıcı verisi |
 
-- `src` ve `frontend` klasörleri doğrudan host makinede tutulur, değişiklikler anında container'a yansır.
+- `backend` ve `frontend` klasörleri doğrudan host makinede tutulur, değişiklikler anında container'a yansır.
 - `db_data` volume'u, veritabanı kayıtlarının silinmeden korunmasını sağlar.
 
 Dizin örneği:
@@ -32,7 +32,7 @@ Dizin örneği:
 Kamp-2025-Yaz/
 ├── docker-compose.yml
 ├── php.ini
-├── src/             # Laravel backend kodları
+├── backend/         # Laravel backend kodları
 └── frontend/        # Vue/Quasar frontend kodları
 └── wordpress_data/  # WordPress veritabanı verileri
 ```
@@ -40,7 +40,7 @@ Kamp-2025-Yaz/
 **Hazırlık:**
 
 ```bash
-mkdir src
+mkdir backend
 mkdir frontend
 mkdir wordpress_data
 touch php.ini
@@ -52,13 +52,15 @@ touch php.ini
 
 Aşağıda örnek bir `docker-compose.yml` dosyası bulabilirsiniz. Kendi projenize göre servis isimlerini ve portları değiştirebilirsiniz.
 
+**NOT:** Güncel `docker-compose.yml` dosyasını [docker-compose.yml](docker-compose.yml) dosyasından bulabilirsiniz.
+
 ```yaml
 services:
   app:
     image: php:8.2-apache
     container_name: egitim_app
     volumes:
-      - ./src:/var/www/html
+      - ./backend:/var/www/html
       - ./php.ini:/usr/local/etc/php/php.ini
     ports:
       - '8080:80'
@@ -79,9 +81,9 @@ services:
       MYSQL_USER: egitim
       MYSQL_PASSWORD: egitim123
     ports:
-      - '3307:3306'
+      - '3306:3306'
     volumes:
-      - db_data:/var/lib/mysql
+      - ./db_data:/var/lib/mysql
     networks:
       - egitim_net
 
@@ -105,7 +107,7 @@ services:
       WORDPRESS_DB_PASSWORD: egitim123
       WORDPRESS_DB_NAME: egitim
     volumes:
-      - wordpress_data:/var/www/html
+      - ./wordpress_data:/var/www/html
     ports:
       - '8082:80'
     networks:
@@ -329,3 +331,30 @@ docker compose restart
 Herhangi bir sorun veya veri kaybı endişeniz olursa, volume'ları ve kod klasörlerinizi ayrıca yedekleyebilirsiniz.
 
 ---
+
+## 6. Docker Komutları
+
+Docker'ın en temel komutlarını içeren özet tablo:
+
+| Komut               | Açıklama                              | Örnek Kullanım                      |
+| ------------------- | ------------------------------------- | ----------------------------------- |
+| **`docker ps`**     | Çalışan container'ları listeler       | `docker ps -a` (tüm container'lar)  |
+| **`docker run`**    | Yeni container başlatır               | `docker run -d -p 8080:80 nginx`    |
+| **`docker stop`**   | Container durdurur                    | `docker stop container_id`          |
+| **`docker rm`**     | Container siler                       | `docker rm container_id`            |
+| **`docker images`** | İndirilen image'ları listeler         | `docker images ls`                  |
+| **`docker rmi`**    | Image siler                           | `docker rmi image_id`               |
+| **`docker pull`**   | Image indirir                         | `docker pull ubuntu:latest`         |
+| **`docker exec`**   | Çalışan container'da komut çalıştırır | `docker exec -it container_id bash` |
+| **`docker logs`**   | Container loglarını gösterir          | `docker logs -f container_id`       |
+| **`docker build`**  | Dockerfile'dan image oluşturur        | `docker build -t myimage .`         |
+
+### Özel Parametreler:
+
+- `-d` : Detach modda çalıştırır (arkada)
+- `-it` : Interactive terminal açar
+- `-p` : Port yönlendirme (host:container)
+- `-v` : Volume bağlama (`-v /host/path:/container/path`)
+- `--name` : Container'a özel isim verir
+
+> 💡 **İpucu**: `docker --help` ile her komutun detaylı kullanımını görebilirsiniz. Örneğin: `docker run --help`

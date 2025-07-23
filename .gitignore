@@ -1,0 +1,10 @@
+# docker-wordpress için
+/docker-wordpress/db_data/*
+/docker-wordpress/wordpress/*
+
+# IDE ve sistem dosyaları
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
