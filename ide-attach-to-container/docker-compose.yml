@@ -1,0 +1,19 @@
+
+name: ubuntu-nuri
+
+
+services:
+  ubuntu:
+    image: ubuntu:24.04
+    container_name: ubuntu-nuri
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./laravel_api:/var/www/html/laravel_api
+      - ./vhost.conf:/etc/apache2/sites-available/000-default.conf
+    command: "/bin/bash"
+    ports:
+      - "8100-8200:80"
+    environment:
+    - TZ=Europe/Istanbul
+    - DEBIAN_FRONTEND=noninteractive

@@ -1,15 +1,16 @@
-version: '3.8'
+
+name: wordpress-calismalari
 
 services:
   # WordPress
   wordpress:
     image: wordpress:latest
-    container_name: wp_wordpress
+    container_name: wordpress-calismalari-wp
     restart: always
     ports:
       - "8080:80"
     environment:
-      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_HOST: wordpress-calismalari-mysql
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
@@ -24,12 +25,12 @@ services:
     networks:
       - wordpress_network
     depends_on:
-      - db
+      - wordpress-calismalari-mysql
 
   # MySQL Database
-  db:
+  wordpress-calismalari-mysql:
     image: mysql:8.0
-    container_name: wp_db
+    container_name: wordpress-calismalari-mysql
     user: "1000:1000"
     restart: always
     environment:
@@ -38,30 +39,15 @@ services:
       MYSQL_PASSWORD: wordpress
       MYSQL_ROOT_PASSWORD: root_password
     volumes:
-      - ./db_data:/var/lib/mysql
+      - ./wordpress-db-data:/var/lib/mysql
       - ./config/mysql-init:/docker-entrypoint-initdb.d
     networks:
       - wordpress_network
     command: --default-authentication-plugin=mysql_native_password
-
-  # Adminer
-  adminer:
-    image: adminer:latest
-    container_name: wp_adminer
-    restart: always
-    depends_on:
-      - db
-    ports:
-      - "8088:8080"
-    environment:
-      ADMINER_DEFAULT_SERVER: db
-      ADMINER_DESIGN: pepa-linha
-    networks:
-      - wordpress_network
 
 networks:
   wordpress_network:
     driver: bridge
 
 volumes:
-  db_data:
+  wordpress-db-data:

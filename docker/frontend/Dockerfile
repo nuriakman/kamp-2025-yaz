@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Uygulama bağımlılıklarını yükle
 COPY package*.json ./
-RUN npm install
+#RUN npm install
 
 # Uygulama kodunu kopyala
 COPY . .

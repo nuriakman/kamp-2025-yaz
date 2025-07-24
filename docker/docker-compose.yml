@@ -1,4 +1,5 @@
-version: '3.8'
+
+name: kamp-2025-yaz
 
 services:
   # Laravel Backend
@@ -22,7 +23,7 @@ services:
       - DB_USERNAME=laravel
       - DB_PASSWORD=laravel123
     ports:
-      - "8000:8000"
+      - "8000-8100:8000"  # 8000-8100 arası rastgele port ataması
     networks:
       - app-network
     depends_on:
@@ -38,14 +39,14 @@ services:
     restart: unless-stopped
     working_dir: /app
     ports:
-      - "9000:9000"
+      - "8000-8100:9000"  # 8000-8100 arası rastgele port ataması
     volumes:
       - ./frontend:/app
       - /app/node_modules
     environment:
       - NODE_ENV=development
       - HOST=0.0.0.0
-      - PORT=9000
+      - PORTXXX=9000
       - QUASAR_PUBLIC_PATH=/
       - VITE_API_URL=http://localhost:8000/api
     networks:
@@ -63,8 +64,7 @@ services:
       MYSQL_USER: laravel
       MYSQL_PASSWORD: laravel123
       MYSQL_ROOT_PASSWORD: root123
-    ports:
-      - "3306:3306"
+    ports: []  # Dışarıya port açmıyoruz, sadece container içi erişim
     volumes:
       - mysql_data:/var/lib/mysql
       - ./mysql/init:/docker-entrypoint-initdb.d
@@ -74,20 +74,6 @@ services:
       retries: 10
     networks:
       - app-network
-
-  # Database Management
-  adminer:
-    image: adminer
-    container_name: adminer
-    restart: always
-    ports:
-      - "8080:8080"
-    environment:
-      - ADMINER_DEFAULT_SERVER=mysql
-    networks:
-      - app-network
-    depends_on:
-      - mysql
 
 networks:
   app-network:

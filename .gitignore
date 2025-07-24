@@ -1,7 +1,7 @@
 # docker-wordpress için
-/docker-wordpress/db_data/*
+/docker-wordpress/wordpress-db-data/*
 /docker-wordpress/wordpress/*
-
+vendor/
 # IDE ve sistem dosyaları
 *.swp
 *.swo

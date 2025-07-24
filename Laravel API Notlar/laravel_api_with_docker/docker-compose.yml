@@ -1,0 +1,31 @@
+name: laravel-api-workshop
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8000-8100:80"
+    command: >
+      sh -c "
+        if [ ! -f /var/www/html/artisan ]; then
+          echo 'Laravel projesi bulunamadı, yeni proje oluşturuluyor...'
+          composer create-project --prefer-dist laravel/laravel . --no-interaction
+        else
+          echo 'Mevcut Laravel projesi bulundu, bağımlılıklar kuruluyor...'
+          composer install --no-interaction --no-scripts
+        fi
+        && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+        && touch /var/www/html/database/database.sqlite
+        && php artisan migrate --force
+        && composer dump-autoload
+        && php artisan key:generate
+        && apache2-foreground
+      "
+    user: "1000:1000"
+    environment:
+      - APACHE_RUN_USER=#1000
+      - APACHE_RUN_GROUP=#1000
