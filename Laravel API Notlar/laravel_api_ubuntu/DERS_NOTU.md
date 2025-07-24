@@ -354,7 +354,24 @@ return Application::configure(basePath: dirname(__DIR__))
 
 ---
 
-### Bölüm 5: API'yi Test Etme ve Doğrulama
+### Bölüm 5: Uygulama
+
+Uygulama dizini içinde:
+
+```bash
+# Migration başlat
+php artisan migrate
+
+# Sunucuyu başlat
+php artisan serve --host=0.0.0.0 --port=8000
+
+# Rotaları kontrol et
+php artisan route:list
+
+
+```
+
+### Bölüm 6: API'yi Test Etme ve Doğrulama
 
 Artık API'miz hazır! Postman veya benzeri bir araç kullanarak test edebiliriz. Alternatif olarak `curl` komutunu da kullanabilirsiniz.
 

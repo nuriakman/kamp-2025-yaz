@@ -1,0 +1,291 @@
+{
+  "info": {
+    "name": "Laravel API CRUD Koleksiyonu - Değişkenlerle",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "localhost"
+    },
+    {
+      "key": "port",
+      "value": "8000"
+    },
+    {
+      "key": "base_path",
+      "value": "api"
+    }
+  ],
+  "item": [
+    {
+      "name": "Test Verilerini Oluştur",
+      "item": [
+        {
+          "name": "1. Test Verilerini Ekle (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"categories\": [\n        {\n            \"name\": \"Elektronik\",\n            \"products\": [\n                {\"name\": \"Akıllı Telefon\", \"description\": \"Yüksek çözünürlüklü kamera\", \"price\": 15000.00},\n                {\"name\": \"Dizüstü Bilgisayar\", \"description\": \"İşlemci: i7, RAM: 16GB\", \"price\": 25000.00},\n                {\"name\": \"Kablosuz Kulaklık\", \"description\": \"Gürültü önleyici özellikli\", \"price\": 2000.00},\n                {\"name\": \"Tablet\", \"description\": \"10 inç ekran, 128GB hafıza\", \"price\": 8500.00},\n                {\"name\": \"Akıllı Saat\", \"description\": \"Spor takip özellikli\", \"price\": 3200.00}\n            ]\n        },\n        {\n            \"name\": \"Ev & Yaşam\",\n            \"products\": [\n                {\"name\": \"Kanepe Takımı\", \"description\": \"3+2+1 koltuk takımı\", \"price\": 18500.00},\n                {\"name\": \"Yemek Masası\", \"description\": \"6 kişilik cam masa\", \"price\": 7500.00},\n                {\"name\": \"Yatak Odası Takımı\", \"description\": \"Çift kişik yatak + dolaplı\", \"price\": 22000.00},\n                {\"name\": \"Kitaplık\", \"description\": \"5 raflı ahşap kitaplık\", \"price\": 3200.00},\n                {\"name\": \"Çalışma Masası\", \"description\": \"Ayarlanabilir yükseklikte\", \"price\": 4800.00}\n            ]\n        },\n        {\n            \"name\": \"Spor & Outdoor\",\n            \"products\": [\n                {\"name\": \"Koşu Bandı\", \"description\": \"Katlanabilir, 12 programlı\", \"price\": 12500.00},\n                {\"name\": \"Bisiklet\", \"description\": \"21 vites dağ bisikleti\", \"price\": 9800.00},\n                {\"name\": \"Spor Ayakkabı\", \"description\": \"Koşu ve yürüyüş için\", \"price\": 1800.00},\n                {\"name\": \"Spor Çantası\", \"description\": \"35L kapasiteli\", \"price\": 650.00},\n                {\"name\": \"Dambıl Seti\", \"description\": \"20kg ayarlanabilir\", \"price\": 1500.00}\n            ]\n        }\n    ]\n}"
+            },
+            "url": {
+              "raw": "http://{{host}}:{{port}}/{{base_path}}/test-data",
+              "protocol": "http",
+              "host": [
+                "{{host}}"
+              ],
+              "port": "{{port}}",
+              "path": [
+                "{{base_path}}",
+                "test-data"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kategoriler",
+      "item": [
+        {
+          "name": "1. Tüm Kategorileri Listele (GET)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://{{host}}:{{port}}/{{base_path}}/categories",
+              "protocol": "http",
+              "host": [
+                "{{host}}"
+              ],
+              "port": "{{port}}",
+              "path": [
+                "{{base_path}}",
+                "categories"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2. Yeni Kategori Ekle (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Elektronik\"\n}"
+            },
+            "url": {
+              "raw": "http://{{host}}:{{port}}/{{base_path}}/categories",
+              "protocol": "http",
+              "host": [
+                "{{host}}"
+              ],
+              "port": "{{port}}",
+              "path": [
+                "{{base_path}}",
+                "categories"
+              ]
+            }
+          }
+        },
+        {
+          "name": "3. Kategori Detayını Görüntüle (GET)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://{{host}}:{{port}}/{{base_path}}/categories/1",
+              "protocol": "http",
+              "host": [
+                "{{host}}"
+              ],
+              "port": "{{port}}",
+              "path": [
+                "{{base_path}}",
+                "categories",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "4. Kategori Güncelle (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Elektronik Cihazlar\"\n}"
+            },
+            "url": {
+              "raw": "http://{{host}}:{{port}}/{{base_path}}/categories/1",
+              "protocol": "http",
+              "host": [
+                "{{host}}"
+              ],
+              "port": "{{port}}",
+              "path": [
+                "{{base_path}}",
+                "categories",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "5. Kategori Sil (DELETE)",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://{{host}}:{{port}}/{{base_path}}/categories/1",
+              "protocol": "http",
+              "host": [
+                "{{host}}"
+              ],
+              "port": "{{port}}",
+              "path": [
+                "{{base_path}}",
+                "categories",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ürünler",
+      "item": [
+        {
+          "name": "1. Tüm Ürünleri Listele (GET)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://{{host}}:{{port}}/{{base_path}}/products",
+              "protocol": "http",
+              "host": [
+                "{{host}}"
+              ],
+              "port": "{{port}}",
+              "path": [
+                "{{base_path}}",
+                "products"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2. Yeni Ürün Ekle (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Akıllı Telefon\",\n    \"description\": \"Son model, güçlü işlemcili\",\n    \"price\": 25000.0,\n    \"category_id\": 1\n}"
+            },
+            "url": {
+              "raw": "http://{{host}}:{{port}}/{{base_path}}/products",
+              "protocol": "http",
+              "host": [
+                "{{host}}"
+              ],
+              "port": "{{port}}",
+              "path": [
+                "{{base_path}}",
+                "products"
+              ]
+            }
+          }
+        },
+        {
+          "name": "3. Ürün Detayını Görüntüle (GET)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://{{host}}:{{port}}/{{base_path}}/products/1",
+              "protocol": "http",
+              "host": [
+                "{{host}}"
+              ],
+              "port": "{{port}}",
+              "path": [
+                "{{base_path}}",
+                "products",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "4. Ürün Güncelle (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Güncellenmiş Telefon\",\n    \"description\": \"Yeni model, daha güçlü işlemci\",\n    \"price\": 27000.0,\n    \"category_id\": 1\n}"
+            },
+            "url": {
+              "raw": "http://{{host}}:{{port}}/{{base_path}}/products/1",
+              "protocol": "http",
+              "host": [
+                "{{host}}"
+              ],
+              "port": "{{port}}",
+              "path": [
+                "{{base_path}}",
+                "products",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "5. Ürün Sil (DELETE)",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://{{host}}:{{port}}/{{base_path}}/products/1",
+              "protocol": "http",
+              "host": [
+                "{{host}}"
+              ],
+              "port": "{{port}}",
+              "path": [
+                "{{base_path}}",
+                "products",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
