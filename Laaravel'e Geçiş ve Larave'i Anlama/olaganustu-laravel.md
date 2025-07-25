@@ -1,13 +1,6 @@
 # Laravel'ın Olganüstü Özellikleri
 
-Laravel’in zengin yapısı sayesinde birçok güçlü özellik var. Şimdiye kadar konuştuğumuz konular şunlardı:
-
-- Migration, Seeder, Factory
-- Helper, Cache, Redis
-- composer dump-autoload
-- Replication ve okuma/yazma ayrımı
-
-Bunlara **benzeyen, ilgini çekecek** ve seni yazılım geliştirme sürecinde bir üst seviyeye taşıyabilecek bazı Laravel özelliklerini gruplar halinde aşağıda listeliyorum:
+Laravel’in zengin yapısı sayesinde birçok güçlü özellik var. Seni yazılım geliştirme sürecinde bir üst seviyeye taşıyabilecek bazı Laravel özelliklerini gruplar halinde aşağıda listeliyorum:
 
 ## Genel Özellikler Listesi
 
@@ -154,10 +147,6 @@ Laravel’in `Storage` sınıfı ile:
 ```php
 __('messages.welcome') // Türkçe’de: “Hoş geldiniz”
 ```
-
----
-
-Harika bir seçim yaptın! Bu dört konu Laravel’de uygulama kalitesini ve güvenliğini artırmak için çok önemli. Her birini **sırasıyla ve sade** bir şekilde anlatıyorum:
 
 ---
 

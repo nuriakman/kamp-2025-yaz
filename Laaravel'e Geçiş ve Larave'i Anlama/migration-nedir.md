@@ -1,9 +1,8 @@
 # Laravel Migration Nedir?
 
-Laravel Migration (göç dosyaları), veritabanı tablolarını **kod yazarak** oluşturmanı ve yönetmeni sağlayan bir sistemdir. Kısaca:
-➡️ **Veritabanı yapısını (schema)** PHP koduyla tanımlamanı sağlar.
+Laravel Migration (göç dosyaları), veritabanı tablolarını **kod yazarak** oluşturmanı ve yönetmeni sağlayan bir sistemdir.
 
--
+Kısaca: ➡️ **Veritabanı yapısını (schema)** PHP koduyla tanımlamanı sağlar.
 
 ## Ne İşe Yarar?
 
@@ -21,10 +20,10 @@ Laravel Migration (göç dosyaları), veritabanı tablolarını **kod yazarak** 
 **Hayır, teknik olarak zorunlu değildir.**
 Ama aşağıdaki durumlar varsa **şiddetle tavsiye edilir**:
 
-✅ Projeyi ekiple geliştiriyorsan
-✅ Geliştirme ortamını sıfırdan kurman gerekiyorsa
-✅ CI/CD gibi otomasyonlar kullanıyorsan
-✅ Yapı üzerinde sık sık değişiklik yapıyorsan
+- ✅ Projeyi ekiple geliştiriyorsan
+- ✅ Geliştirme ortamını sıfırdan kurman gerekiyorsa
+- ✅ CI/CD gibi otomasyonlar kullanıyorsan
+- ✅ Yapı üzerinde sık sık değişiklik yapıyorsan
 
 Eğer:
 
@@ -192,11 +191,11 @@ Bu satır:
 
 ## 🔍 6. Migration Avantajları
 
-✅ Kodla veritabanı kontrolü
-✅ Takım çalışmasında tutarlılık
-✅ Geliştirme ve üretim ortamlarında kolay kurulum
-✅ Geri alma ve sürüm kontrolü
-✅ Seed ile birlikte kullanıldığında test verisi oluşturma
+- ✅ Kodla veritabanı kontrolü
+- ✅ Takım çalışmasında tutarlılık
+- ✅ Geliştirme ve üretim ortamlarında kolay kurulum
+- ✅ Geri alma ve sürüm kontrolü
+- ✅ Seed ile birlikte kullanıldığında test verisi oluşturma
 
 ---
 

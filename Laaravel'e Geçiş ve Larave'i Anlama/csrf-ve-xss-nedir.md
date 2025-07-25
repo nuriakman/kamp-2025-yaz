@@ -1,6 +1,6 @@
 # CSRF ve XSS Nedir?
 
-Harika iki konu! Laravel'de güvenlikle ilgili bu iki konu çok önemli:
+Laravel'de güvenlikle ilgili bu iki konu çok önemli
 
 İkisini de **ayrı ayrı**, açık ve sade şekilde anlatayım:
 

@@ -130,12 +130,3 @@ Ama 100 tane rastgele ürün gerekiyorsa: Factory kullanmak **zorundasın**.
 | Ne yapar?              | Model nesnesi üretir (`Product::factory()`) | Üretilen nesneleri DB’ye yazar      |
 | Tek başına çalışır mı? | Hayır, çağrılmalı                           | Evet                                |
 | Kullanımı              | `$product = Product::factory()->make();`    | `ProductSeeder` içinde çalıştırılır |
-
----
-
-İstersen sıradaki adımda birlikte:
-
-- Gerçek uygulama üzerinden **factory ile user, product, order üretelim**
-- Her biri için ilişkili veriler üretelim (örneğin: her kullanıcının 5 ürünü olsun)
-
-Hazırsan başlayabiliriz.

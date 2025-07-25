@@ -76,10 +76,6 @@ User::factory()
 | Gerçek veriler (şehir, ilçe) | Seeder (elle)    | Geliştirme + Üretim    |
 | Sahte veriler (isim, ürün)   | Factory + Seeder | Sadece geliştirme/test |
 
-✅ Senin dediğin gibi:
-
 - **Seeder**: sabit/gerçek veriler içindir
 - **Factory**: sahte/otomatik veriler içindir
 - **Seeder içinde factory kullanarak sahte veriler de kaydedebilirsin**
-
----

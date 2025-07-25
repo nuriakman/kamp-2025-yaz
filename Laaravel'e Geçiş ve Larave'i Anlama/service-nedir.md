@@ -28,10 +28,10 @@ Controller içinde fazla mantık olması:
 
 **Service kullanımı ile:**
 
-✅ Controller’lar sadeleşir
-✅ Test edilebilirlik artar
-✅ Tekrar eden kodlar ortadan kalkar
-✅ SOLID prensiplerine yaklaşılır
+- ✅ Controller’lar sadeleşir
+- ✅ Test edilebilirlik artar
+- ✅ Tekrar eden kodlar ortadan kalkar
+- ✅ SOLID prensiplerine yaklaşılır
 
 ---
 
@@ -161,10 +161,10 @@ class ProductController extends Controller
 
 ## 🔷 5. SERVICE KATMANININ KULLANIM KRİTERLERİ
 
-✅ 3’ten fazla controller’da aynı mantık varsa
-✅ Hesaplama, kural, dış API çağrısı gibi karmaşık işlemler varsa
-✅ Test yazmak istiyorsan
-✅ `try/catch` ile sarılması gereken işlemler varsa
+- ✅ 3’ten fazla controller’da aynı mantık varsa
+- ✅ Hesaplama, kural, dış API çağrısı gibi karmaşık işlemler varsa
+- ✅ Test yazmak istiyorsan
+- ✅ `try/catch` ile sarılması gereken işlemler varsa
 
 ---
 

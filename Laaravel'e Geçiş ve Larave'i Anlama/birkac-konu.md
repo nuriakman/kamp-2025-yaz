@@ -163,7 +163,9 @@ Laravel’de sadece JSON cevap döndürmek için:
 | `invalidJson`, `unauthenticated` gibi özel durumları işle | Laravel’in varsayılan redirect'lerini engelle |
 | Test et: 404, 500, auth, validation                       | Tüm hatalarda JSON geliyor mu?                |
 
-## jwt kullanacağım, sanctum u projeden komple kaldırsam nasıl olur
+---
+
+# jwt kullanacağım, sanctum u projeden komple kaldırsam nasıl olur?
 
 JWT kullanacaksan ve Laravel Sanctum'u **hiç kullanmayacaksan**, projeden tamamen **kaldırman mümkündür ve temiz bir tercih olur.** Aşağıda adım adım nasıl kaldıracağını anlatıyorum:
 
@@ -291,7 +293,9 @@ Ve `config/auth.php` içinde `api` guard'ını `jwt` olarak ayarla:
 
 Böylece Laravel'de **sadece JWT ile kimlik doğrulama yapan**, tamamen **Sanctum’suz bir API** yapısına geçebilirsin.
 
-## Laravel projesini yayına almak (production deployment)
+---
+
+# Laravel projesini yayına almak (production deployment)
 
 Laravel projesini **yayına almak (production deployment)** birçok adımı içerir. Bu adımlar, projenin güvenli, hızlı ve hatasız çalışmasını sağlar. Aşağıda Laravel projesini yayına alma sürecini detaylı ve adım adım anlattım:
 
@@ -498,7 +502,3 @@ if ($this->app->environment('production')) {
 | Web server ayarları  | Nginx/Apache konfigürasyon                        |
 | SSL Sertifikası      | Let's Encrypt / Diğer                             |
 | Kuyruk ve Scheduler  | Supervisor, Crontab ayarları                      |
-
----
-
-İstersen **sunucu türüne göre (DigitalOcean, AWS, vs.) detaylı deploy adımlarını**, **CI/CD entegrasyonlarını** veya **Docker ile Laravel deploy örneği** verebilirim. Yardımcı olayım mı?

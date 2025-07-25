@@ -1,6 +1,10 @@
 # JWT Kullanımı
 
-Laravel projende **JWT (JSON Web Token)** kullanarak kimlik doğrulama yapabilirsin — özellikle sadece **API tabanlı** bir yapı geliştiriyorsan bu yöntem son derece uygundur. Aşağıda Laravel'de JWT ile kimlik doğrulamanın detaylarını bulabilirsin.
+Laravel projende **JWT (JSON Web Token)** kullanarak kimlik doğrulama yapabilirsin
+
+Özellikle sadece **API tabanlı** bir yapı geliştiriyorsan bu yöntem son derece uygundur.
+
+Aşağıda Laravel'de JWT ile kimlik doğrulamanın detaylarını bulabilirsin.
 
 ---
 
@@ -157,7 +161,3 @@ class AuthController extends Controller
 | Laravel Sanctum  | SPA ve basit mobil uygulamalar          |
 | Laravel Passport | OAuth2 tabanlı yetkilendirme sistemleri |
 | JWT (tymon)      | Bağımsız mobil veya frontend API yapısı |
-
----
-
-İstersen JWT ile çalışan küçük bir örnek proje yapısını da sıfırdan kurabiliriz (login, register, profil, token yenileme). Devam etmek ister misin?

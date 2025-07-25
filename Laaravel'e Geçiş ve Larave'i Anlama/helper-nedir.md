@@ -141,10 +141,10 @@ Laravel'de **Helper** konusu, birçok kişinin karıştırdığı ama aslında �
 
 **Helper**, Laravel'de projenin her yerinden ulaşılabilen **küçük, genel amaçlı fonksiyonlardır**.
 
-✔️ Kod tekrarını azaltır
-✔️ Tek bir yerde tanımlanır, her yerde kullanılır
-✔️ Laravel'in kendi helper’ları da vardır (`asset()`, `route()`, `now()` gibi)
-✔️ İstersen kendi özel helper fonksiyonlarını da yazabilirsin
+- ✔️ Kod tekrarını azaltır
+- ✔️ Tek bir yerde tanımlanır, her yerde kullanılır
+- ✔️ Laravel'in kendi helper’ları da vardır (`asset()`, `route()`, `now()` gibi)
+- ✔️ İstersen kendi özel helper fonksiyonlarını da yazabilirsin
 
 ---
 

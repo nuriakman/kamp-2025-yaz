@@ -1,8 +1,4 @@
-Harika! Şimdi sırada **Madde 4: Localization (Çok Dilli Destek)** var.
-
----
-
-## 🌍 **LOCALIZATION NEDİR?**
+# 🌍 **LOCALIZATION NEDİR?**
 
 Localization (yerelleştirme), Laravel uygulamanı farklı **dillerde çalışacak şekilde** hazırlamak demektir.
 

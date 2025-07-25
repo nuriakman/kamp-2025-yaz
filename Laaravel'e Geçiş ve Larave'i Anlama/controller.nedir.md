@@ -405,8 +405,3 @@ public function store(StoreProductRequest $request)
 | Neden kullanılır?   | Kod düzenini sağlar, test edilebilir yapı oluşturur |
 | Route ile farkı ne? | Route yönlendirir, controller işler                 |
 | Model ile farkı ne? | Model veri ile ilgilenir, controller isteği işler   |
-
----
-
-Hazırsan, bana eski PHP kodlarından birini ver — onu Laravel controller yapısına birlikte dönüştürelim.
-Hem pratiğe dökelim, hem tam olarak kavrayalım.

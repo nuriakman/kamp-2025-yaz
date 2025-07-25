@@ -1,7 +1,6 @@
 # Önbellekleme Nedir?
 
-Tabii! Laravel’de **önbellekleme (caching)** konusu, performans artırmak, veritabanı sorgularını azaltmak ve genel olarak uygulamanın hızlı çalışmasını sağlamak için çok önemli.
-Sana hem kavramsal hem de pratik açıdan, sade bir anlatımla özetleyeyim.
+Laravel’de **önbellekleme (caching)** konusu, performans artırmak, veritabanı sorgularını azaltmak ve genel olarak uygulamanın hızlı çalışmasını sağlamak için çok önemli. Sana hem kavramsal hem de pratik açıdan, sade bir anlatımla özetleyeyim.
 
 ---
 
