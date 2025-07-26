@@ -1,11 +1,18 @@
-# Postman ile API Test Talimatları
+# Postman ile Laravel API Test Rehberi
 
-## Giriş
+## 📋 Giriş
 
 **Proje Adresi:**
-Kurulum adımlarında Apache için sanal konak (`VirtualHost`) ayarladıysanız, projenize `http://laravel-api.test` gibi bir adresten erişebilirsiniz.
 
-Eğer, Apache için sanal konak (`VirtualHost`) ayarlamadıysanız, projenize `http://localhost:8000` gibi bir adresten erişebilirsiniz. Aşağıdaki örneklerde bu adres kullanılacaktır.
+- Apache sanal konak (`VirtualHost`) ayarladıysanız: `http://laravel-api.test`
+- Geliştirme sunucusu kullanıyorsanız: `http://localhost:8000`
+- Docker kullanıyorsanız: `http://localhost:8001` (veya atanan port)
+
+**Önemli Notlar:**
+
+- Tüm isteklerde `Accept: application/json` header'ı ekleyin
+- JWT korumalı endpoint'ler için `Authorization: Bearer {token}` header'ı gereklidir
+- Aşağıdaki örneklerde `http://localhost:8000` adresi kullanılacaktır
 
 ## 1. Yeni Kategori Oluşturma (POST)
 
@@ -93,3 +100,161 @@ Eğer, Apache için sanal konak (`VirtualHost`) ayarlamadıysanız, projenize `h
     }
   ]
   ```
+
+## 🔐 JWT Kimlik Doğrulama Testleri
+
+### 1. Kullanıcı Kaydı (Register)
+
+- **Metod:** `POST`
+- **URL:** `http://localhost:8000/api/auth/register`
+- **Headers:**
+  ```
+  Content-Type: application/json
+  Accept: application/json
+  ```
+- **Body (JSON):**
+  ```json
+  {
+    "name": "Test Kullanıcı",
+    "email": "test@example.com",
+    "password": "123456",
+    "password_confirmation": "123456"
+  }
+  ```
+- **Başarılı Yanıt (201 Created):**
+  ```json
+  {
+    "message": "User successfully registered",
+    "user": {
+      "name": "Test Kullanıcı",
+      "email": "test@example.com",
+      "updated_at": "2025-07-26T16:00:00.000000Z",
+      "created_at": "2025-07-26T16:00:00.000000Z",
+      "id": 1
+    }
+  }
+  ```
+
+### 2. Kullanıcı Girişi (Login)
+
+- **Metod:** `POST`
+- **URL:** `http://localhost:8000/api/auth/login`
+- **Headers:**
+  ```
+  Content-Type: application/json
+  Accept: application/json
+  ```
+- **Body (JSON):**
+  ```json
+  {
+    "email": "test@example.com",
+    "password": "123456"
+  }
+  ```
+- **Başarılı Yanıt (200 OK):**
+  ```json
+  {
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 1,
+      "name": "Test Kullanıcı",
+      "email": "test@example.com",
+      "email_verified_at": null,
+      "created_at": "2025-07-26T16:00:00.000000Z",
+      "updated_at": "2025-07-26T16:00:00.000000Z"
+    }
+  }
+  ```
+
+**Önemli:** `access_token` değerini kopyalayın, korumalı endpoint'lerde kullanacaksınız!
+
+### 3. Kullanıcı Profili Görüntüleme (Me)
+
+- **Metod:** `GET`
+- **URL:** `http://localhost:8000/api/auth/me`
+- **Headers:**
+  ```
+  Authorization: Bearer {yukarıdaki_access_token}
+  Accept: application/json
+  ```
+- **Başarılı Yanıt (200 OK):**
+  ```json
+  {
+    "id": 1,
+    "name": "Test Kullanıcı",
+    "email": "test@example.com",
+    "email_verified_at": null,
+    "created_at": "2025-07-26T16:00:00.000000Z",
+    "updated_at": "2025-07-26T16:00:00.000000Z"
+  }
+  ```
+
+### 4. Çıkış Yapma (Logout)
+
+- **Metod:** `POST`
+- **URL:** `http://localhost:8000/api/auth/logout`
+- **Headers:**
+  ```
+  Authorization: Bearer {access_token}
+  Accept: application/json
+  ```
+- **Başarılı Yanıt (200 OK):**
+  ```json
+  {
+    "message": "User successfully signed out"
+  }
+  ```
+
+### 5. JWT ile Korumalı Endpoint'lere Erişim
+
+JWT sistemi aktif olduktan sonra, kategoriler ve ürünler endpoint'leri korunur. Bu endpoint'lere erişmek için:
+
+**Örnek: Kategorileri Listeleme (JWT ile)**
+
+- **Metod:** `GET`
+- **URL:** `http://localhost:8000/api/categories`
+- **Headers:**
+  ```
+  Authorization: Bearer {access_token}
+  Accept: application/json
+  ```
+
+**Token olmadan erişim denemesi:**
+
+```json
+{
+  "message": "Unauthenticated."
+}
+```
+
+**Geçersiz token ile erişim denemesi:**
+
+```json
+{
+  "message": "Token is Invalid"
+}
+```
+
+## 📚 Postman Collection Dosyaları
+
+Manuel test yapmak yerine hazır Postman collection dosyalarını kullanabilirsiniz:
+
+- **V1:** Temel API testleri (JWT yok)
+- **V2:** Test verileri ile genişletilmiş testler
+- **V3:** Değişken destekli esnek testler
+- **V4:** JWT kimlik doğrulama testleri dahil
+
+Detaylı bilgi için: [POSTMAN-COLLECTION.md](./POSTMAN-COLLECTION.md)
+
+## ✨ Tebrikler!
+
+Artık tam özellikli Laravel API'nizi Postman ile test edebilirsiniz:
+
+- ✅ Temel CRUD işlemleri
+- ✅ JWT kimlik doğrulama sistemi
+- ✅ Korumalı endpoint'ler
+- ✅ Kullanıcı yönetimi
+
+Sonraki adımlar için diğer ders notlarını inceleyebilirsiniz!

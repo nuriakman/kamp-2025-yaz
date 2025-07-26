@@ -4,8 +4,13 @@ Bu depo, 2025 Yaz döneminde gerçekleştirilecek yazılım eğitimi için hazı
 
 ## Tamamlanan Ders Notları
 
-- [Laravel İle API hazırlama](./laravel-API-notlar/KURULUM.md) ve [Proje Örneği](./ders-notu-ornekleri/laravel_api)
-- [JWT Entegrasyonu İle API hazırlama](./laravel-API-notlar/DERS-NOTU-JWT.md) ve [Proje Örneği](./ders-notu-ornekleri/laravel_api_jwt)
+- [Laravel İle API hazırlama - Kurulum](./laravel-API-notlar/KURULUM.md)
+- [Laravel İle API hazırlama - Ders Notu](./laravel-API-notlar/DERS-NOTU.md)
+- [JWT Entegrasyonu İle API hazırlama - Ders Notu](./laravel-API-notlar/DERS-NOTU-JWT.md)
+- [Postman](./laravel-API-notlar/POSTMAN.md)
+- [cURL](./laravel-API-notlar/CURL.md)
+- [Sanal Host](./laravel-API-notlar/apache-virtual-host.md)
+- [Postman Koleksiyonları](./laravel-API-notlar/collection-aciklamalar.md)
 
 ---
 
