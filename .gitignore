@@ -1,8 +1,9 @@
 # docker-wordpress için
 /Docker/docker-wordpress/wordpress-db-data/*
 /Docker/docker-wordpress/wordpress/*
-/TEST/laravel_api/*
-/TEST/laravel_api/vendor
+/TEST
+/ders-notu-ornekleri/laravel_api/vendor
+/ders-notu-ornekleri/laravel_api_jwt/vendor
 # IDE ve sistem dosyaları
 *.swp
 *.swo

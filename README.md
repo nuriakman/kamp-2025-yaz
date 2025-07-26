@@ -2,6 +2,13 @@
 
 Bu depo, 2025 Yaz döneminde gerçekleştirilecek yazılım eğitimi için hazırlanan tüm materyalleri içermektedir.
 
+## Tamamlanan Ders Notları
+
+- [Laravel İle API hazırlama](./laravel-API-notlar/KURULUM.md) ve [Proje Örneği](./ders-notu-ornekleri/laravel_api)
+- [JWT Entegrasyonu İle API hazırlama](./laravel-API-notlar/DERS-NOTU-JWT.md) ve [Proje Örneği](./ders-notu-ornekleri/laravel_api_jwt)
+
+---
+
 ## 📋 İçerik
 
 ### 📚 Ana Dokümanlar
