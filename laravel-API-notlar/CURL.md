@@ -51,7 +51,7 @@ $ curl -X GET http://localhost:8000/api/categories/1|jq
 ```bash
 curl -X POST http://localhost:8000/api/categories \
   -H "Content-Type: application/json" \
-  -d '{"name": "Elektronik"}' | jq
+  -d '{"name": "Elektronik", "description": "Elektronik ürünler kategorisi"}' | jq
 ```
 
 ### A.2. Tüm Kategorileri Listeleme (GET)
@@ -71,7 +71,7 @@ curl -X GET http://localhost:8000/api/categories/1
 ```bash
 curl -X PUT http://localhost:8000/api/categories/1 \
   -H "Content-Type: application/json" \
-  -d '{"name": "Elektronik Eşyalar"}'
+  -d '{"name": "Elektronik Eşyalar", "description": "Güncellenmiş elektronik ürünler kategorisi"}'
 ```
 
 ### A.5. Kategori Silme (DELETE)
@@ -89,7 +89,7 @@ curl -X DELETE http://localhost:8000/api/categories/1
 ```bash
 curl -X POST http://localhost:8000/api/products \
   -H "Content-Type: application/json" \
-  -d '{"name": "Akıllı Telefon", "description": "Son model, güçlü işlemcili", "price": 25000.00, "category_id": 1}'
+  -d '{"name": "Akıllı Telefon", "description": "Son model, güçlü işlemcili", "price": 25000.00, "stock": 50, "category_id": 1}'
 ```
 
 ### B.2. Tüm Ürünleri Listeleme (GET)
@@ -109,7 +109,7 @@ curl -X GET http://localhost:8000/api/products/1
 ```bash
 curl -X PUT http://localhost:8000/api/products/1 \
   -H "Content-Type: application/json" \
-  -d '{"name": "Yeni Model Akıllı Telefon", "price": 27000.00}'
+  -d '{"name": "Yeni Model Akıllı Telefon", "description": "Güncellenmiş açıklama", "price": 27000.00, "stock": 30, "category_id": 1}'
 ```
 
 ### B.5. Ürün Silme (DELETE)
@@ -135,7 +135,7 @@ curl -X DELETE http://localhost:8000/api/products/1
 curl -v -X POST http://localhost:8000/api/products \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
-  -d '{"name": "Örnek Ürün", "price": 99.99, "category_id": 1}' \
+  -d '{"name": "Örnek Ürün", "description": "Örnek açıklama", "price": 99.99, "stock": 10, "category_id": 1}' \
   -o response.json
 ```
 

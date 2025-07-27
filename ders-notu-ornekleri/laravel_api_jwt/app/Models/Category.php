@@ -19,7 +19,7 @@ class Category extends Model
 
     // Mass assignment (toplu atama) ile doldurulabilir alanları tanımlar
     // Bu örnekte sadece "name" alanı dışarıdan toplu olarak atanabilir
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description'];
 
     // Category modelinin Product modeliyle olan ilişkisini tanımlar
     // Bir kategori, birden çok ürüne sahip olabilir (one-to-many ilişki)

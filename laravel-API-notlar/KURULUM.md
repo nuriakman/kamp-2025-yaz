@@ -1,25 +1,5 @@
 # Kurulum Notları (LAMP Stack - Ubuntu)
 
-## ÖZET:
-
-```bash
-# Apache web sunucusu klasörüne geç
-cd /var/www/html
-
-# Yeni bir Laravel projesi oluştur
-composer create-project --prefer-dist laravel/laravel laravel_api
-
-# Oluşturulan proje klasörüne geç
-cd laravel_api
-
-# Geliştirme sunucusunu başlat
-php artisan serve
-
-# Web sayfasını açarak karşılama mesajını gör:
-# http://127.0.0.1:8000
-
-```
-
 Bu belge, Laravel API projesini standart bir LAMP (Linux, Apache, MySQL, PHP) sunucusu üzerinde nasıl kuracağınızı ve çalıştıracağınızı adım adım açıklamaktadır.
 
 ## 1. Gereksinimler
@@ -47,13 +27,25 @@ sudo phpenmod sqlite3
 sudo a2enmod rewrite
 sudo systemctl restart apache2
 
-# PHP sürümünü kontrol et
-php -v
-# Örnek çıktı:  PHP 8.3.23 (cli) (built: Jul  3 2025 16:11:22) (NTS)
-
 # Composer'ı kur
 curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+```
+
+Laravel çalışabilmek için gerekli temel kurulum tamamlandı. Kontrol edelim:
+
+```bash
+# PHP versiyonunu kontrol edin
+php --version
+# Örnek çıktı: PHP 8.3.23 (cli) (built: Jul  3 2025 16:11:22) (NTS)
+
+# Composer'ın kurulu olduğunu kontrol edin
+composer --version
+# Örnek çıktı: Composer version 2.8.8 2025-04-04 16:56:46
+
+# MySQL'in çalıştığını kontrol edin (MySQL kullanıyorsanız)
+mysql --version
+# Örnek çıktı: mysql  Ver 15.1 Distrib 10.11.13-MariaDB
 ```
 
 ## 3. Yeni Laravel Projesi Oluşturma
@@ -101,7 +93,19 @@ Bu komut, yeni bir Laravel projesi oluşturmak için kullanılan standart bir Co
 
 Bu komut, Laravel ile yeni bir projeye başlamanın en standart ve güvenilir yoludur. Her yeni Laravel projesinde bu komut veya benzeri bir varyasyonu kullanabilirsiniz.
 
+## DİKKAT!!!
+
+<blockquote>
+ŞU AŞAMADA, `cd laravel_api` KOMUTU İLE PROJE DİZİNİNE GEÇTİĞİNİZİ DÜŞÜNÜYORUZ.
+<br><br>
+
+ŞU ANDAN İTİBAREN BU EĞİTİMDE KULLANILACAK TÜM KOMUTLAR, PROJE DİZİNİNDE OLDUĞUNUZ DÜŞÜNCESİ İLE DOKÜMANTE EDİLMİŞTİR!
+</blockquote>
+
+
 ## 4. Laravel Projesini Yapılandırma
+
+ÖNEMLİ: `composer` komutu ile proje başlattıysanız, `.env` dosyanız hazırdır. Bir sonraki başlıktan devam edebilirsiniz.
 
 **`.env` Dosyasını Oluşturun:** Örnek yapılandırma dosyasını kopyalayarak kendi ortam dosyanızı oluşturun.
 
@@ -118,6 +122,10 @@ php artisan key:generate
 ---
 
 ## 5. Veritabanı Oluşturun ve Yapılandırın
+
+Laravel `composer` ile kurulduğunda varsayılan olarak SQLite veritabanını kullanır. Bu veritabanı `./database/database.sqlite` dosyasına baglanmaktadır. 
+
+Projeyi oluşturduğunuzda gelen bu hazır yapı ile ilerlemek isterseniz, bu bölümü atlayıp bir sonraki maddeden devam edebilirsiniz.
 
 ---
 
@@ -195,10 +203,10 @@ php artisan migrate
 Laravel'in `storage` ve `bootstrap/cache` dizinlerine yazabilmesi için web sunucusuna gerekli izinleri verin.
 
 ```bash
-sudo chown -R www-data:www-data /var/www/html/laravel_api/storage
-sudo chown -R www-data:www-data /var/www/html/laravel_api/bootstrap/cache
-sudo chmod -R 775 /var/www/html/laravel_api/storage
-sudo chmod -R 775 /var/www/html/laravel_api/bootstrap/cache
+sudo chown -R www-data:www-data ./storage
+sudo chown -R www-data:www-data ./bootstrap/cache
+sudo chmod -R 775 ./storage
+sudo chmod -R 775 ./bootstrap/cache
 ```
 
 ## 8. Geliştirme Sunucusunu Başlatın

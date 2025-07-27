@@ -52,7 +52,7 @@ Route::apiResource('categories', CategoryController::class);
 Route::apiResource('products', ProductController::class);
 
 // Test verileri oluşturmak için rotası
-Route::post('/test-data', [TestDataController::class, 'createTestData']);
+Route::post('api/test-data', [TestDataController::class, 'createTestData']);
 
 ```
 
@@ -62,10 +62,10 @@ Kontroller Oluşturalım:
 php artisan make:controller Api/TestDataController
 ```
 
-**`app/Http/Controllers/TestDataController.php` Dosyası içine:**
+**`app/Http/Controllers/Api/TestDataController.php` Dosyası içine:**
 
 ```php
-// app/Http/Controllers/TestDataController.php
+// app/Http/Controllers/Api/TestDataController.php
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;

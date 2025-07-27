@@ -4,16 +4,16 @@
 
 ```bash
 # Yeni Laravel projesi oluşturun
-composer create-project laravel/laravel laravel_api_jwt
+composer create-project laravel/laravel laravel_api
 
 # Proje dizinine geçin
-cd laravel_api_jwt
+cd laravel_api
 
 # Kategoriler için migration dosyası oluştur
-php artisan make:migration create_categories_table --create=categories
+php artisan make:migration create_categories_table
 
 # Ürünler için migration dosyası oluştur
-php artisan make:migration create_products_table --create=products
+php artisan make:migration create_products_table
 
 # Oluşturulan iki dosya içindeki up() metodlarını düzenle. Ardından,
 # migration dosyalarını çalıştırarak yukarıda tanımlanan 2 tablonun veritabanında oluşturulmasını sağla
@@ -63,37 +63,46 @@ Bu ders notunda sıfırdan bir Laravel projesi kurup, temel API yapısını olu�
 ```bash
 # PHP versiyonunu kontrol edin
 php --version
+# Örnek çıktı: PHP 8.3.23 (cli) (built: Jul  3 2025 16:11:22) (NTS)
 
 # Composer'ın kurulu olduğunu kontrol edin
 composer --version
+# Örnek çıktı: Composer version 2.8.8 2025-04-04 16:56:46
 
 # MySQL'in çalıştığını kontrol edin (MySQL kullanıyorsanız)
 mysql --version
+# Örnek çıktı: mysql  Ver 15.1 Distrib 10.11.13-MariaDB
 ```
 
 ## Adım 1: Yeni Laravel Projesi Oluşturma
 
 ### Composer ile Laravel Kurulumu
 
+Çalışma ortamı kurulumu hakkındaki bilgileri [KURULUM](./KURULUM.md) belgesinde bulabilirsiniz.
+
 ```bash
 # Yeni Laravel projesi oluşturun
-composer create-project laravel/laravel laravel_api_jwt
+composer create-project laravel/laravel laravel_api
 
 # Proje dizinine geçin
-cd laravel_api_jwt
+cd laravel_api
 ```
 
 ### Laravel Installer ile Kurulum (Alternatif)
+
+Bu eğitimde, yukarıdaki `composer` kurulumunu tercih ediyoruz.
+
+Ancak, `laravel/installer` paketini kullanarak da yeni bir proje oluşturabilirsiniz.
 
 ```bash
 # Laravel installer'ı global olarak yükleyin (bir kez yapılır)
 composer global require laravel/installer
 
 # Yeni proje oluşturun
-laravel new laravel_api_jwt
+laravel new laravel_api
 
 # Proje dizinine geçin
-cd laravel_api_jwt
+cd laravel_api
 ```
 
 ## LAMP Ortamında Laravel API Geliştirme
@@ -104,12 +113,17 @@ Bu derste, LAMP (Linux, Apache, MySQL, PHP) ortamımızı kullanarak sıfırdan 
 
 ## Adım 2: Proje Konfigürasyonu
 
+Laravel `composer` ile kurulduğunda varsayılan olarak SQLite veritabanını kullanır. Bu veritabanı `./database/database.sqlite` dosyasına baglanmaktadır. 
+
+Projeyi oluşturduğunuzda gelen bu hazır yapı ile ilerlemek isterseniz, bu bölümü atlayıp bir sonraki maddeden devam edebilirsiniz.
+
+
 ### .env Dosyasını Düzenleme
 
 `.env` dosyasını açın ve aşağıdaki ayarları yapın:
 
 ```env
-APP_NAME="Laravel API JWT"
+APP_NAME="Laravel API"
 APP_ENV=local
 APP_KEY=base64:GENERATED_KEY_HERE
 APP_DEBUG=true
@@ -120,7 +134,7 @@ APP_URL=http://localhost:8000
 DB_CONNECTION=sqlite
 # DB_HOST=127.0.0.1
 # DB_PORT=3306
-# DB_DATABASE=laravel_api_jwt
+# DB_DATABASE=laravel_api
 # DB_USERNAME=root
 # DB_PASSWORD=
 
@@ -128,7 +142,7 @@ DB_CONNECTION=sqlite
 # DB_CONNECTION=mysql
 # DB_HOST=127.0.0.1
 # DB_PORT=3306
-# DB_DATABASE=laravel_api_jwt
+# DB_DATABASE=laravel_api
 # DB_USERNAME=root
 # DB_PASSWORD=your_password
 
@@ -181,7 +195,7 @@ MySQL kullanıyorsanız:
 
 ```sql
 -- MySQL'e bağlanın ve veritabanı oluşturun
-CREATE DATABASE laravel_api_jwt CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE laravel_api CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
 ## Adım 3: Temel Laravel Kurulumunu Test Etme
@@ -211,52 +225,38 @@ Tarayıcınızda `http://127.0.0.1:8000` adresine giderek Laravel'in çalıştı
 
 ## Adım 4: API Yapısı için Temel Model ve Controller'ları Oluşturma
 
-### Category Model ve Migration Oluşturma
+### Category İçin: Model, Controller ve Migration Oluşturma
 
 ```bash
-# Category model, migration ve controller oluşturun
-php artisan make:model Category -mcr --api
+# migration oluştur
+php artisan make:migration create_categories_table
+
+# model oluştur
+php artisan make:model Category
+
+# controller oluştur
+php artisan make:controller Api/CategoryController --api --resource
+
 ```
 
-<details>
-  <summary>**Komutun detaylı açıklaması:**</summary>
-  <blockquote>
-    Bu komut, Laravel'de bir model, migration ve controller dosyasını aynı anda oluşturmak için kullanılır.
-
-    ```bash
-    php artisan make:model Category -mcr --api
-    ```
-
-    1. `php artisan`: Laravel'in komut satırı arayüzünü çalıştırır.
-
-    2. `make:model Category`: "Category" adında bir model oluşturur.
-
-    3. `-mcr`: Bu flag'ler şunları oluşturur:
-       - `-m`: Migration dosyası
-       - `-c`: Controller dosyası
-       - `-r`: Resource controller (CRUD metodları ile)
-
-    4. `--api`: API resource controller oluşturur (create ve edit metodları olmadan)
-
-    Bu komutu çalıştırdığınızda Laravel şu dosyaları oluşturur:
-    - `app/Models/Category.php`
-    - `database/migrations/xxxx_create_categories_table.php`
-    - `app/Http/Controllers/CategoryController.php`
-
-  </blockquote>
-</details>
-
-Bu komut şunları oluşturacak:
+Bu komutlar şunları oluşturacak:
 
 - `app/Models/Category.php` - Model dosyası
 - `database/migrations/xxxx_create_categories_table.php` - Migration dosyası
-- `app/Http/Controllers/CategoryController.php` - Controller dosyası
+- `app/Http/Controllers/Api/CategoryController.php` - Controller dosyası
 
-### Product Model ve Migration Oluşturma
+### Product İçin: Model, Controller ve Migration Oluşturma
 
 ```bash
-# Product model, migration ve controller oluşturun
-php artisan make:model Product -mcr --api
+# migration oluştur
+php artisan make:migration create_products_table
+
+# model oluştur
+php artisan make:model Product
+
+# controller oluştur
+php artisan make:controller Api/ProductController --api --resource
+
 ```
 
 ### Category Migration'ını Düzenleme
@@ -336,6 +336,8 @@ return new class extends Migration
 
 ### Migration'ları Çalıştırma
 
+Migration, veritabanı üzerinde tabloların oluşturulması işlemidir.
+
 ```bash
 # Yeni migration'ları çalıştırın
 php artisan migrate
@@ -358,6 +360,13 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'categories';
 
     /**
      * The attributes that are mass assignable.
@@ -396,6 +405,13 @@ class Product extends Model
     use HasFactory;
 
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'products';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -427,18 +443,25 @@ class Product extends Model
 }
 ```
 
-## Adım 6: API Controller'larını Oluşturma
+**$cast konusu**
 
-### API Controller'ları için Dizin Oluşturma
-
-```bash
-# Api dizinini oluşturun
-mkdir -p app/Http/Controllers/Api
+```php
+protected $casts = [
+    'price'    => 'decimal:2',   // 15 → 15.00 (2 ondalıklı)
+    'is_admin' => 'boolean',     // 0/1 → false/true
+    'count'    => 'integer',     // "123" → 123 (int)
+    'rating'   => 'float',       // "4.5" → 4.5 (float)
+    'metadata' => 'array',       // JSON → PHP array
+    'settings' => 'object',      // JSON → PHP object
+];
 ```
 
-### CategoryController'ı Api Dizinine Taşıma
 
-`app/Http/Controllers/Api/CategoryController.php` dosyasını oluşturun:
+## Adım 6: API Controller'larını Oluşturma
+
+### Category için controller hazırlama
+
+`app/Http/Controllers/Api/CategoryController.php` dosyasını açın:
 
 ```php
 <?php
@@ -512,9 +535,9 @@ class CategoryController extends Controller
 }
 ```
 
-### ProductController'ı Api Dizinine Taşıma
+### Product için controller hazırlama
 
-`app/Http/Controllers/Api/ProductController.php` dosyasını oluşturun:
+`app/Http/Controllers/Api/ProductController.php` dosyasını açın:
 
 ```php
 <?php
@@ -615,6 +638,8 @@ Route::apiResource('products', ProductController::class);
 ```
 
 ## Adım 8: Test Verileri Oluşturma
+
+TEMEL EĞİTİMDE BU BÖLÜM 
 
 ### TestDataController Oluşturma
 
@@ -830,7 +855,7 @@ curl -X POST http://127.0.0.1:8000/api/products \
 Bu noktada proje yapınız şu şekilde olmalı:
 
 ```
-laravel_api_jwt/
+laravel_api/
 ├── app/
 │   ├── Http/
 │   │   └── Controllers/
@@ -869,7 +894,7 @@ git add .
 git commit -m "Initial Laravel API project setup with Categories and Products"
 
 # GitHub'a push etmek isterseniz (repository oluşturduktan sonra)
-# git remote add origin https://github.com/username/laravel_api_jwt.git
+# git remote add origin https://github.com/username/laravel_api.git
 # git branch -M main
 # git push -u origin main
 ```

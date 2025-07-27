@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::all();
+        $categories = Category::with('products')->get();
+        return response()->json($categories);
     }
 
     /**
@@ -22,13 +23,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|unique:categories|max:255',
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
         ]);
 
-        $category = Category::create($request->all());
+        $category = Category::create($validated);
 
-        return response()->json($category, Response::HTTP_CREATED); // 201 Created
+        return response()->json($category, Response::HTTP_CREATED);
     }
 
     /**
@@ -36,8 +38,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        // Laravel'in Route-Model Binding özelliği sayesinde, URL'deki {category}
-        // ID'sine sahip olan Category modeli otomatik olarak bulunur ve enjekte edilir.
+        $category->load('products');
         return response()->json($category);
     }
 
@@ -46,12 +47,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $request->validate([
-            // Kategori adının benzersiz olmasını kontrol ederken, mevcut kategorinin kendisini hariç tutarız.
-            'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
         ]);
 
-        $category->update($request->all());
+        $category->update($validated);
 
         return response()->json($category);
     }

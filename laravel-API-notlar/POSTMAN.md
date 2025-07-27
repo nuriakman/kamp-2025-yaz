@@ -21,13 +21,15 @@
 - **Body (JSON):**
   ```json
   {
-    "name": "Elektronik"
+    "name": "Elektronik",
+    "description": "Elektronik ürünler kategorisi"
   }
   ```
 - **Başarılı Yanıt (201 Created):**
   ```json
   {
     "name": "Elektronik",
+    "description": "Elektronik ürünler kategorisi",
     "updated_at": "2025-07-24T12:00:00.000000Z",
     "created_at": "2025-07-24T12:00:00.000000Z",
     "id": 1
@@ -44,8 +46,21 @@
     {
       "id": 1,
       "name": "Elektronik",
+      "description": "Elektronik ürünler kategorisi",
       "created_at": "2025-07-24T12:00:00.000000Z",
-      "updated_at": "2025-07-24T12:00:00.000000Z"
+      "updated_at": "2025-07-24T12:00:00.000000Z",
+      "products": [
+        {
+          "id": 1,
+          "name": "Akıllı Telefon",
+          "description": "Son model, güçlü işlemcili",
+          "price": "25000.00",
+          "stock": 50,
+          "category_id": 1,
+          "created_at": "2025-07-24T12:05:00.000000Z",
+          "updated_at": "2025-07-24T12:05:00.000000Z"
+        }
+      ]
     }
   ]
   ```
@@ -60,6 +75,7 @@
     "name": "Akıllı Telefon",
     "description": "Son model, güçlü işlemcili",
     "price": 25000.0,
+    "stock": 50,
     "category_id": 1
   }
   ```
@@ -69,6 +85,7 @@
     "name": "Akıllı Telefon",
     "description": "Son model, güçlü işlemcili",
     "price": 25000,
+    "stock": 50,
     "category_id": 1,
     "updated_at": "2025-07-24T12:05:00.000000Z",
     "created_at": "2025-07-24T12:05:00.000000Z",
@@ -88,6 +105,7 @@
       "name": "Akıllı Telefon",
       "description": "Son model, güçlü işlemcili",
       "price": "25000.00",
+      "stock": 50,
       "category_id": 1,
       "created_at": "...",
       "updated_at": "...",

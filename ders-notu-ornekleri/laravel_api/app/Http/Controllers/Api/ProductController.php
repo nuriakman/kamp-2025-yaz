@@ -14,8 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // Eager loading ile N+1 problemini önlüyoruz.
-        return Product::with('category')->get();
+        $products = Product::with('category')->get();
+        return response()->json($products);
     }
 
     /**
@@ -23,16 +23,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
-            'category_id' => 'required|integer|exists:categories,id' // Kategori var olmalı
+            'stock' => 'required|integer|min:0',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
-        $product = Product::create($request->all());
+        $product = Product::create($validated);
+        $product->load('category');
 
-        return response()->json($product, Response::HTTP_CREATED); // 201
+        return response()->json($product, Response::HTTP_CREATED);
     }
 
     /**
@@ -40,8 +42,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        // Route-Model Binding sayesinde bulunan ürünü, kategorisiyle birlikte yüklüyoruz.
-        return response()->json($product->load('category'));
+        $product->load('category');
+        return response()->json($product);
     }
 
     /**
@@ -49,14 +51,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $request->validate([
-            'name' => 'sometimes|required|string|max:255',
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'price' => 'sometimes|required|numeric|min:0',
-            'category_id' => 'sometimes|required|integer|exists:categories,id'
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
-        $product->update($request->all());
+        $product->update($validated);
+        $product->load('category');
 
         return response()->json($product);
     }

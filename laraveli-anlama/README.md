@@ -13,7 +13,9 @@ Bu kaynak, Laravel 10.x sürümüne göre hazırlanmıştır.
 
 ### 🏗️ Laravel Mimarisi ve Yapı Taşları
 
-- **[controller.nedir.md](./controller.nedir.md)** - Controller yapısı ve kullanımı
+- **[controller-nedir.md](./controller-nedir.md)** - Controller yapısı ve kullanımı
+- **[controller-with-kullanimi.md](./controller-with-kullanimi.md)** - Controller'da ilişkili veri yükleme
+- **[controller-with-opsiyonel-kullanim.md](./controller-with-opsiyonel-kullanim.md)** - Opsiyonel ilişkisel veri yükleme
 - **[middleware-nedir.md](./middleware-nedir.md)** - Middleware katmanı ve HTTP istekleri yönetimi
 - **[service-nedir.md](./service-nedir.md)** - Service katmanı ve iş mantığı yönetimi
 - **[modal-nedir.md](./modal-nedir.md)** - Model (Eloquent ORM) yapısı ve veritabanı işlemleri
@@ -41,6 +43,7 @@ Bu kaynak, Laravel 10.x sürümüne göre hazırlanmıştır.
 ### 📊 İzleme ve Performans
 
 - **[loglama-nedir.md](./loglama-nedir.md)** - Loglama sistemleri ve hata takibi
+- **[api-projelerinde-with-kullanimi.md](./api-projelerinde-with-kullanimi.md)** - API'lerde ilişkisel veri yönetimi ve optimizasyonu
 - **[onbellekleme-nedir.md](./onbellekleme-nedir.md)** - Caching mekanizmaları ve performans optimizasyonu
 
 ### 🔧 Geliştirici Araçları
