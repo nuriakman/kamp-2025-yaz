@@ -170,7 +170,18 @@ class User extends Authenticatable implements JWTSubject
 
 ## Adım 5: Auth Konfigürasyonunu Güncelleme
 
-`config/auth.php` dosyasını açın ve `guards` dizisine API guard'ı ekleyin:
+`config/auth.php` dosyasını açın, `guards` ve `defaults` başlıklarında aşağıdaki gibi düzenlemeleri yapın:
+
+**İşlem 1/2:**
+
+```bash
+    'defaults' => [
+        'guard' => env('AUTH_GUARD', 'api'),
+        'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
+    ],
+```
+
+**İşlem 2/2:**
 
 ```php
 'guards' => [
