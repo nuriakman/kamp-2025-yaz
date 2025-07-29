@@ -48,6 +48,9 @@ Bu kaynak, Laravel 10.x sürümüne göre hazırlanmıştır.
 
 ### 🔧 Geliştirici Araçları
 
+- **[artisan-tinker.md](./artisan-tinker.md)** - PHP Artisan Tinker ile interaktif kod yazma ve test etme
+- **[artisan-tinker-eloquent.md](./artisan-tinker-eloquent.md)** - Tinker ile Eloquent ORM kullanımı ve veritabanı işlemleri
+
 - **[dump-autoload-nedir.md](./dump-autoload-nedir.md)** - Composer autoload optimizasyonu
 - **[ortak-degisken-kullanimi.md](./ortak-degisken-kullanimi.md)** - Ortam değişkenleri ve konfigürasyon
 - **[sadece-api-icin-laravel.md](./sadece-api-icin-laravel.md)** - API-first Laravel uygulamaları
