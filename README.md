@@ -11,6 +11,8 @@ Bu depo, 2025 Yaz döneminde gerçekleştirilecek yazılım eğitimi için hazı
 - [cURL](./laravel-API-notlar/CURL.md)
 - [Sanal Host](./laravel-API-notlar/apache-virtual-host.md)
 - [Postman Koleksiyonları](./laravel-API-notlar/collection-aciklamalar.md)
+- [Yapay Zeka Destekli Kod Yazma - Laravel Örneği](./ai-destekli-kod-ornegi/laravel/ai-basit-api.md)
+- [Yapay Zeka Destekli Kod Yazma - Python Örneği](./ai-destekli-kod-ornegi/py/ai-kullanim-ornegi.md)
 
 ---
 
