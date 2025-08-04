@@ -1,11 +1,32 @@
 # Karalamalar
 
-- <https://dev.to/ericchapman/my-beloved-laravel-cheat-sheet-3l73>
-- <https://itf-laravel-10.netlify.app/config/cheatsheet#general-commands>
-- <https://learnvue.co/LearnVue-Vue-3-Cheatsheet.pdf>
-- <https://devhints.io/vue>
-- <https://vue-cheatsheet.themeselection.com/>
-- <https://cheatography.com/przemekgrenda/cheat-sheets/vue-and-vuex-and-quasar/>
+## Genel
 
 - mangal yapmayı videodan öğrenmek
 - Yüzme öğreticisinin, dünya yüzme şampiyonu olması gerekmez.
+
+## MySQL / MariaDB
+
+-
+
+## laravel
+
+- <https://itf-laravel-10.netlify.app/config/cheatsheet>
+- <https://dev.to/ericchapman/my-beloved-laravel-cheat-sheet-3l73>
+
+## VueJS
+
+- <https://devhints.io/vue>
+- <https://vue-cheatsheet.themeselection.com/>
+- <https://learnvue.co/LearnVue-Vue-3-Cheatsheet.pdf>
+
+## Quasar
+
+- <https://quasarcomponents.com/>
+
+## Yapay Zeka
+
+- <https://www.requesty.ai/>
+- <https://openrouter.ai/>
+- <https://medium.com/@yashbatra11111/the-47-line-code-that-made-one-developer-2-million-from-ai-7269383d65db>
+- <https://roocode.com/>
