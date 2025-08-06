@@ -4,7 +4,7 @@ Bu dokümanda, Laravel API projesi için hazırlanmış Postman koleksiyon dosya
 
 ## Koleksiyon Dosyalarının Karşılaştırmalı Analizi
 
-### 1. `postman-collection-v1.json`
+### 1. [postman-collection-v1.json](./postman-collection-v1.json)
 
 **Temel Özellikler:**
 
@@ -19,7 +19,7 @@ Bu dokümanda, Laravel API projesi için hazırlanmış Postman koleksiyon dosya
   - Ürün: `{ id, name, description, price, category_id, created_at, updated_at }`
 - **Kullanım:** API'nin temel işlevselliğini test etmek için kullanılır.
 
-### 2. `postman-collection-v2.json`
+### 2. [postman-collection-v2.json](./postman-collection-v2.json)
 
 **Temel Özellikler:**
 
@@ -37,7 +37,7 @@ Bu dokümanda, Laravel API projesi için hazırlanmış Postman koleksiyon dosya
     - Fiyat doğrulamaları
 - **Kullanım:** API'nin farklı veri setleriyle çalışma yeteneğini test etmek için kullanılır.
 
-### 3. `postman-collection-v3.json`
+### 3. [postman-collection-v3.json](./postman-collection-v3.json)
 
 **Temel Özellikler:**
 
@@ -76,9 +76,9 @@ Bu dokümanda, Laravel API projesi için hazırlanmış Postman koleksiyon dosya
 
 ## Önerilen Kullanım
 
-1. **Yeni Başlayanlar İçin:** `v1` ile temel işlevleri öğrenin
-2. **Test Verisi Gerektirenler İçin:** `v2` ile zengin örnek verilerle çalışın
-3. **Farklı Ortamlarda Test İçin:** `v3` ile değişken yapısını kullanın
+1. **Yeni Başlayanlar İçin:** [v1](./postman-collection-v1.json) ile temel işlevleri öğrenin
+2. **Test Verisi Gerektirenler İçin:** [v2](./postman-collection-v2.json) ile zengin örnek verilerle çalışın
+3. **Farklı Ortamlarda Test İçin:** [v3](./postman-collection-v3.json) ile değişken yapısını kullanın
 
 ## Örnek Ortam Değişkenleri (v3 İçin)
 
@@ -113,7 +113,7 @@ Bu dokümanda, Laravel API projesi için hazırlanmış Postman koleksiyon dosya
 3. Test verilerini oluşturmak için `v2` veya `v3` koleksiyonundaki "Test Verilerini Oluştur" bölümünü kullanabilirsiniz
 4. Koleksiyonlar, [DERS-NOTU.md](./DERS-NOTU.md) dokümanında anlatılan API yapısına uygun olarak hazırlanmıştır
 
-### 4. `postman-collection-v4-jwt.json`
+### 4. [postman-collection-v4-jwt.json](./postman-collection-v4-jwt.json)
 
 **Temel Özellikler:**
 

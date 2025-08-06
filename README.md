@@ -1,49 +1,68 @@
-# Kamp 2025 Yaz Dönemi Eğitim Materyalleri
+# 🚀 Kamp 2025 Yaz Dönemi Eğitim Materyalleri
 
-Bu depo, 2025 Yaz döneminde gerçekleştirilecek yazılım eğitimi için hazırlanan tüm materyalleri içermektedir.
-
-## Tamamlanan Ders Notları
-
-- [Laravel İle API hazırlama - Kurulum](./laravel-API-notlar/KURULUM.md)
-- [Laravel İle API hazırlama - Ders Notu](./laravel-API-notlar/DERS-NOTU.md)
-- [JWT Entegrasyonu İle API hazırlama - Ders Notu](./laravel-API-notlar/DERS-NOTU-JWT.md)
-- [Postman](./laravel-API-notlar/POSTMAN.md)
-- [cURL](./laravel-API-notlar/CURL.md)
-- [Sanal Host](./laravel-API-notlar/apache-virtual-host.md)
-- [Postman Koleksiyonları](./laravel-API-notlar/collection-aciklamalar.md)
-- [Yapay Zeka Destekli Kod Yazma - Laravel Örneği](./ai-destekli-kod-ornegi/laravel/ai-basit-api.md)
-- [Yapay Zeka Destekli Kod Yazma - Python Örneği](./ai-destekli-kod-ornegi/py/ai-kullanim-ornegi.md)
-- [Örnek Ödev Projeleri](./ORNEK-PROJELER/README.md)
-- [Örnek Ödev Projeleri Detaylı Liste](./ORNEK-PROJELER/PROJE-OZETI.md)
+Bu depo, [Mustafa Akgül Özgür Yazılım 2025 Yaz Kampı](https://kamp.linux.org.tr/2025-yaz/) içinde yer alan [PHP & Laravel & Vue.js ile Yapay Zeka Destekli Yazılım Geliştirme](https://kamp.linux.org.tr/2025-yaz/kurslar/php-laravel-vue-js-ile-yapay-zeka-destekli-yazilim-gelistirme/) sınıfı için eğitim materyallerini içermektedir.
 
 ---
 
-## 📋 İçerik
+## PHP & Laravel & Vue.js ile Yapay Zeka Destekli Yazılım Geliştirme
 
-### 📚 Ana Dokümanlar
+**Eğitmenler: Nuri Akman, Kaan Kaltakkıran**
 
-- [📝 Ders İçeriği](./ders-icerigi.md)
-- [💚 Vue.js Notları](./vuejs/README.md)
-- [🍍 Pinia Notları](./pinia/README.md)
+Bu sınıfta, modern web teknolojileri ve AI desteği ile Backend’den Frontend’e bütünleşik proje geliştirme eğitimi verilecektir.
 
-### 📊 Örnek Projeler ve Şablonlar
+Bu eğitimde, PHP esnekliği ile Laravel, Vue 3, Quasar Framework, MySQL ve REST API teknolojilerini kullanarak modern web uygulamaları geliştirmeyi öğrenecek, VSCode, Postman ve Git gibi profesyonel araçlarla çalışacaksınız.
 
-- [📊 Örnek Tablolar ve API Yapıları](ornek-tablolar-api.md)
-- [📈 Örnek Akış Diyagramları](ornek-akis-diagramlari.md)
-- [📑 Örnek PRD (Ürün Gereksinim Dokümanı)](ornek-prd.md)
-- [🎨 Örnek UI Mockup'ları](ornek-ui-mockup.md)
+Eğitim sonunda, kendi projenizi baştan sona geliştirebilmeyi öğrenecek ve full-stack geliştirici olma yolunda önemli bir adım atmış olacaksınız.
 
-### 📅 Günlük Eğitim Planı
+Ayrıca, yapay zeka destekli geliştirme araçlarını etkin bir şekilde kullanarak yazılım geliştirme süreçlerinizi nasıl hızlandırabileceğinizi öğreneceksiniz.
 
-| Gün | Sabah                             | Öğleden Sonra                             |
-| --- | --------------------------------- | ----------------------------------------- |
-| 1   | [🌅 Oturum-1](plan/gun1-sabah.md) | [🌇 Oturum-2](plan/gun1-ogleden-sonra.md) |
-| 2   | [🌅 Oturum-1](plan/gun2-sabah.md) | [🌇 Oturum-2](plan/gun2-ogleden-sonra.md) |
-| 3   | [🌅 Oturum-1](plan/gun3-sabah.md) | [🌇 Oturum-2](plan/gun3-ogleden-sonra.md) |
-| 4   | [🌅 Oturum-1](plan/gun4-sabah.md) | [🌇 Oturum-2](plan/gun4-ogleden-sonra.md) |
-| 5   | [🌅 Oturum-1](plan/gun5-sabah.md) | [🌇 Oturum-2](plan/gun5-ogleden-sonra.md) |
-| 6   | [🌅 Oturum-1](plan/gun6-sabah.md) | [🌇 Oturum-2](plan/gun6-ogleden-sonra.md) |
-| 7   | [🌅 Oturum-1](plan/gun7-sabah.md) | [🌇 Oturum-2](plan/gun7-ogleden-sonra.md) |
-| 8   | [🌅 Oturum-1](plan/gun8-sabah.md) | [🌇 Oturum-2](plan/gun8-ogleden-sonra.md) |
-| 9   | [🌅 Oturum-1](plan/gun9-sabah.md) | [🌇 Oturum-2](plan/gun9-ogleden-sonra.md) |
+---
 
+## İçindekiler
+
+### Ders İçeriği ve Eğitim Planı
+
+- [Eğitim İçeriği Özeti](./ders-icerigi.md)
+- [Eğitim Planı](./plan/README.md)
+
+### Vue.js
+
+- [Vue.js Notları](./vuejs/README.md)
+
+### Pinia
+
+- [Pinia Notları](./pinia/README.md)
+
+### Laravel
+
+**Ders Notları**
+
+- [Laravel İle API Kurulumu](./laravel-API-notlar/KURULUM.md)
+- [Laravel API Ders Notu](./laravel-API-notlar/DERS-NOTU.md)
+- [JWT Entegrasyonu Ders Notu](./laravel-API-notlar/DERS-NOTU-JWT.md)
+
+**API Test Araçları**
+
+- [Postman Kullanımı](./laravel-API-notlar/POSTMAN.md)
+- [cURL Komutları](./laravel-API-notlar/CURL.md)
+
+**Postman Koleksiyonları**
+
+- [Postman Koleksiyonları Açıklamaları](./laravel-API-notlar/collection-aciklamalar.md)
+
+**AI Destekli Kod**
+
+- [AI Destekli Kod - Laravel](./ai-destekli-kod-ornegi/laravel/ai-basit-api.md)
+- [AI Destekli Kod - Python](./ai-destekli-kod-ornegi/py/ai-kullanim-ornegi.md)
+
+**Örnek Uygulama Ödevler**
+
+- [Örnek Ödevler](./ORNEK-PROJELER/README.md)
+- [Detaylı Ödev Listesi](./ORNEK-PROJELER/PROJE-OZETI.md)
+
+### Tamamlayıcı Materyaller
+
+- [Örnek Tablolar ve API Yapıları](./ornek-tablolar-api.md)
+- [Akış Diyagramları](./ornek-akis-diagramlari.md)
+- [PRD (Ürün Gereksinim Dokümanı)](./ornek-prd.md)
+- [UI Mockup'ları](./ornek-ui-mockup.md)
