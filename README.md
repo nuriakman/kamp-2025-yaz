@@ -47,18 +47,3 @@ Bu depo, 2025 Yaz döneminde gerçekleştirilecek yazılım eğitimi için hazı
 | 8   | [🌅 Oturum-1](plan/gun8-sabah.md) | [🌇 Oturum-2](plan/gun8-ogleden-sonra.md) |
 | 9   | [🌅 Oturum-1](plan/gun9-sabah.md) | [🌇 Oturum-2](plan/gun9-ogleden-sonra.md) |
 
-## Kurulum
-
-```bash
-# Depoyu klonlayın
-git clone https://github.com/kullanici-adi/kamp-2025-yaz.git
-cd kamp-2025-yaz
-```
-
-## 📄 Lisans
-
-Bu proje MIT lisansı altında lisanslanmıştır.
-
-## 📬 İletişim
-
-Eğitimle ilgili sorularınız için: [nuriakman@gmail.com](mailto:nuriakman@gmail.com)
