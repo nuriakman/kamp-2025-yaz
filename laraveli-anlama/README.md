@@ -55,6 +55,11 @@ Bu kaynak, Laravel 10.x sürümüne göre hazırlanmıştır.
 - **[ortak-degisken-kullanimi.md](./ortak-degisken-kullanimi.md)** - Ortam değişkenleri ve konfigürasyon
 - **[sadece-api-icin-laravel.md](./sadece-api-icin-laravel.md)** - API-first Laravel uygulamaları
 
+### REST vs RPC
+
+- **[rpc-vs-restapi.md](./rpc-vs-restapi.md)** - RPC vs REST API
+- **[rpc-detaylari.md](./rpc-detaylari.md)** - RPC Detayları
+
 ### 📖 Ek Kaynaklar
 
 - **[birkac-konu.md](./birkac-konu.md)** - Ek konular ve püf noktalar
