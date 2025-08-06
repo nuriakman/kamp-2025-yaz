@@ -13,6 +13,8 @@ Bu depo, 2025 Yaz döneminde gerçekleştirilecek yazılım eğitimi için hazı
 - [Postman Koleksiyonları](./laravel-API-notlar/collection-aciklamalar.md)
 - [Yapay Zeka Destekli Kod Yazma - Laravel Örneği](./ai-destekli-kod-ornegi/laravel/ai-basit-api.md)
 - [Yapay Zeka Destekli Kod Yazma - Python Örneği](./ai-destekli-kod-ornegi/py/ai-kullanim-ornegi.md)
+- [Örnek Ödev Projeleri](./ORNEK-PROJELER/README.md)
+- [Örnek Ödev Projeleri Detaylı Liste](./ORNEK-PROJELER/PROJE-OZETI.md)
 
 ---
 
