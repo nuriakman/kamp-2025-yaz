@@ -50,6 +50,10 @@ Ayrıca, yapay zeka destekli geliştirme araçlarını etkin bir şekilde kullan
 
 - [Postman Koleksiyonları Açıklamaları](./laravel-API-notlar/collection-aciklamalar.md)
 
+**Laravel’i Anlama**
+
+- [Laravel’i Anlama Notları](./laraveli-anlama/README.md)
+
 **AI Destekli Kod**
 
 - [AI Destekli Kod - Laravel](./ai-destekli-kod-ornegi/laravel/ai-basit-api.md)

@@ -16,6 +16,7 @@ Bu kaynak, Laravel 10.x sürümüne göre hazırlanmıştır.
 - **[controller-nedir.md](./controller-nedir.md)** - Controller yapısı ve kullanımı
 - **[controller-with-kullanimi.md](./controller-with-kullanimi.md)** - Controller'da ilişkili veri yükleme
 - **[controller-with-opsiyonel-kullanim.md](./controller-with-opsiyonel-kullanim.md)** - Opsiyonel ilişkisel veri yükleme
+- **[resource-nedir.md](./resource-nedir.md)** - Resource Controller ve API Resource (JsonResource) kullanımı
 - **[middleware-nedir.md](./middleware-nedir.md)** - Middleware katmanı ve HTTP istekleri yönetimi
 - **[service-nedir.md](./service-nedir.md)** - Service katmanı ve iş mantığı yönetimi
 - **[modal-nedir.md](./modal-nedir.md)** - Model (Eloquent ORM) yapısı ve veritabanı işlemleri
