@@ -232,21 +232,21 @@ DELETE /api/admin/product-features/{id} - Ürün özelliği sil
 
 ### Laravel API
 
-- ✅ Pivot table relationships
-- ✅ Dynamic filtering
-- ✅ Complex queries with joins
-- ✅ Data type handling
-- ✅ Comparison logic
-- ✅ Aggregation queries
+- ✅ Pivot tablo ilişkileri
+- ✅ Dinamik filtreleme
+- ✅ Join'li karmaşık sorgular
+- ✅ Veri tipi yönetimi
+- ✅ Karşılaştırma mantığı
+- ✅ Toplulaştırma sorguları
 
 ### Vue.js + Quasar
 
-- ✅ Multi-select functionality
-- ✅ Dynamic table generation
-- ✅ Comparison interface
-- ✅ Advanced filtering UI
-- ✅ Data visualization
-- ✅ Responsive tables
+- ✅ Çoklu seçim özelliği
+- ✅ Dinamik tablo oluşturma
+- ✅ Karşılaştırma arayüzü
+- ✅ Gelişmiş filtreleme arayüzü
+- ✅ Veri görselleştirme
+- ✅ Duyarlı (responsive) tablolar
 
 ## 📝 Notlar
 

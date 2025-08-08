@@ -297,33 +297,33 @@ GET /api/auth/me - Kullanıcı bilgileri
 
 ### Laravel API
 
-- ✅ Complex business logic implementation
-- ✅ PDF generation (DomPDF/TCPDF)
-- ✅ Quote number generation
-- ✅ Tax calculation logic
-- ✅ Status workflow management
-- ✅ Financial calculations
+- ✅ Karmaşık iş akışı yönetimi
+- ✅ PDF oluşturma (DomPDF/TCPDF)
+- ✅ Teklif numarası oluşturma
+- ✅ Vergi hesaplama mantığı
+- ✅ Durum iş akışı yönetimi
+- ✅ Mali hesaplamalar
 - ✅ Email notification system
 
 ### Vue.js + Quasar
 
-- ✅ Dynamic form building
-- ✅ PDF viewer integration
-- ✅ Print functionality
-- ✅ Chart.js for analytics
-- ✅ Advanced table operations
-- ✅ Multi-step form wizard
-- ✅ Currency formatting
-- ✅ Date picker integration
+- ✅ Dinamik form oluşturma
+- ✅ PDF görüntüleyici entegrasyonu
+- ✅ Yazdırma işlevi
+- ✅ Chart.js analitik için
+- ✅ Gelişmiş tablo operasyonları
+- ✅ Çok aşamalı form sihirbazı
+- ✅ Para birimi biçimi
+- ✅ Tarih seçici entegrasyonu
 
 ### Genel Beceriler
 
-- ✅ Business process automation
-- ✅ Quote generation workflow
-- ✅ Customer relationship management
-- ✅ Financial document creation
-- ✅ Service catalog management
-- ✅ Business analytics
+- ✅ İş akışı otomasyonu
+- ✅ Teklif oluşturma iş akışı
+- ✅ Müşteri ilişkileri yönetimi
+- ✅ Mali belge oluşturma
+- ✅ Hizmet kataloğu yönetimi
+- ✅ İş analitiği
 
 ## 🚀 Geliştirme Adımları
 

@@ -313,7 +313,7 @@ GET /api/auth/me - Kullanıcı bilgileri
 - ✅ Query scopes ve filtering
 - ✅ Soft deletes
 - ✅ Event listeners (başvuru onaylandığında email)
-- ✅ Custom validation rules
+- ✅ Özel validation kuralları
 
 ### Vue.js + Quasar
 
@@ -328,12 +328,12 @@ GET /api/auth/me - Kullanıcı bilgileri
 
 ### Genel Beceriler
 
-- ✅ Application workflow management
-- ✅ Status tracking sistemi
-- ✅ Capacity management
-- ✅ Email notification sistemi
-- ✅ Admin approval process
-- ✅ Data filtering ve search
+- ✅ Uygulama akış yönetimi
+- ✅ Durum takip sistemi
+- ✅ Kapasite yönetimi
+- ✅ Email bildirim sistemi
+- ✅ Admin onay süreci
+- ✅ Veri filtreleme ve arama
 
 ## 🚀 Geliştirme Adımları
 

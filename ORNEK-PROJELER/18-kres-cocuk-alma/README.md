@@ -298,33 +298,32 @@ GET /api/auth/me - Kullanıcı bilgileri
 ## 🎓 Öğrenim Kazanımları
 
 ### Laravel API
-
-- ✅ PIN-based authentication
-- ✅ Many-to-many relationships
-- ✅ Status workflow management
-- ✅ Real-time notifications
-- ✅ File upload (photos)
-- ✅ Security logging
-- ✅ Role-based permissions
+- PIN tabanlı kimlik doğrulama
+- Çoklu ilişkiler
+- Durum iş akışı yönetimi
+- Gerçek zamanlı bildirimler
+- Dosya yükleme (fotoğraflar)
+- Güvenlik günlüğü
+- Rol tabanlı izinler
 
 ### Vue.js + Quasar
 
-- ✅ Mobile-first design
-- ✅ Real-time status updates
-- ✅ Camera integration
-- ✅ Push notifications
-- ✅ Offline capability
-- ✅ Touch-friendly interface
-- ✅ Progressive Web App (PWA)
+- Mobil öncelikli tasarım
+- Gerçek zamanlı durum güncellemeleri
+- Kamera entegrasyonu
+- Push bildirimleri
+- Çevrimdışı yetenek
+- Dokunmatik dostu arayüz
+- Gelişmiş Web Uygulaması (PWA)
 
 ### Genel Beceriler
 
-- ✅ Child safety systems
-- ✅ Parent verification
-- ✅ Staff workflow management
-- ✅ Security protocols
-- ✅ Mobile UX design
-- ✅ Emergency procedures
+- Çocuk güvenliği sistemleri
+- Veli doğrulama
+- Personel iş akışı yönetimi
+- Güvenlik protokolleri
+- Mobil UX tasarım
+- Acil durum prosedürleri
 
 ## 🚀 Geliştirme Adımları
 
