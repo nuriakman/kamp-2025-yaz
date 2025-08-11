@@ -1,5 +1,8 @@
 # Seeder Nedir?
 
+- **Seeder** → Veritabanına **hazır ve belirli** verileri ekler (ör. admin kullanıcı).
+- **Factory** → **Rastgele veya kural bazlı** test verisi üretir (faker kullanır).
+
 ### 🎯 Laravel'de Seeder Nedir?
 
 **Seeder**, veritabanına **örnek veya başlangıç verileri** eklemek için kullanılır.

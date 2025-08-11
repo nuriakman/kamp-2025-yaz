@@ -1,6 +1,10 @@
 # Seeder vs Factory
 
 Laravel'de gerçek ve sahte veriler farklı amaçlarla ve farklı yollarla üretilir.
+
+- **Seeder** → Veritabanına **hazır ve belirli** verileri ekler (ör. admin kullanıcı).
+- **Factory** → **Rastgele veya kural bazlı** test verisi üretir (faker kullanır).
+
 Aşağıda bunu çok net bir tablo ve örneklerle açıklıyorum:
 
 ---
