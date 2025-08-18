@@ -20,6 +20,11 @@ Ayrıca, yapay zeka destekli geliştirme araçlarını etkin bir şekilde kullan
 
 ## İçindekiler
 
+### Kurulum
+
+- [Ubuntu Kurulumu](./kurulum.md)
+- [Windows'da WSL ile Ubuntu Kurulumu](./kurulum-windows-wsl.md)
+
 ### Ders İçeriği ve Eğitim Planı
 
 - [Eğitim İçeriği Özeti](./ders-icerigi.md)
