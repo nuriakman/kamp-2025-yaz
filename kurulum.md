@@ -57,6 +57,12 @@ cat ~/.ssh/id_rsa.pub
 
 ```
 
+### Google Gemini Kurulumu
+
+```bash
+npm install -g @google/gemini-cli
+```
+
 ### Kurulumların test edilmesi
 
 ```bash
@@ -68,44 +74,5 @@ quasar --version
 git --version
 git --global
 git config --global --list
-```
-
-### Google Gemini Kurulumu
-
-```bash
-npm install -g @google/gemini-cli
-```
-
-## Laravel, VueJS ve Quasar Örnek Proje Başlatması
-
-### Laravel Projesi kurulumu
-
-```bash
-composer create-project laravel/laravel my-laravel-project
-cd my-laravel-project
-php artisan migrate
-php artisan serve
-```
-
-### VueJS Projesi kurulumu
-
-```bash
-npm create vue@latest my-vuejs-project
-cd my-vuejs-project
-npm install
-npm run format
-npm run dev
-
-# Opsiyonel: Git ile başlatma
-git init && git add -A && git commit -m "initial commit"
-```
-
-### Quasar Projesi kurulumu
-
-```bash
-npm init quasar@latest my-quasar-project
-cd my-quasar-project
-npm install
-quasar dev
-# veya npm run dev
+gemini --version
 ```

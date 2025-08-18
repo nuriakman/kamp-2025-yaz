@@ -23,6 +23,7 @@
 ## Quasar
 
 - <https://quasarcomponents.com/>
+- `quasar dev` yazıldığında yeni pencere açmaması için: `quasar.config.ts` içinde `devServer` altında `open: false` eklenir.
 
 ## Yapay Zeka
 

@@ -24,6 +24,7 @@ Ayrıca, yapay zeka destekli geliştirme araçlarını etkin bir şekilde kullan
 
 - [Ubuntu Kurulumu](./kurulum.md)
 - [Windows'da WSL ile Ubuntu Kurulumu](./kurulum-windows-wsl.md)
+- [Kurulum Testi ve Örnek Proje Başlatma](./kurulum-test.md)
 
 ### Ders İçeriği ve Eğitim Planı
 
@@ -57,7 +58,9 @@ Ayrıca, yapay zeka destekli geliştirme araçlarını etkin bir şekilde kullan
 
 **Laravel’i Anlama**
 
-- [Laravel’i Anlama Notları](./laraveli-anlama/README.md)
+- [Laravel'de API Yaklaşımları](./Fikirler/laravel-api-yaklasimlari.md)
+- [Rest API](./Fikirler/neden-rest-api.md)
+- [RPC (Remote Procedure Call)](./Fikirler/rpc-notu.md)
 
 **AI Destekli Kod**
 
