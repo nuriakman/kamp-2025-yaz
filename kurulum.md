@@ -37,8 +37,6 @@ npm install -g @vue/cli
 # Quasar CLI kurulumu
 npm install -g @quasar/cli
 
-# Laravel global kurulum
-composer global require laravel/installer
 ```
 
 ### Git Kurulumu ve Ayarları
