@@ -11,6 +11,15 @@ Aşağıdaki kutucuklar işaretlenir, Tamam düğmesine basılır ve bilgisayar 
 - Windows Hypervisor Platform
 - Windows Subsystem for Linux
 
+Tamam düğmesine basıldığında bilgisayarın yeniden başlatılması gerekir. Yeniden açılma tamamlanana kadar bekleyiniz.
+
+### `Windows Terminal` Ekranında
+
+- Terminal, Yönetici (administrator) yetkisi ile çalıştırılır
+- `wsl --update` komutunu çalıştırınız
+
+Bu işlem ile birlikte wsl2 yüklenmiş olacaktır.
+
 ### `Microsoft Store` Ekranında
 
 - Microsft Store'da `Ubuntu` yazarak arama yapılır, Ubuntu 24.0 Kurulur.
