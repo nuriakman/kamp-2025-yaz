@@ -23,7 +23,7 @@ Ayrıca, yapay zeka destekli geliştirme araçlarını etkin bir şekilde kullan
 ### Kurulum
 
 - [Ubuntu Kurulumu](./kurulum.md)
-- [Windows'da WSL ile Ubuntu Kurulumu](./kurulum-windows-wsl.md)
+- [Windows'da Laragon ile Kurulum](./kurulum-laragon.md) - Windows için kolay yol!
 - [Kurulum Testi ve Örnek Proje Başlatma](./kurulum-test.md)
 
 ### Ders İçeriği ve Eğitim Planı
