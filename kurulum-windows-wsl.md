@@ -9,6 +9,7 @@ Aşağıdaki kutucuklar işaretlenir, Tamam düğmesine basılır ve bilgisayar 
 - Hyper-V
 - Virtual Machine Platform
 - Windows Hypervisor Platform
+- Windows Subsystem for Linux
 
 ### `Microsoft Store` Ekranında
 
