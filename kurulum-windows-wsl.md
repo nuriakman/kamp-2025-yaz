@@ -18,7 +18,7 @@ Tamam düğmesine basıldığında bilgisayarın yeniden başlatılması gerekir
 - Terminal, Yönetici (administrator) yetkisi ile çalıştırılır
 - `wsl --update` komutunu çalıştırınız
 
-Bu işlem ile birlikte wsl2 yüklenmiş olacaktır.
+Bu işlem ile birlikte wsl2 yüklenmiş olacaktır. Yüksetmenin tamamlanabilmesi için bilgisayarın yeniden başlatılması gerekir. Bilgisayarınızı yeniden başlatın ve yeniden açılma tamamlanana kadar bekleyiniz.
 
 ### `Microsoft Store` Ekranında
 
