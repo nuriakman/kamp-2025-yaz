@@ -31,3 +31,15 @@
 - <https://openrouter.ai/>
 - <https://medium.com/@yashbatra11111/the-47-line-code-that-made-one-developer-2-million-from-ai-7269383d65db>
 - <https://roocode.com/>
+
+## API
+- <https://edx.netl.doe.gov/sites/edxapidocs/_images/whatisapi.png>
+- <https://i.sstatic.net/ChtPo.png>
+- <https://support.mindbridge.ai/hc/article_attachments/25989709469719>
+- <https://miro.medium.com/v2/resize:fit:1100/format:webp/1*ABzo_iJ6429Dl5us8i_gCg.jpeg>
+- <https://medium.com/@abhilashabhatia/understanding-web-api-basics-through-analogies-8be8da2b5800>
+
+## Faydalı Araçlar
+
+- <https://quickref.me/>
+- <https://datatables.net/>
