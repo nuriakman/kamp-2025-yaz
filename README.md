@@ -22,14 +22,25 @@ Ayrıca, yapay zeka destekli geliştirme araçlarını etkin bir şekilde kullan
 
 ### Kurulum
 
-- [Ubuntu Kurulumu](./kurulum.md)
-- [Windows'da Laragon ile Kurulum](./kurulum-laragon.md) - Windows için kolay yol!
-- [Kurulum Testi ve Örnek Proje Başlatma](./kurulum-test.md)
+- [Ubuntu'da Kurulum](./kurulum/kurulum.md)
+- [Windows'da Laragon ile Kurulum](./kurulum/kurulum-laragon.md) - Windows için kolay yol!
+- [Windows'da WSL ile Kurulum](./kurulum/kurulum-windows-wsl.md)
+- [Kurulum Testi ve Örnek Proje Başlatma](./kurulum/kurulum-test.md)
+- [MacOS'da Laravel Sail ile Kurulum](./kurulum/kurulum-macos-laravel-sail.md)
+
+### Laravel Çalışma Ortamı Alternatifleri
+
+- [Laravel Sail](https://github.com/laravel/sail)
+- [XAMPP](https://www.apachefriends.org/)
+- [Devilbox](http://devilbox.org/)
+- [Flyenv](https://flyenv.com/)
+- [Laradock](https://laradock.io/)
 
 ### Ders İçeriği ve Eğitim Planı
 
-- [Eğitim İçeriği Özeti](./ders-icerigi.md)
+- [Eğitim İçeriği Özeti](./plan/ders-icerigi.md)
 - [Eğitim Planı](./plan/README.md)
+- [Genel Özet](./plan/genel-ozet.md)
 
 ### Vue.js
 
@@ -74,7 +85,8 @@ Ayrıca, yapay zeka destekli geliştirme araçlarını etkin bir şekilde kullan
 
 ### Tamamlayıcı Materyaller
 
-- [Örnek Tablolar ve API Yapıları](./ornek-tablolar-api.md)
-- [Akış Diyagramları](./ornek-akis-diagramlari.md)
-- [PRD (Ürün Gereksinim Dokümanı)](./ornek-prd.md)
-- [UI Mockup'ları](./ornek-ui-mockup.md)
+- [Örnek Tablolar ve API Yapıları](./ders-notu-ornekleri/ornek-tablolar-api.md)
+- [Akış Diyagramları](./ders-notu-ornekleri/ornek-akis-diagramlari.md)
+- [PRD (Ürün Gereksinim Dokümanı)](./ders-notu-ornekleri/ornek-prd.md)
+- [UI Mockup'ları](./ders-notu-ornekleri/ornek-ui-mockup.md)
+- [DNS Çözümleme Süreci](./Fikirler/dns-cozumleme.md)

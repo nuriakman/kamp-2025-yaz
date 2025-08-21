@@ -1,0 +1,118 @@
+{
+  "problems.decorations.enabled": true,
+  "problems.defaultViewMode": "tree",
+  "problems.decorations.maxHeight": 20, // Maksimum satır sayısı
+  "problems.maxVisible": 10, // Gösterilecek maksimum hata sayısı
+  "problems.panelHeight": 30, // Panel yüksekliği (pixel cinsinden)
+  "editor.autoClosingComments": "always",
+  "editor.autoClosingQuotes": "always",
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingOvertype": "always",
+  "editor.autoClosingDelete": "always",
+  //"editor.suggest.showWords": false,
+  //"php.suggest.basic": false,
+  "php.validate.executablePath": "/usr/bin/php",
+  "php.validate.enable": true,
+  "php.validate.run": "onSave",
+  "php.debug.executablePath": "/usr/bin/php",
+  "php.suggest.basic": false,
+  "files.hotExit": "onExitAndWindowClose",
+  "html.format.wrapAttributes": "force-expand-multiline", // Nuri,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.formatOnType": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.minimap.maxColumn": 75,
+  "editor.renderControlCharacters": false,
+  "editor.renderWhitespace": "none",
+  "editor.wordWrap": "off",
+  "editor.lineHeight": 25,
+  "editor.mouseWheelZoom": true,
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#ffffff",
+    "tab.activeBorderTop": "#ffd900",
+    "tab.activeBackground": "#3d615f"
+  },
+  "editor.unicodeHighlight.allowedLocales": {
+    "tr": true
+  },
+  "todohighlight.isEnable": true,
+  "git.autofetch": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "git.confirmSync": false,
+  // Kod biçimlendirme...
+  "editor.formatOnSave": true,
+  "eslint.enable": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features",
+    "editor.formatOnSave": true
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar",
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "off"
+  },
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+    "editor.formatOnSave": true
+  },
+  //"editor.codeActionsOnSave": {
+  //  "source.fixAll":"always",
+  //  "source.fixAll.eslint": "always", // ESLint için her zaman düzelt
+  //  "source.fixAll.prettier": "always" // Prettier için her zaman düzelt
+  //},
+  // Kod biçimlendirme Bitti
+  "projectManager.openInNewWindowWhenClickingInStatusBar": true,
+  "workbench.preferredDarkColorTheme": "Default Light+",
+  "terminal.integrated.env.linux": {},
+  "console-ninja.featureSet": "Community",
+  "codeium.enableCodeLens": false,
+  "workbench.colorTheme": "Vue Theme",
+  "files.eol": "\n",
+  "git.openRepositoryInParentFolders": "never",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "prettier.tabWidth": 2,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "prettier.printWidth": 80,
+  "prettier.configPath": "",
+  "editor.stickyScroll.enabled": false,
+  "debug.allowBreakpointsEverywhere": true,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmPasteNative": false,
+  "windsurf.autoExecutionPolicy": "off",
+  "windsurf.autocompleteSpeed": "fast",
+  "windsurf.chatFontSize": "default",
+  "windsurf.rememberLastModelSelection": true,
+  "windsurf.openRecentConversation": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "bladeFormatter.format.noPhpSyntaxCheck": true,
+  "bladeFormatter.format.phpVersion": "8.3",
+  "Devdb.phpExecutablePath": "/usr/bin/php",
+  //"volar.takeOverMode.enabled": true, // XDebug'ın çalışması için önemli
+  //"volar.autoCompleteRefs": true
+}

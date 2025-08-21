@@ -74,3 +74,9 @@ git --global
 git config --global --list
 gemini --version
 ```
+
+## Editör Ayarları
+
+- [Key Bindings](./keybinding.json)
+- [Settings](./settings.json)
+- [Eklentiler](./eklenti-listesi.md)
