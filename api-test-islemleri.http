@@ -1,0 +1,56 @@
+#
+# DOCS: https://github.com/Huachao/vscode-restclient
+#
+# Örnek Site: https://jsonplaceholder.typicode.com/
+# https://jsonplaceholder.typicode.com/posts/1
+# /posts 	100 posts
+# /comments 	500 comments
+# /albums 	100 albums
+# /photos 	5000 photos
+# /todos 	200 todos
+# /users 	10 users
+#
+# GET 	/posts
+# GET 	/posts/1
+# GET 	/posts/1/comments
+# GET 	/comments?postId=1
+# POST 	/posts
+# PUT 	/posts/1
+# PATCH 	/posts/1
+# DELETE 	/posts/1
+#
+# POST https://jsonplaceholder.typicode.com/comments
+# content-type: application/json
+#
+# {
+#     "name": "sample2",
+#     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+# }
+
+## Dummy API
+
+### GET Metodu Test İşlemi
+
+GET http://127.0.0.1:8000/api/dummy
+content-type: application/json
+
+{
+  "var1": 123,
+  "params": {
+    "origin": 3
+  }
+}
+
+### POST Metodu Test İşlemi
+
+POST http://127.0.0.1:8000/api/dummy
+content-type: application/json
+
+{
+  "var1": 123,
+  "var2": 456,
+  "params": {
+    "begin": 1,
+    "end": 2
+  }
+}
