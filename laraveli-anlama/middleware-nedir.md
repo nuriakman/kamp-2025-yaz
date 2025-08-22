@@ -176,15 +176,17 @@ sequenceDiagram
 1. **İstemci İsteği**: İstemci sunucuya bir HTTP isteği gönderir.
 
 2. **Middleware Kontrolü**:
+
    - İstek önce middleware katmanına ulaşır
    - Middleware şunları yapabilir:
-     * Kimlik doğrulama (Authentication)
-     * Yetkilendirme (Authorization)
-     * Giriş verilerinin doğrulanması (Validation)
-     * Loglama
-     * Hız sınırlama (Rate limiting)
+     - Kimlik doğrulama (Authentication)
+     - Yetkilendirme (Authorization)
+     - Giriş verilerinin doğrulanması (Validation)
+     - Loglama
+     - Hız sınırlama (Rate limiting)
 
 3. **Doğrulama Sonucu**:
+
    - **Başarılı ise**: İstek bir sonraki katmana (controller) iletilir
    - **Başarısız ise**: İstemciye uygun hata kodu (401, 403 vb.) döndürülür
 
@@ -193,8 +195,6 @@ sequenceDiagram
 5. **Yanıt Dönüşü**: Sonuç istemciye iletilir
 
 Middleware'ler genellikle bir "zincir" (chain) halinde çalışır ve her biri belirli bir sorumluluğu üstlenir. Bu, tek sorumluluk ilkesine (Single Responsibility Principle) uygun bir yaklaşımdır.
-
-
 
 # Middleware Olmadan İstek İşleme Akışı
 
@@ -230,41 +230,40 @@ sequenceDiagram
 ```javascript
 // Middleware olmadan controller örneği
 class StationController {
-    async getStations(req, res) {
-        // 1. Kimlik doğrulama
-        if (!req.headers.authorization) {
-            return res.status(401).send('Unauthorized');
-        }
-        
-        // 2. Yetki kontrolü
-        const user = getUserFromToken(req.headers.authorization);
-        if (!user.hasPermission('view_stations')) {
-            return res.status(403).send('Forbidden');
-        }
-        
-        // 3. Giriş validasyonu
-        if (!isValidRequest(req.query)) {
-            return res.status(400).send('Bad Request');
-        }
-        
-        // İş mantığı (asıl fonksiyonellik)
-        const stations = await StationService.getAll();
-        res.status(200).json(stations);
+  async getStations(req, res) {
+    // 1. Kimlik doğrulama
+    if (!req.headers.authorization) {
+      return res.status(401).send('Unauthorized');
     }
+
+    // 2. Yetki kontrolü
+    const user = getUserFromToken(req.headers.authorization);
+    if (!user.hasPermission('view_stations')) {
+      return res.status(403).send('Forbidden');
+    }
+
+    // 3. Giriş validasyonu
+    if (!isValidRequest(req.query)) {
+      return res.status(400).send('Bad Request');
+    }
+
+    // İş mantığı (asıl fonksiyonellik)
+    const stations = await StationService.getAll();
+    res.status(200).json(stations);
+  }
 }
 ```
 
 ## Middleware Kullanmanın Avantajlarına Karşılaştırma
 
-| Özellik               | Middleware'li Yapı         | Middleware'siz Yapı        |
-|-----------------------|---------------------------|---------------------------|
-| **Kod Tekrarı**        | Az (DRY prensibi)         | Çok (WET kodu)            |
-| **Bakım Kolaylığı**    | Kolay (Merkezi yönetim)   | Zor (Dağınık kontrol)     |
-| **Okunabilirlik**      | Yüksek (Ayırılmış sorumluluklar) | Düşük (Karmaşık controller'lar) |
-| **Esneklik**          | Yüksek (Yeni middleware eklenebilir) | Düşük (Değişiklik zor) |
+| Özellik             | Middleware'li Yapı                   | Middleware'siz Yapı             |
+| ------------------- | ------------------------------------ | ------------------------------- |
+| **Kod Tekrarı**     | Az (DRY prensibi)                    | Çok (WET kodu)                  |
+| **Bakım Kolaylığı** | Kolay (Merkezi yönetim)              | Zor (Dağınık kontrol)           |
+| **Okunabilirlik**   | Yüksek (Ayırılmış sorumluluklar)     | Düşük (Karmaşık controller'lar) |
+| **Esneklik**        | Yüksek (Yeni middleware eklenebilir) | Düşük (Değişiklik zor)          |
 
 Middleware kullanılmadığında, her controller endpoint'i kendi güvenlik, doğrulama ve ön işlemlerini tekrar tekrar uygulamak zorunda kalır.
-
 
 # Farklı görevler için Middleware kullanımı
 
@@ -281,17 +280,17 @@ sequenceDiagram
     participant Response as Yanıt (Response)
 
     Client->>AuthMiddleware: GET /api/stations (Token: Bearer XXX)
-    
+
     alt 1️⃣ Authentication Başarısız
         AuthMiddleware-->>Client: 401 Unauthorized (Geçersiz token)
     else 1️⃣ Authentication Başarılı
         AuthMiddleware->>AuthzMiddleware: İstek + Kullanıcı Bilgisi (req.user)
-        
+
         alt 2️⃣ Authorization Başarısız
             AuthzMiddleware-->>Client: 403 Forbidden (Yetkisiz erişim)
         else 2️⃣ Authorization Başarılı
             AuthzMiddleware->>ValidationMiddleware: İstek + Doğrulanmış Kullanıcı
-            
+
             alt 3️⃣ Validation Başarısız
                 ValidationMiddleware-->>Client: 400 Bad Request (Geçersiz veri)
             else 3️⃣ Validation Başarılı
@@ -307,27 +306,32 @@ sequenceDiagram
 ---
 
 ### 🔍 **Adım Adım Açıklama**:
-1. **Authentication Middleware**  
-   - ✅ Token varlığını kontrol eder  
-   - ✅ JWT imzasını doğrular  
-   - ❌ Başarısızsa **401 Unauthorized** döner  
 
-2. **Authorization Middleware**  
-   - ✅ `req.user.roles` ile yetki kontrolü yapar (Örn: `admin` rolü gerekli)  
-   - ❌ Başarısızsa **403 Forbidden** döner  
+1. **Authentication Middleware**
 
-3. **Validation Middleware**  
-   - ✅ Gelen verinin formatını kontrol eder (Örn: `stationId` sayı mı?)  
-   - ❌ Başarısızsa **400 Bad Request** döner  
+   - ✅ Token varlığını kontrol eder
+   - ✅ JWT imzasını doğrular
+   - ❌ Başarısızsa **401 Unauthorized** döner
 
-4. **Controller**  
-   - Tüm kontroller geçildikten sonra iş mantığını çalıştırır  
+2. **Authorization Middleware**
+
+   - ✅ `req.user.roles` ile yetki kontrolü yapar (Örn: `admin` rolü gerekli)
+   - ❌ Başarısızsa **403 Forbidden** döner
+
+3. **Validation Middleware**
+
+   - ✅ Gelen verinin formatını kontrol eder (Örn: `stationId` sayı mı?)
+   - ❌ Başarısızsa **400 Bad Request** döner
+
+4. **Controller**
+   - Tüm kontroller geçildikten sonra iş mantığını çalıştırır
 
 ---
 
 --
 
 ### 📌 **Önemli Noktalar**:
+
 - **Sıralama Önemli**:  
   `Auth → Authz → Validation` şeklinde ilerlemeli. Önce kimlik doğrulanmalı, sonra yetki kontrolü yapılmalı.
 - **Fail-Fast Mantığı**:  
@@ -336,3 +340,141 @@ sequenceDiagram
   Her middleware ekstra işlem yükü getirir, bu nedenle gereksiz middleware'lerden kaçının.
 
 Bu yapı, **clean code** ve **separation of concerns** ilkelerine uygun bir çözüm sunar. 🚀
+
+## 📌 `handle()` Akışı: Request ve Response Aşamaları
+
+Aynı middleware, tek bir çağrı içinde hem girişte (request) hem çıkışta (response) işlem yapabilir.
+
+```php
+public function handle($request, Closure $next)
+{
+    // Request aşaması (Controller'dan önce)
+    if (!$request->user()) {
+        return redirect('/login');
+    }
+
+    // Controller'a devam
+    $response = $next($request);
+
+    // Response aşaması (Controller'dan sonra)
+    $response->headers->set('X-Custom-Header', 'Middleware çalıştı');
+
+    return $response;
+}
+```
+
+- `$next($request)` öncesi: Request tarafı
+- `$next($request)` sonrası: Response tarafı
+
+> Not: `handle()` metodu tek kez çağrılır; fonksiyon içinde `$next($request)` çağrısından sonra response geri döner ve kalan satırlar çalışır.
+
+---
+
+## 📌 `$next($request)` Nedir?
+
+- `$next`, sıradaki middleware'i veya kalmadıysa Controller'ı çağıran bir `Closure`'dır.
+- Çağrılana kadar olan kodlar “giriş işlemleri”, çağrıldıktan sonra devam eden kodlar “çıkış işlemleri”dir.
+
+Basit örnek:
+
+```php
+public function handle($request, Closure $next)
+{
+    // Request aşaması
+    if (!$request->has('token')) {
+        return response('Token yok!', 403);
+    }
+
+    // Sıradaki middleware/Controller'a geç
+    $response = $next($request);
+
+    // Response aşaması
+    $response->headers->set('X-From-Middleware', 'Evet buradayım');
+
+    return $response;
+}
+```
+
+- `return $next($request)`: Akışı devam ettirir.
+- `$next` çağrılmadan `return ...`: Akışı keser, Controller'a gidilmez.
+
+## 📌 Request–Response Loglama Örneği
+
+```php
+<?php
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+
+class LogRequestResponse
+{
+    public function handle(Request $request, Closure $next)
+    {
+        // Request aşaması
+        \Log::info('Gelen istek:', [
+            'url' => $request->fullUrl(),
+            'method' => $request->method(),
+            'data' => $request->all()
+        ]);
+
+        $response = $next($request);
+
+        // Response aşaması
+        \Log::info('Giden cevap:', [
+            'status' => $response->status(),
+            'headers' => $response->headers->all()
+        ]);
+
+        $response->headers->set('X-Middleware-Deneme', 'Çalıştı');
+
+        return $response;
+    }
+}
+```
+
+---
+
+## 📌 Middleware Zinciri (Birden Fazla Middleware)
+
+```php
+// routes/web.php
+Route::get('/test', function () {
+    \Log::info("🎯 Controller çalıştı");
+    return "Merhaba Dünya";
+})->middleware(['first', 'second']);
+```
+
+- `first` içinden `$next($request)` → `second` çalışır.
+- `second` içinden `$next($request)` → başka yoksa Controller çalışır.
+- Response dönüş sırası tersine sarılır: önce `second` response kısmı, sonra `first`.
+
+Beklenen log sırası:
+
+1. 👉 Middleware 1 - Request
+2. 👉 Middleware 2 - Request
+3. 🎯 Controller çalıştı
+4. 👈 Middleware 2 - Response
+5. 👈 Middleware 1 - Response
+
+## 📌 Sequence Diagram (Mermaid)
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant M1 as AuthCheck Middleware
+    participant App as Controller/İş Mantığı
+    participant Response
+
+    Client->>M1: HTTP Request
+    Note right of M1: REQUEST AŞAMASI<br/>Kullanıcı kontrolü
+
+    alt Kullanıcı YOK
+        M1-->>Client: Redirect to /login (Response)
+    else Kullanıcı VAR
+        M1->>App: $next($request)
+        App-->>M1: HTTP Response
+        Note right of M1: RESPONSE AŞAMASI<br/>Header ekleme
+        M1-->>Client: Son Response
+    end
+```
