@@ -82,6 +82,7 @@ Ayrıca, yapay zeka destekli geliştirme araçlarını etkin bir şekilde kullan
 
 - [Örnek Ödevler](./ORNEK-PROJELER/README.md)
 - [Detaylı Ödev Listesi](./ORNEK-PROJELER/PROJE-OZETI.md)
+- [Veri Toplama Örneği](./laravel-API-notlar/api-random-data-cagrisi.md) (Python ile random daha üreterek)
 
 ### Tamamlayıcı Materyaller
 
