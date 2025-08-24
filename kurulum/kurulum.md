@@ -9,7 +9,7 @@
 sudo apt update && sudo apt upgrade -y
 
 # Gerekli paketler
-sudo apt install -y git curl unzip php-cli php-mbstring php-xml composer mariadb-server
+sudo apt install -y git curl unzip apache2 php-cli php-mbstring php-xml composer mariadb-server
 
 # NVM kurulumu
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
@@ -70,7 +70,6 @@ node --version
 npm --version
 quasar --version
 git --version
-git --global
 git config --global --list
 gemini --version
 ```
