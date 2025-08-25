@@ -750,6 +750,8 @@ Route::post('/test-data', [TestDataController::class, 'createTestData']);
 `bootstrap/app.php` Dosyasını açın ve **şu şekilde düzeltin:**
 
 ```php
+<?php
+
 // bootstrap/app.php
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
