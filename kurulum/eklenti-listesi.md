@@ -3,7 +3,7 @@
 ## Eklenti Yükleme
 
 ```bash
-windsurf install <eklenti_adı>
+windsurf --install-extension <eklenti_adı>
 ```
 
 ## Yüklü Eklentiler
