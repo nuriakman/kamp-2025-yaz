@@ -52,3 +52,109 @@ $station->save();
 $station = App\Models\ModelAdi::where('kodu', 'TEST001')->first();
 $station?->delete();
 ```
+
+# Mindmap
+
+
+### **Git**
+
+  - git init
+  - git add
+  - git commit
+  - git push
+  - git pull
+  - git checkout
+  - .gitignore
+  - repository
+  - Git Bash
+  - GitHub
+  - GitLab
+### **Linux / Terminal Komutları**
+
+  - ls, ll
+  - cd
+  - pwd
+  - mkdir
+  - rm -rf \*
+  - cat, cat id\_, cat …pub
+  - sudo
+  - apt, apt-get
+  - Ubuntu home klasörüne gitme komutu
+  - ssh klasörüne gitme komutu
+### **SSH**
+
+  - ssh
+  - ssh-keygen
+  - \~/.ssh dizini
+### **Veritabanı / SQL**
+
+  - MySQL
+  - MariaDB
+  - SQLite
+  - Oracle
+  - MySQL-MariaDB farkı
+  - SQL sorguları (select, update, delete, order by)
+  - Veri türleri: varchar, int, float, decimal, datetime
+  - ASC / DESC
+  - index
+  - CRUD işlemleri
+  - migration
+  - timestamps
+  - fillable
+  - \$table
+  - nullable
+### **API**
+  - API (temel kavram)
+  - REST API
+  - SOAP API
+  - WS
+  - WebSocket API
+  - CRUD (Create, Read, Update, Delete)
+  - request-response
+  - HTTP verbs: GET, POST, PUT, PATCH, DELETE
+  - JSON
+  - CSV, TSV
+  - encoding
+  - .env dosyası
+  - Todos (örnek API verisi)
+### **Frameworkler / Teknolojiler**
+
+  - Laravel (composer create-project, artisan, model, controller, route, migration)
+  - Node.js
+  - npm
+  - composer
+  - paket yöneticileri (npm veya diğerleri)
+  - framework kavramı
+  - bağımlılık yönetimi
+### **DNS / Ağ**
+
+  - DNS
+  - TLD
+  - root DNS
+  - ICANN
+  - TTL (Time To Live)
+  - IP adresleri: 1.1.1.1, 1.1.1.2
+### **Programlama Dilleri**
+
+  - JavaScript (fetch, JS fetch komutu)
+  - TypeScript (TS vs JS)
+  - PHP (Laravel)
+### **Web Sunucu / Servisler**
+
+  - Apache
+  - Nginx
+  - Laragon
+  - Adminer
+### **Araçlar / Eklentiler**
+
+  - VS Code eklentileri
+  - Wakatime
+  - Windsurf
+  - Vibe Coding
+  - Stackedit.io
+  - Mermaid
+  - Markdown
+  - Monotype font
+  - killedbygoogle
+
+
