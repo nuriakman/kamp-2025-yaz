@@ -357,11 +357,11 @@ public function store(Request $request)
 
 ### 🔷 10. EN İYİ UYGULAMALAR
 
-✅ Her resource için ayrı controller kullan
-✅ Fonksiyonları kısa tut (maksimum 30-40 satır)
-✅ Validation’ı ayrı Request class'a taşıyabilirsin (daha profesyonel)
-✅ `try/catch` ile hata yönetimi yap
-✅ API yazıyorsan daima `response()->json()` kullan
+- ✅ Her resource için ayrı controller kullan
+- ✅ Fonksiyonları kısa tut (maksimum 30-40 satır)
+- ✅ Validation’ı ayrı Request class'a taşıyabilirsin (daha profesyonel)
+- ✅ `try/catch` ile hata yönetimi yap
+- ✅ API yazıyorsan daima `response()->json()` kullan
 
 ---
 
