@@ -52,11 +52,10 @@ Ayrıca, yapay zeka destekli geliştirme araçlarını etkin bir şekilde kullan
 
 ### Laravel
 
-**Ders Notları**
-
 - [Laravel İle API Kurulumu](./laravel-API-notlar/KURULUM.md)
 - [Laravel API Ders Notu](./laravel-API-notlar/DERS-NOTU.md)
 - [JWT Entegrasyonu Ders Notu](./laravel-API-notlar/DERS-NOTU-JWT.md)
+- [Laravel'i Anlama](./laraveli-anlama/README.md)
 
 **API Test Araçları**
 
