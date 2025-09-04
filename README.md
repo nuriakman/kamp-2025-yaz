@@ -66,7 +66,7 @@ Ayrıca, yapay zeka destekli geliştirme araçlarını etkin bir şekilde kullan
 
 - [Postman Koleksiyonları Açıklamaları](./laravel-API-notlar/collection-aciklamalar.md)
 
-**Laravel’i Anlama**
+**Rest API ve RPC**
 
 - [Laravel'de API Yaklaşımları](./Fikirler/laravel-api-yaklasimlari.md)
 - [Rest API](./Fikirler/neden-rest-api.md)
