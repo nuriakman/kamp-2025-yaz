@@ -1,5 +1,28 @@
 # MySQL Kullanıcı Yönetimi Notları
 
+**DİKKAT!** Uzak bağlantı için sunucuda `bind-address` tanımı yapılması gerekmektedir.
+
+Ana sunucuda `bind-address` tanımı yapılması 
+
+**MySQL/MariaDB Config dosyası konumu:**
+
+- MariaDB: `/etc/mysql/mariadb.conf.d/50-server.cnf`
+- MySQL: `/etc/mysql/mysql.conf.d/mysqld.cnf`
+
+
+Config dosyası içinde `bind-address` satırını değiştirerek `0.0.0.0` olarak ayarlamak gerekir.
+
+```bash
+vi /etc/mysql/mariadb.conf.d/50-server.cnf
+
+bind-address  = 0.0.0.0
+
+# Servisi tekrar başlat
+systemctl restart mariadb
+
+```
+
+
 ## ✅ 1. Kullanıcı Oluşturma
 
 ### Belirli Bir IP'den Erişim İzni Vererek
