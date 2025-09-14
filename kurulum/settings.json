@@ -1,9 +1,9 @@
 {
   "problems.decorations.enabled": true,
   "problems.defaultViewMode": "tree",
-  "problems.decorations.maxHeight": 20, // Maksimum satır sayısı
-  "problems.maxVisible": 10, // Gösterilecek maksimum hata sayısı
-  "problems.panelHeight": 30, // Panel yüksekliği (pixel cinsinden)
+  "problems.decorations.maxHeight": 20,
+  "problems.maxVisible": 10,
+  "problems.panelHeight": 30,
   "editor.autoClosingComments": "always",
   "editor.autoClosingQuotes": "always",
   "editor.autoClosingBrackets": "always",
@@ -17,7 +17,7 @@
   "php.debug.executablePath": "/usr/bin/php",
   "php.suggest.basic": false,
   "files.hotExit": "onExitAndWindowClose",
-  "html.format.wrapAttributes": "force-expand-multiline", // Nuri,
+  "html.format.wrapAttributes": "force-expand-multiline",
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": true,
   "editor.formatOnType": true,
@@ -31,11 +31,18 @@
   "editor.wordWrap": "off",
   "editor.lineHeight": 25,
   "editor.mouseWheelZoom": true,
+
+  "window.titleBarStyle": "custom",
   "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#6d7edd",
+    "titleBar.activeForeground": "#ffffff",
+    "titleBar.inactiveBackground": "#4c568d",
+    "titleBar.inactiveForeground": "#aaaaaa",
     "tab.activeBorder": "#ffffff",
     "tab.activeBorderTop": "#ffd900",
     "tab.activeBackground": "#3d615f"
   },
+  
   "editor.unicodeHighlight.allowedLocales": {
     "tr": true
   },
