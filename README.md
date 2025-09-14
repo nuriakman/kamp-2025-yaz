@@ -57,6 +57,11 @@ Ayrıca, yapay zeka destekli geliştirme araçlarını etkin bir şekilde kullan
 - [JWT Entegrasyonu Ders Notu](./laravel-API-notlar/DERS-NOTU-JWT.md)
 - [Laravel'i Anlama](./laraveli-anlama/README.md)
 
+### MySQL
+
+- [MySQL Notları](./mysql/README.md)
+- [MySQL'de Kullanıcı Yönetimi](./mysql/mysql-user-yetkileri.md)
+
 **API Test Araçları**
 
 - [Postman Kullanımı](./laravel-API-notlar/POSTMAN.md)
