@@ -37,6 +37,18 @@ npm install -g @vue/cli
 # Quasar CLI kurulumu
 npm install -g @quasar/cli
 
+
+# Fare için ayarlar
+## Dock ünitesinde program simgesine tıklayınca küçült/büyült
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+## Dock ünitesinde program simgesinde tekeri çevirince pencelere arasında gezin
+gsettings set org.gnome.shell.extensions.dash-to-dock scroll-action 'cycle-windows'
+
+
+## Kurulum sonrasında varsa gereksiz paketleri temizle
+sudo apt autoremove -y
+
+
 ```
 
 ### Git Kurulumu ve Ayarları
