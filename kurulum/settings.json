@@ -1,4 +1,5 @@
 {
+  "window.zoomLevel": 1,
   "problems.decorations.enabled": true,
   "problems.defaultViewMode": "tree",
   "problems.decorations.maxHeight": 20,
