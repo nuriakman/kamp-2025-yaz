@@ -7,8 +7,9 @@
 
 ## HTTP
 
-- <https://www.youtube.com/watch?v=VLcJi0hyoFw>
+- <https://www.youtube.com/playlist?list=PLFbnPuoQkKseimWeA4UFo1BPFTeXnv_1S> Frameworkless PHP
 - <https://www.youtube.com/@dave-hollingworth/videos> Dave Hollingworth Videos
+
 ## MySQL / MariaDB
 
 -
