@@ -5,6 +5,10 @@
 - mangal yapmayı videodan öğrenmek
 - Yüzme öğreticisinin, dünya yüzme şampiyonu olması gerekmez.
 
+## HTTP
+
+- <https://www.youtube.com/watch?v=VLcJi0hyoFw>
+- <https://www.youtube.com/@dave-hollingworth/videos> Dave Hollingworth Videos
 ## MySQL / MariaDB
 
 -
