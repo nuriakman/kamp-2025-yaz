@@ -95,3 +95,4 @@ Ayrıca, yapay zeka destekli geliştirme araçlarını etkin bir şekilde kullan
 - [PRD (Ürün Gereksinim Dokümanı)](./ders-notu-ornekleri/ornek-prd.md)
 - [UI Mockup'ları](./ders-notu-ornekleri/ornek-ui-mockup.md)
 - [DNS Çözümleme Süreci](./Fikirler/dns-cozumleme.md)
+- [Önerilen Eğitim Videoları](./onerilen-egitim-videolari.md)
